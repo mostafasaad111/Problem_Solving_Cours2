@@ -1800,7 +1800,207 @@
                       CalcPositiveNumber(Length, arr);
                       return 0;
                     }
-## 24 - 
+## 24- Write a program to print abs of numbers, don't use the built-in abs function.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <cmath>
+                    #include <cstdlib> // For rand and srand
+                    #include <ctime>   // For time function
+                    using namespace std;
+                    float ReadNumber(float &Number)
+                    {
+                      cout << "Please enter Number : ";
+                      cin >> Number;
+                    }
+                    float MyABS(float Number)
+                    {
+                      if (Number > 0)
+                        return Number;
+                      else
+                        return Number * -1;
+                    }
+                    int main()
+                    {
+                      float Number = 0;
+                      ReadNumber(Number);
+                    
+                      cout << "My abs result : " << MyABS(Number);
+                      cout << "C++ abs result : " << abs(Number);
+                      return 0;
+                    }
+
+## 25 - Write a program to print a round of numbers, don't use the built-in round function.
+
+
+                              #include <iostream>
+                              #include <string>
+                              #include <cmath>
+                              #include <cstdlib> // For rand and srand
+                              #include <ctime>   // For time function
+                              using namespace std;
+                              float ReadNumber(float &Number)
+                              {
+                                cout << "Please enter Number : ";
+                                cin >> Number;
+                              }
+                              float FractionFunction(float Number, float Fraction)
+                              {
+                                Fraction = Number - int(Number);
+                                return Fraction;
+                              }
+                              float RoundFunction(float Number, float Fraction)
+                              {
+                                int Input = int(Number);
+                                if (abs(Fraction) >= 0.5)
+                                {
+                                  if (Number > 0)
+                                  {
+                                    return Input++;
+                                  }
+                                  else
+                                  {
+                                    return --Input;
+                                  }
+                                }
+                                else
+                                {
+                                  return Input;
+                                }
+                              }
+                              int main()
+                              {
+                                float Number = 0, Fraction;
+                                ReadNumber(Number);
+                              
+                                FractionFunction(Number, Fraction);
+                              
+                                cout << "My abs result : " << RoundFunction(Number, Fraction) <<endl;
+                                cout << "C++ abs result : " << round(Number) <<endl;
+                                return 0;
+                              }
+
+## 26 - Write a program to print the floor of Numbers, don't use the built-in floor function.
+
+                              #include <iostream>
+                              #include <string>
+                              #include <cmath>
+                              #include <cstdlib> // For rand and srand
+                              #include <ctime>   // For time function
+                              using namespace std;
+                              float ReadNumber(float &Number)
+                              {
+                                cout << "Please enter Number : ";
+                                cin >> Number;
+                              }
+                              float FractionFunction(float Number, float Fraction)
+                              {
+                                Fraction = Number - int(Number);
+                                return Fraction;
+                              }
+                              float FloorFunction(float Number, float Fraction)
+                              {
+                                int Input = int(Number);
+                                if (abs(Fraction) >= 0.5)
+                                {
+                                  if (Number > 0)
+                                  {
+                                    return --Input;
+                                  }
+                                  else
+                                  {
+                                    return --Input;
+                                  }
+                                }
+                                else
+                                {
+                                  return Input;
+                                }
+                              }
+                              int main()
+                              {
+                                float Number = 0, Fraction;
+                                ReadNumber(Number);
+                              
+                                FractionFunction(Number, Fraction);
+                              
+                                cout << "My abs result : " << FloorFunction(Number, Fraction) <<endl;
+                                cout << "C++ abs result : " << floor(Number) <<endl;
+                                return 0;
+                              }
+
+## 27- Write a program to print Ceil of numbers, don't use built in Ceil function. 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <cmath>
+                    #include <cstdlib> // For rand and srand
+                    #include <ctime>   // For time function
+                    using namespace std;
+                    float ReadNumber(float &Number)
+                    {
+                      cout << "Please enter Number : ";
+                      cin >> Number;
+                    }
+                    float FractionFunction(float Number, float &Fraction)
+                    {
+                      Fraction = Number - int(Number);
+                      return Fraction;
+                    }
+                    float CeilFunction(float Number, float Fraction)
+                    {
+                      if (abs(Fraction) > 0)
+                        if (Number > 0)
+                          return int(Number) + 1;
+                        else
+                          return int(Number);
+                      else
+                        return Number;
+                    }
+                    int main()
+                    {
+                      float Number = 0, Fraction = 0;
+                      ReadNumber(Number);
+                    
+                      FractionFunction(Number, Fraction);
+                    
+                      cout << "My abs result : " << CeilFunction(Number, Fraction) << endl;
+                      cout << "C++ abs result : " << ceil(Number) << endl;
+                      return 0;
+                    }
+
+## 28- Write a program to print Sqrt of numbers, don't use built in sqrt function.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <cmath>
+                    #include <cstdlib> // For rand and srand
+                    #include <ctime>   // For time function
+                    using namespace std;
+                    int ReadNumber(int &Number)
+                    {
+                      cout << "Please enter Number : ";
+                      cin >> Number;
+                    }
+                    int SqrtFunction(int Number)
+                    {
+                      return pow(Number , .5);
+                    }
+                    int main()
+                    {
+                      int Number = 0;
+                      ReadNumber(Number);
+                    
+                    
+                      cout << "My abs result : " << SqrtFunction(Number) << endl;
+                      cout << "C++ abs result : " << sqrt(Number) << endl;
+                      return 0;
+                    }
+
+
+
+
+
 
 
 
