@@ -1997,6 +1997,333 @@
                       return 0;
                     }
 
+##  Math Game 
+                    #include <iostream>
+                    #include <string>
+                    #include <cstdlib> // For rand and srand
+                    #include <ctime>   // For time function
+                    using namespace std;
+                    
+                    int ReadNumberOfIteration(int &Counter1)
+                    {
+                      do
+                      {
+                        cout << "How many questions do you want to answer? ";
+                        cin >> Counter1;
+                      } while (Counter1 <= 0);
+                      return Counter1;
+                    }
+                    
+                    int ReadLevel(int &Number)
+                    {
+                      do
+                      {
+                        cout << "Enter Question Level [1] Easy, [2] Medium, [3] Hard, [4] Mix: ";
+                        cin >> Number;
+                      } while (Number > 4 || Number < 1);
+                      return Number;
+                    }
+                    
+                    int ReadOperation(int &Number3)
+                    {
+                      do
+                      {
+                        cout << "Enter Question Type [1] Add, [2] Sub, [3] Mul, [4] Div, [5] Mix: ";
+                        cin >> Number3;
+                      } while (Number3 > 5 || Number3 < 1);
+                      return Number3;
+                    }
+                    
+                    int RandomNumber(int from, int to)
+                    {
+                      return rand() % (to - from + 1) + from;
+                    }
+                    
+                    int RandomArray(int f, int t)
+                    {
+                      return rand() % (t - f + 1) + f;
+                    }
+                    double MixLevels(int arr[3], int Counter1)
+                    {
+                        arr[0] = RandomNumber(1, 10);
+                        arr[1] = RandomNumber(1, 50);
+                        arr[2] = RandomNumber(1, 100);
+                    
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                            arr[RandomArray(0, 2)];
+                        }
+                        return arr[RandomArray(0, 2)]; 
+                    }
+                    
+                    void GenerateNumbers(int arr[3], int Counter1, int &Value1, int &Value2, int Number)
+                    {
+                      Value1 = 0, Value2 = 0;
+                      switch (Number)
+                      {
+                      case 1:
+                        Value1 = RandomNumber(1, 10);
+                        Value2 = RandomNumber(1, 10);
+                        break;
+                      case 2:
+                        Value1 = RandomNumber(1, 50);
+                        Value2 = RandomNumber(1, 50);
+                        break;
+                      case 3:
+                        Value1 = RandomNumber(1, 100);
+                        Value2 = RandomNumber(1, 100);
+                        break;
+                      case 4:
+                        Value1 =  arr[RandomArray(0, 2)];
+                        Value2 =  arr[RandomArray(0, 2)];
+                        break;
+                      default:
+                        break;
+                      }
+                    }
+                    
+                    void CheckFunction(int Number2, int Value3)
+                    {
+                      if (Number2 == Value3)
+                      {
+                        system("color 2f");
+                      }
+                      else
+                      {
+                        cout << "Correct Answer = " << Value3 << endl;
+                        system("color 4f");
+                      }
+                    }
+                    
+                    int AddFunction(int arr[3], int Counter1, int Number, int &Number2, int &Value3)
+                    {
+                      int Value1, Value2;
+                    
+                      GenerateNumbers(arr, Counter1, Value1, Value2, Number);
+                      Value3 = Value1 + Value2;
+                    
+                      cout << Value1 << " + " << Value2 << " = ";
+                      cin >> Number2;
+                      CheckFunction(Number2, Value3);
+                    }
+                    
+                    int SubFunction(int arr[3], int Counter1, int Number, int &Number2, int &Value3)
+                    {
+                      int Value1, Value2;
+                    
+                      GenerateNumbers(arr, Counter1, Value1, Value2, Number);
+                      Value3 = Value1 - Value2;
+                    
+                      cout << Value1 << " - " << Value2 << " = ";
+                      cin >> Number2;
+                      CheckFunction(Number2, Value3);
+                    }
+                    
+                    int MultiFunction(int arr[3], int Counter1, int Number, int &Number2, int &Value3)
+                    {
+                      int Value1, Value2;
+                    
+                      GenerateNumbers(arr, Counter1, Value1, Value2, Number);
+                      Value3 = Value1 * Value2;
+                    
+                      cout << Value1 << " * " << Value2 << " = ";
+                      cin >> Number2;
+                      CheckFunction(Number2, Value3);
+                    }
+                    
+                    int DivFunction(int arr[3], int Counter1, int Number, int &Number2, int &Value3)
+                    {
+                      int Value1, Value2;
+                    
+                      GenerateNumbers(arr, Counter1, Value1, Value2, Number);
+                      Value3 = Value1 / Value2;
+                    
+                      cout << Value1 << " / " << Value2 << " = ";
+                      cin >> Number2;
+                      CheckFunction(Number2, Value3);
+                    }
+                    int MixFunction(int arr2[4], int arr[3], int Number, int Number2, int Value3, int Counter1)
+                    {
+                      arr2[0] = AddFunction(arr, Counter1, Number, Number2, Value3);
+                      arr2[1] = SubFunction(arr, Counter1, Number, Number2, Value3);
+                      arr2[2] = DivFunction(arr, Counter1, Number, Number2, Value3);
+                      arr2[3] = MultiFunction(arr, Counter1, Number, Number2, Value3);
+                    
+                      for (int i = 0; i < Counter1; i++)
+                      {
+                        arr2[RandomArray(0, 3)];
+                      }
+                    }
+                    double Easy(int arr2[4], int arr[3], int Number, int Number2, int Counter1, int Number3, int Value3)
+                    {
+                      if (Number == 1 && Number3 == 1)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          AddFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 1 && Number3 == 2)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          SubFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 1 && Number3 == 3)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MultiFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 1 && Number3 == 4)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          DivFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 1 && Number3 == 5)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MixFunction(arr2, arr, Number, Number2, Value3, Counter1);
+                        }
+                      }
+                    }
+                    
+                    double Medium(int arr2[4] ,int arr[3], int Number, int Number2, int Counter1, int Number3, int Value3)
+                    {
+                      if (Number == 2 && Number3 == 1)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          AddFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 2 && Number3 == 2)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          SubFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 2 && Number3 == 3)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MultiFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 2 && Number3 == 4)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          DivFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                        else if (Number == 2 && Number3 == 5)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MixFunction(arr2, arr, Number, Number2, Value3, Counter1);
+                        }
+                      }
+                    }
+                    
+                    double Hard(int arr2[4] ,int arr[3], int Number, int Number2, int Counter1, int Number3, int Value3)
+                    {
+                      if (Number == 3 && Number3 == 1)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          AddFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 3 && Number3 == 2)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          SubFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 3 && Number3 == 3)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MultiFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 3 && Number3 == 4)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          DivFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                        else if (Number == 3 && Number3 == 5)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MixFunction(arr2, arr, Number, Number2, Value3, Counter1);
+                        }
+                      }
+                    }
+                    int Mix(int arr2[4],int arr[3] , int Number, int Number2, int Counter1, int Number3, int Value3)
+                    {
+                      if (Number == 4 && Number2 == 1)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          AddFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 4 && Number3 == 2)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          SubFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 4 && Number3 == 3)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MultiFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 4 && Number3 == 4)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          DivFunction(arr, Counter1, Number, Number2, Value3);
+                        }
+                      }
+                      else if (Number == 4 && Number3 == 5)
+                      {
+                        for (int i = 0; i < Counter1; i++)
+                        {
+                          MixFunction(arr2, arr, Number, Number2, Value3, Counter1);
+                        }
+                      }
+                    }
+                    
+                    int main()
+                    {
+                      srand((unsigned)time(NULL));
+                      int Counter1 = 0, Number = 0, Number3 = 0, arr2[4], arr[3], Value3 = 0, Number2 = 0;
+                      ReadNumberOfIteration(Counter1);
+                      ReadLevel(Number);
+                      ReadOperation(Number3);
+                    
+                      Easy(arr2,arr, Number, Number2, Counter1, Number3, Value3);
+                      Medium(arr2,arr, Number, Number2, Counter1, Number3, Value3);
+                      Hard(arr2,arr, Number, Number2, Counter1, Number3, Value3);
+                      Mix(arr, arr2, Number, Number2, Counter1, Number3, Value3);
+                    
+                      return 0;
+                    }
 
 
 
