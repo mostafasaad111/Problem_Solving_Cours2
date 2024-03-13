@@ -2648,8 +2648,59 @@ int main() {
                     
                     }
 
-## Example 2 :-
+## 46 -  Write a program to store the multiplication table results in 10 * 10 and print the result.
 
+                    #include <iostream>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	// Two Dimensional Array
+                    
+                    	int x[10][10] = { {1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6,7,8,9,10},
+                    		{1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6,7,8,9,10},
+                    		{1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6,7,8,9,10},{1,2,3,4,5,6,7,8,9,10} };
+                    
+                    	for (int i = 0; i < 10; i++) {
+                    		for (int j = 0; j < 10; j++) {
+                    			cout << setw(4) <<(x[i][j] * (i + 1)) ;
+                    		}
+                    		cout << endl;
+                    	}
+                    
+                    	return 0;
+                    
+## 47 - Another Solution
+
+                    #include <iostream>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	// Two Dimensional Array
+                    
+                    	int x[10][10];
+                    
+                    	for (int i = 0; i < 10; i++) {
+                    		for (int j = 0; j < 10; j++) {
+                    			x[i][j] = (i + 1) * (j + 1);
+                    		}
+                    	}
+                    	for (int i = 0; i < 10; i++) {
+                    		for (int j = 0; j < 10; j++) {
+                    			printf(" %0*d ", 2, x[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    
+                    	return 0;
+                    
+                    }
+
+
+## 48 - 
 
 
 
