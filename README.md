@@ -2326,9 +2326,341 @@
                     }
 
 
+## 30 - Write a program to do the following Using the ternary Operator, a Program to check if the Number is Positive or Negative.
+
+                    #include <iostream>
+                    using namespace std;
+                    
+                    int main()
+                    {
+                      int Number = 0;
+                      cout << "Please enter a number:";
+                      cin >> Number;
+                    
+                      (Number == 0) ? cout << "0" : (Number >= 0) ? cout << "Positive"
+                                                                  : cout << "Negative";
+                      ;
+                    
+                      return 0;
+                    }
+
+## 31 - Ranged Loop:-
+
+
+                              #include <iostream>
+                              using namespace std;
+                              
+                              int main()
+                              {
+                              
+                                int arr[] = {
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    5,
+                                    6,
+                                    6,
+                                    6,
+                                    6,
+                                };
+                              
+                                for (int n : arr)
+                                {
+                                  cout << n;
+                                }
+                                return 0;
+                              }
+
+## 32 - Validation Number:-
+
+                    #include <iostream>
+                    #include <limits> // Include for std::numeric_limits
+                    using namespace std;
+                    
+                    int ReadNumber() {
+                        int Number = 0;
+                        cout << "Please enter a number: ";
+                        cin >> Number;
+                    
+                        while (cin.fail()) {
+                            cin.clear(); // Clear the error state of cin
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore any invalid input in the buffer
+                            cout << "Invalid input. Please enter a valid number: ";
+                            cin >> Number; // Try reading input again
+                        }
+                    
+                        return Number;
+                    }
+                    
+                    int main() {
+                        cout << "Your Number is: " << ReadNumber() << endl;
+                        return 0;
+                    }
+## 33 - BitWise AND Operatin (&):-
+                    #include <iostream>
+                    #include <limits> 
+                    using namespace std;
+                    
+                    int main() {
+                        cout << "Result:"<<(12 & 25) << endl;
+                        return 0;
+                    }
+
+## 34 -  BitWise OR Operatin (|) :-
+
+                    #include <iostream>
+                    using namespace std;
+                    
+                    int main() {
+                        cout << "Result:"<<(12 | 25) << endl;
+                        return 0;
+                    }
+## 35 - Decleraion and Definiation :-
+
+                    #include <iostream>
+                    using namespace std;
+                    void add(int , int ); // Declaration
+                    
+                    int main() {
+                        add(20 ,20);
+                        return 0;
+                    }
+                      // definition
+                    void add(int a , int b){
+                      cout << a + b << endl;
+                    }
+
+## 36 - Default Parametter :-
+
+                    #include <iostream>
+                    using namespace std;
+                    int add(int a, int b, int c, int d = 0)
+                    {
+                      return (a + b + c + d);
+                    }
+                    
+                    int main()
+                    {
+                      cout << add(1, 2, 3);
+                      cout << add(1, 2, 3, 4);
+                    }
+
+## 37 - Recursion Print Numbers From 1 to 4:-
+
+          #include <iostream>
+          using namespace std;
+          
+          void PrintNumber(int N, int M)
+          {
+          	if (N <= M)
+          	{
+          		cout << N << endl;
+          		PrintNumber(N + 1, M);
+          	}
+          }
+          int main()
+          {
+          	PrintNumber(1, 4);
+          	return 0;
+          }
+          
+## 38 - Recursion Print Numbers From 4 to 1:-        
+
+                    #include <iostream>
+                    using namespace std;
+                    
+                    void PrintNumber(int N, int M)
+                    {
+                    	if (N <= M)
+                    	{
+                    		cout << M << endl;
+                    		PrintNumber(N, M -1 );
+                    	}
+                    }
+                    int main()
+                    {
+                    	PrintNumber(1, 4);
+                    	return 0;
+                    }
+ 
+## 39 - using Recursion write program to calculate power N^m:-   
+
+
+
+                    #include <iostream>
+                    using namespace std;
+                    
+                    int MyPower(int Base, int Power) {
+                    	if (Power == 0) {
+                    		return 1;
+                    	}
+                    	else {
+                    		return(Base * MyPower(Base, Power - 1));
+                    	}
+                    }
+                    int main() {
+                    
+                    	cout << MyPower(2, 4);
+                    
+                    	return 0;
+                    
+                    }
+
+## 40 - Static Variable:-
+
+
+                    #include <iostream>
+                    using namespace std;
+                    
+                    void MyFunction() {
+                    	static	 int Number = 1;
+                    
+                    	cout << "Result = " << Number << endl;
+                    	Number++;
+                    }
+                    int main() {
+                    
+                    	MyFunction();
+                    	MyFunction();
+                    	MyFunction();
+                    
+                    	return 0;
+                    }
+## 41 - auto Variables:-
+
+                    #include <iostream>
+                    using namespace std;
+                    
+                    int main() {
+                    	auto x = 5;
+                    	auto y = 11.3;
+                    	auto z = "Mustafa Saad";
+                    
+                    	cout << x << endl;
+                    	cout << y << endl;
+                    	cout << z << endl;
+                    
+                    	return 0;
+                    
+                    }
+
+## 42 - Integer Formatting:-
+
+
+                    #include <iostream>
+                    using namespace std;
+                    
+                    int main() {
+                    	int Page = 1, TotalPage = 10;
+                    
+                    	printf("The page number =  %d \n", Page);
+                    	printf("You are in Page %d of % d \n", Page, TotalPage);
+                    
+                    
+                    	printf("The page number = %0*d \n", 2, Page);
+                    	printf("The page number = %0*d \n", 3, Page);
+                    	printf("The page number = %0*d \n", 4, Page);
+                    	printf("The page number = %0*d \n", 5, Page);
+                    
+                    	int Number1 = 20, Number2 = 30;
+                    	printf("The Result of %d + %d = %d \n", Number1, Number1, Number1 + Number2);
+                    
+                    	return 0;
+                    
+                              }
+
+## 43 - float format (print)
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+
+                    	// float format (printf) ;
+                    
+                    	float Pi = 3.14232423;
+                    
+                    	printf("Percison specification of %.*f \n", 1, Pi);
+                    	printf("Percison specification of %.*f \n", 2, Pi);
+                    	printf("Percison specification of %.*f  \n", 3, Pi);
+                    	printf("Percison specification of %.*f  \n", 4, Pi);
+                    
+                    
+                    	float x = 7.0, y = 9.0;
+                    
+                    	printf("\n The Float division is : %.3f / %.3f = %.3f \n", x, y, x / y);
+                    
+                    	double d = 23.34;
+                    	printf("The double value is : %.3f \n", d);
+                    	printf("The double value is : %.4f \n", d);
+                    
+                    	return 0;
+                    
+                            }
+
+## 44 - String and Char Formatting (printf)
+   
+                              #include <iostream>
+                              using namespace std;
+                              
+                              int main() {
+                              
+                              	// String and Char formatting 
+                              
+                              	char Name[] = "Mustafa saad";
+                              	char School[] = "Mansoura  unviersity ";
+                              
+                              	printf("Welcome %s \n", Name);
+                              	printf("your school is  %s \n", School);
+                              
+                              	char c = 'b';
+                              
+                              	printf("the char is %*c \n", 1, c);
+                              	printf("the char is %*c \n", 2, c);
+                              	printf("the char is %*c \n", 3, c);
+                              	printf("the char is %*c \n", 4, c);
+                              
+                              
+                              	return 0;
+                              
+                              }
+## 45 - Two Dimensional Array 
+
+
+#include <iostream>
+                   
+                    using namespace std;
+                    int main() {
+                    	
+                    	// Two Dimensional Array
+                    
+                    	int x[3][4] = { {1,2,3,4},{5,6,7,8},{9,10,11,12} };
+                    
+                    	for (int i = 0; i < 3; i++) {
+                    		for (int j = 0; j < 4; j++) {
+                    			cout << x[i][j] ;
+                    		}
+                    		cout << endl;
+                    	}
+                    	return 0;
+                    
+                    }
+
+## Example 2 :-
 
 
 
 
 
+
+
+
+
+
+
+
+
+                              
 
