@@ -2700,18 +2700,114 @@ int main() {
                     }
 
 
-## 48 - 
+## 48 - pointer and array 
+
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                        int arr[4] = { 10, 20, 30, 40 };
+                        int* ptr;
+                        ptr = arr;
+                    
+                        cout << "Addresses are : \n" << endl;
+                        for (int i = 0; i < 4; i++) {
+                            cout << ptr + i << endl;
+                        }
+                    
+                        cout << "\nValues are : \n" << endl;
+                    
+                        for (int i = 0; i < 4; i++) {
+                            cout << *(ptr + i) << endl;
+                        }
+                    
+                        return 0;
+                    }
+
+## 49 - pointer and array
 
 
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                        int arr[4] = { 10, 20, 30, 40 };
+                        int* ptr;
+                        ptr = arr;
+                    
+                        cout << "Addresses are : \n" << endl;
+                        for (int i = 0; i < 4; i++) {
+                            cout << ptr + i << endl;
+                        }
+                    
+                        cout << "\nValues are : \n" << endl;
+                    
+                        for (int i = 0; i < 4; i++) {
+                            cout << *(ptr + i) << endl;
+                        }
+                    
+                        return 0;
+                    }
 
 
+## 50 - pointer and structure
+
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    struct stElemet {
+                    	string name;
+                    	float salary;
+                    };
+                    int main() {
+                    	stElemet Element1, * ptr;
+                    
+                    	Element1.name = "Mustafa sad";
+                    	Element1.salary = 5000;
+                        
+                    	cout << Element1.name << endl;
+                    	cout << Element1.salary << endl;
+                    
+                    	ptr = &Element1;
+                    
+                    	cout << ptr->name << endl;
+                    	cout << ptr->salary << endl;
+                    
+                    	return 0;
+                    
+                    }
 
 
+## 51 - pointer and void 
+
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	void* ptr;
+                    	int x = 50;
+                    	float f1 = 10.5;
+                    
+                    	ptr = &f1;
+                    	cout << *(static_cast<float*>(ptr))<< endl;
+                    	cout << ptr << endl;
+                    
+                    	ptr = &x;
+                    
+                    	cout << ptr << endl;
+                    	cout << *(static_cast<int*>(ptr));
+                    
+                    	return 0;
+                    
+                    }
 
 
-
-
-
+## 52 - 
 
                               
 
