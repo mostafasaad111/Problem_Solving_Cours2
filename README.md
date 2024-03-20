@@ -2806,8 +2806,226 @@ int main() {
                     
                     }
 
+## 52 - Dynamic memory allocation new and delete 
 
-## 52 - 
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	int* ptrx;
+                    	float* ptry;
+                    
+                    	ptrx = new int;
+                    	ptry = new float;
+                    
+                    	*ptrx = 1213;
+                    	*ptry = 10.343;
+                    
+                    	cout << *ptrx << endl;
+                    	cout << *ptry << endl;
+                    	
+                    	delete ptry;
+                    	delete ptrx;
+                    
+                    	return 0;
+                    
+                    }
+                    
+## 53 - Dynamic array > new and delete
 
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	int num;
+                    	cout << "Enter grades of student \n";
+                    	cin >> num;
+                    	
+                    	float *ptr = new float[num]; 
+                        
+                    	for (int i = 0; i < num; i++) {
+                    		cout << "student" << i + 1 << endl;
+                    		cin >> *(ptr + i);
+                    	}
+                    
+                    	cout << "\n Displaying grades of students " << endl;
+                    
+                    	for (int i = 0; i < num; i++) {
+                    		cout << "student" << i + 1 << endl<<*(ptr + i) << endl;
+                    	}
+                    
+                    	delete[] ptr;
+                    
+                    	return 0;
+                    
+                    }
                               
+## 54 - access element in vector
+
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	vector <int> num{ 1,2,3,45 };
+                    	
+                    	cout << num.at(0) << endl;
+                    	cout << num.at(1) << endl;
+                    
+                    	cout << num[0] << endl;
+                    	cout << num[1] << endl;
+                    
+                    	return 0;
+                    }
+
+## 55 - change element in vector
+                    
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	vector <int> num{ 1,2,3,45 ,5 };
+                    
+                    	cout << "values : \n";
+                    	for (const int& i : num) {
+                    		cout << i << " ";
+                    	}
+                    
+                    	cout << "\nup date values : \n";
+                    	for (int& i : num) {
+                    		i = 20;
+                    		cout << i << " ";
+                    	}
+                    	cout << "\nup date values : \n";
+                    
+                    	num[1] = 40;
+                    	num.at(2) = 50;
+                    	num.at(4) = 60;
+                    
+                    	for (const int& i : num) {
+                    		cout << i << " ";
+                    	}
+                    	return 0;
+                    }
+## 56 - vector iterations
+
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	vector <int> num{ 1,2,3,45,56,5 };
+                    
+                    	vector <int>::iterator iter;
+                    
+                    	for (iter = num.begin(); iter != num.end(); iter++) {
+                    		cout << *iter << " ";
+                    	}
+                    
+                    	return 0;
+                    }
+                    
+## 57 - string object 
+
+                    
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main() {
+                       
+                        string s1 = "Mustafa saad mohammed mohammed elgabear";
+                    
+                        cout << s1.length()<< endl;
+                    
+                        cout << s1.at(5) << endl;
+                    
+                        s1.append("@ali mohammed");
+                        cout << s1 << endl;
+                    
+                        s1.insert(7, "ali");
+                        cout << s1 << endl;
+                    
+                        cout << s1.substr(12, 3) << endl;
+                        
+                        s1.push_back('x');
+                        cout << s1 << endl;
+                    
+                        s1.pop_back();
+                        cout << s1 << endl;
+                    
+                        cout << s1.find("Ali") << endl;
+                    
+                        if (s1.find("ali") == s1.npos) {
+                            cout << "not found"<<endl;
+                        }
+                    
+                    
+                        s1.clear();
+                        return 0;
+                    }
+
+## 58 - cctype function
+
+
+                    #include <iostream>
+                    #include <vector>
+                    #include <cctype>
+                    using namespace std;
+                    
+                    int main() {
+                        
+                        char x, w;
+                    
+                        x = toupper('a');
+                        w = tolower('A');
+                    
+                        cout << "is upper : " << x << endl;
+                        cout << "is lower : " << w << endl;
+                    
+                        cout << islower('a') << endl;
+                        cout << isupper('A') << endl;
+                    
+                        cout << isdigit('9') << endl;
+                        cout << ispunct(';') << endl;
+                        
+                    
+                        return 0;
+                    }
+                    
+##  59 - write mod wirte data to file
+
+                    #include<iostream>
+                    #include<fstream>
+                    using namespace std;
+                    int main() {
+                    	fstream MyFile;
+                    	MyFile.open("MyFile.txt", ios::out);//Write Mode
+                    	if (MyFile.is_open())  
+                    	{
+                    		MyFile << "Mustafa\n";
+                    		MyFile << "Hi, this is the second line\n";
+                    		MyFile << "Hi, this is the third line\n";
+                    		MyFile << "Hi, this is the third line\n";
+                    		MyFile.close();
+                    	}
+                    	return 0;
+                    }
+                                        
+
+
+
+
+
+
+
+
 
