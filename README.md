@@ -3019,12 +3019,105 @@ int main() {
                     	}
                     	return 0;
                     }
-                                        
+  ## 60 - Read data from the file 
+
+  
+                    #include <iostream>
+                    #include <fstream> 
+                    #include <string>
+                    using namespace std;
+                    
+                    void PrintFileContent(string FileName) {
+                    	fstream Myfile;
+                    
+                    	Myfile.open(FileName, ios::in); // read mode 
+                    
+                    	if (Myfile.is_open()) {
+                    
+                    		string Line;
+                    
+                    		while (getline(Myfile, Line)) {
+                    			cout << Line << endl;
+                    		}
+                    		Myfile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    	PrintFileContent("file.txt");
+                    	return 0;
+                    }
+
+## 61 - load data from file to vector 
 
 
+                    #include <iostream>
+                    #include <fstream> 
+                    #include <string>
+                    #include <vector>
+                    using namespace std;
+                    
+                    void LoadDataFileToVector(string FileName, vector <string> & vFileContent) {
+                    
+                    	fstream Myfile;
+                    	Myfile.open(FileName, ios::in); // read mode
+                    	
+                    	if (Myfile.is_open()) {
+                    		string Line;
+                    
+                    		while (getline(Myfile, Line)) {
+                    			vFileContent.push_back(Line);
+                    		}
+                    		Myfile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    	vector <string> vFileContenet;
+                    
+                    	LoadDataFileToVector("Myfile.txt", vFileContenet);
+                    
+                    	for (string Line: vFileContenet) {
+                    		cout << Line << endl;
+                    	}
+                    	
+                    	return 0;
+                    }
 
+## 62 - save data from vector in file 
 
-
+                    #include <iostream>
+                    #include <fstream> 
+                    #include <string>
+                    #include <vector>
+                    using namespace std;
+                    
+                    void SaveVectorToFile(string FileName, vector <string> & vFileContent) {
+                    
+                    	fstream Myfile;
+                    	Myfile.open(FileName, ios::out); // read mode
+                    	
+                    	if (Myfile.is_open()) {
+                    		
+                    
+                    		for (string &Line : vFileContent) {
+                    			if (Line != "") {
+                    				Myfile << Line << endl;
+                    			}
+                    		}
+                    		Myfile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    	vector <string> vFileContenet{ "ali" , "Shadi","Maher" , "Fadi" , "Lama" };
+                    
+                    	SaveVectorToFile("Myfile.txt", vFileContenet);
+                    	
+                    	return 0;
+                    }
+                    
+## 63 - 
 
 
 
