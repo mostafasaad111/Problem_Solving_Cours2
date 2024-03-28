@@ -3117,8 +3117,27 @@ int main() {
                     	return 0;
                     }
                     
-## 63 - 
+## 63 - append values in file:-
 
+                    #include <iostream>
+                    #include <fstream> 
+                    using namespace std;
+                    int main() {
+                    	fstream Myfile;
+                    
+                    	Myfile.open("file.txt", ios::app | ios::out);
+                    
+                    	if (Myfile.is_open()) {
+                    		Myfile << "Hello World\n";
+                    		Myfile << "Hello World\n";
+                    		Myfile << "Hello World\n";
+                    
+                    		Myfile.close();
+                    	}
+                    	return 0;
+                    }
+
+## 64 - 
 
 
 
