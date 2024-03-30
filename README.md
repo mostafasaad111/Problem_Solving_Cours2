@@ -3137,7 +3137,253 @@ int main() {
                     	return 0;
                     }
 
-## 64 - 
+## 64 - print values from file:-
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    #include <fstream> 
+                    using namespace std;
+                    
+                    void print(string FileName) {
+                    	fstream MyFile;
+                    
+                    	MyFile.open(FileName, ios::in);
+                    	string line;
+                    
+                    	if (MyFile.is_open()) {
+                    
+                    		while (getline(MyFile, line)) {
+                    
+                    			cout << line << endl;
+                    		}
+                    		MyFile.close();
+                    	}
+                    }
+                    
+                    int main() {
+                    	print("file.txt");
+                    	return 0;
+                    }
+
+## 65 - load data from the file and print it in vector:-
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    #include <fstream> 
+                    using namespace std;
+                    
+                    void loadDataFromFileToVector(string FileName, vector <string>& VfileData) {
+                    
+                    	fstream MyFile;
+                    	MyFile.open(FileName, ios::in);
+                    
+                    	if (MyFile.is_open()) {
+                    		string line;
+                    
+                    		while (getline(MyFile, line)) {
+                    			VfileData.push_back(line);
+                    		}
+                    		MyFile.close();
+                    	}
+                    }
+                    
+                    int main() {
+                    	vector <string> VfileData;
+                    
+                    	loadDataFromFileToVector("file.txt", VfileData);
+                    
+                    	for (string sLine : VfileData) {
+                    		cout << sLine << endl;
+                    	}
+                    	return 0;
+                    }
+## 66 - save vector data to file:-
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    #include <fstream> 
+                    using namespace std;
+                    
+                    void SaveVectorDataToFile(string FileName ,vector <string>& VfileData) {
+                    
+                    	fstream MyFile;
+                    	MyFile.open("file.txt", ios::out);
+                    
+                    	if (MyFile.is_open()) {
+                    		string line;
+                    
+                    		for (string& line : VfileData) {
+                    			MyFile << line << endl;
+                    		}
+                    		MyFile.close();
+                    	}
+                    }
+                    
+                    int main() {
+                    
+                    	vector <string> VfileData{ "Mustafa", "Saad", "Mohammed"};
+                    	SaveVectorDataToFile("file.txt", VfileData);
+                    
+                    	return 0;
+                    }
+
+## 67 - program to delete the value from the file and save the file:-
 
 
+                              #include <iostream>
+                              #include <string>
+                              #include <vector>
+                              #include <fstream> 
+                              using namespace std;
+                              
+                              void loadDataFromFileToVector(string FileName, vector <string>& VfileData) {
+                              
+                              	fstream MyFile;
+                              	MyFile.open("file.txt", ios::in);
+                              
+                              	if (MyFile.is_open()) {
+                              		string line;
+                              
+                              		while (getline(MyFile, line)) {
+                              			VfileData.push_back(line);
+                              		}
+                              		MyFile.close();
+                              	}
+                              }
+                              void SaveVectorDataToFile(string FileName, vector <string>& VfileData) {
+                              
+                              	fstream MyFile;
+                              	MyFile.open("file.txt", ios::out);
+                              
+                              	if (MyFile.is_open()) {
+                              
+                              		for (string& line : VfileData) {
+                              			MyFile << line << endl;
+                              		}
+                              		MyFile.close();
+                              	}
+                              }
+                              void DeleteRecordFromFile(string FileNmae, string Record) {
+                              
+                              
+                              	vector <string> VfileData;
+                              
+                              	loadDataFromFileToVector(FileNmae, VfileData);
+                              
+                              	for (string& line : VfileData) {
+                              		if (line == Record) {
+                              			line = " ";
+                              		}
+                              	}
+                              	SaveVectorDataToFile(FileNmae, VfileData);
+                              }
+                              
+                              void PrintContent(string FileName) {
+                              
+                              	fstream MyFile;
+                              	MyFile.open(FileName, ios::in);
+                              
+                              	if (MyFile.is_open()) {
+                              		string line;
+                              		while (getline(MyFile , line)) {
+                              			cout << line << endl;
+                              		}
+                              		MyFile.close();
+                              	}
+                              
+                              }
+                              
+                              int main() {
+                              
+                              
+                              	cout << "file content before delete. \n";
+                              	PrintContent("file.txt");
+                              
+                              	DeleteRecordFromFile("file.txt", "Mustafa");
+                              
+                              	cout << "\n\n file content After Delete.\n";
+                              	PrintContent("file.txt");
+                              
+                              	return 0;
+                              }
+## 68 - Update data in the file:-
 
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    #include <fstream> 
+                    using namespace std;
+                    
+                    void loadDataFromFileToVector(string FileName, vector <string>& VfileData) {
+                    
+                    	fstream MyFile;
+                    	MyFile.open("file.txt", ios::in);
+                    
+                    	if (MyFile.is_open()) {
+                    		string line;
+                    
+                    		while (getline(MyFile, line)) {
+                    			VfileData.push_back(line);
+                    		}
+                    		MyFile.close();
+                    	}
+                    }
+                    void SaveVectorDataToFile(string FileName, vector <string>& VfileData) {
+                    
+                    	fstream MyFile;
+                    	MyFile.open("file.txt", ios::out);
+                    
+                    	if (MyFile.is_open()) {
+                    
+                    		for (string& line : VfileData) {
+                    			MyFile << line << endl;
+                    		}
+                    		MyFile.close();
+                    	}
+                    }
+                    void UpdateRecordInFile(string FileNmae, string Record , string updateTo) {
+                    
+                    
+                    	vector <string> VfileData;
+                    
+                    	loadDataFromFileToVector(FileNmae, VfileData);
+                    
+                    	for (string& line : VfileData) {
+                    		if (line == Record) {
+                    			line = updateTo;
+                    		}
+                    	}
+                    	SaveVectorDataToFile(FileNmae, VfileData);
+                    }
+                    
+                    void PrintContent(string FileName) {
+                    
+                    	fstream MyFile;
+                    	MyFile.open(FileName, ios::in);
+                    
+                    	if (MyFile.is_open()) {
+                    		string line;
+                    		while (getline(MyFile , line)) {
+                    			cout << line << endl;
+                    		}
+                    		MyFile.close();
+                    	}
+                    
+                    }
+                    
+                    int main() {
+                    
+                    
+                    	cout << "file content before delete. \n";
+                    	PrintContent("file.txt");
+                    
+                    	UpdateRecordInFile("file.txt", "Mustafa" , "Ali");
+                    
+                    	cout << "\n\n file content After Delete.\n";
+                    	PrintContent("file.txt");
+                    
+                    	return 0;
+                    }
