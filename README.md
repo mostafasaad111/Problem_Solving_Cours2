@@ -3776,34 +3776,1220 @@ int main() {
             
                 return 0;
             }
-## 8 - 
+## 8 - Write a program to fill two 3*3 matrices with random numbers and them, then multiply them into a 3rd matrix and print it.
+
+
+          #include <iostream>
+          #include <string>
+          #include <ctime>  // for time function
+          #include <cstdlib> // for rand and srand
+          
+          using namespace std;
+          
+          int RandomNumber(int from, int to) {
+          	int RandNumber = rand() % (to - from + 1) + from;
+          	return RandNumber;
+          }
+          void FillMatrix1(int arr[3][3], short Rows, short Cols) {
+          
+          	for (short i = 0; i < Rows; i++) {
+          		for (short j = 0; j < Cols; j++) {
+          			arr[i][j] = RandomNumber(1, 10);
+          		}
+          		cout << endl;
+          	}
+          }
+          void PrintlMatrix1(int arr[3][3], short Rows, short Cols)
+          {
+          	cout << "Matrix 1 values \n " << endl;
+          	for (short i = 0; i < Rows; i++) {
+          		for (short j = 0; j < Cols; j++) {
+          			cout << arr[i][j] << " ";
+          		}
+          		cout << "\n";
+          	}
+          }
+          void FillMatrix2(int arr2[3][3], short Rows, short Cols) {
+          
+          	for (short i = 0; i < Rows; i++) {
+          		for (short j = 0; j < Cols; j++) {
+          			arr2[i][j] = RandomNumber(1, 10);
+          		}
+          		cout << endl;
+          	}
+          }
+          void PrintlMatrix2(int arr2[3][3], short Rows, short Cols)
+          {
+          	cout << "Matrix 2 values \n " << endl;
+          	for (short i = 0; i < Rows; i++) {
+          		for (short j = 0; j < Cols; j++) {
+          			cout << arr2[i][j] << " ";
+          		}
+          		cout << "\n";
+          	}
+          }
+          void MultipleMatrix(int arr[3][3], int arr2[3][3], int arr3[3][3], short Rows, short Cols) {
+          
+          	for (short i = 0; i < Rows; i++) {
+          		for (short j = 0; j < Cols; j++) {
+          			arr3[i][j] = arr[i][j] * arr2[i][j];
+          		}
+          	}
+          }
+          void PrintMatrix(int arr[3][3], int arr2[3][3], int arr3[3][3], short Rows, short Cols) {
+          
+          	cout << "Multipe_Matrix values :  " << endl;
+          	for (short i = 0; i < Rows; i++) {
+          		for (short j = 0; j < Cols; j++) {
+          			cout << arr3[i][j] << " ";
+          		}
+          		cout << endl;
+          	}
+          }
+          int main() {
+          
+          	srand((unsigned)time(NULL));
+          
+          	int arr[3][3], arr2[3][3], arr3[3][3];
+          
+          	FillMatrix1(arr, 3, 3);
+          	FillMatrix2(arr2, 3, 3);
+          
+          	MultipleMatrix(arr, arr2, arr3, 3, 3);
+          
+          	PrintlMatrix1(arr, 3, 3);
+          	PrintlMatrix2(arr2, 3, 3);
+          
+          	PrintMatrix(arr, arr2, arr3, 3, 3);
+          
+          	return 0;
+          }
+          
+## 9 - Write a program to fill a 3*3 matrix with random numbers, print it, then print the middle row and middle col.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <ctime>  // for time function
+                    #include <cstdlib> // for rand and srand
+                    
+                    using namespace std;
+                    
+                    int RandomNumber(int from, int to) {
+                    	int RandNumber = rand() % (to - from + 1) + from;
+                    	return RandNumber;
+                    }
+                    void FillMatrix1(int arr[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			arr[i][j] = RandomNumber(1, 10);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix1(int arr[3][3], short Rows, short Cols) {
+                    	FillMatrix1(arr, Rows, Cols);
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			cout << arr[i][j] << " ";
+                    		}
+                    		cout << endl;
+                    	}
+                    	cout << endl;
+                    }
+                    
+                    void PrintFillMiddleRow(int arr[3][3], short Rows, short Cols) {
+                    
+                    	short MiddleRow = Rows / 2;
+                    
+                    	cout << " Middle Cols: ";
+                    	for (short i = 0; i < Rows; i++) {
+                    		printf("  %0*d  ", 2, arr[MiddleRow][i]);
+                    	}
+                    		cout << "\n";
+                    }
+                    
+                    void PrintFillMiddleCols(int arr[3][3], short Rows, short Cols) {
+                    	short MiddleCol = Cols / 2;
+                    
+                    	cout << " Middle Cols: ";
+                    	for (short j = 0; j < Cols; j++) {
+                    		printf("  %0*d  ", 2, arr[j][MiddleCol]);
+                    	}
+                    		cout << "\n";
+                    }
+                    int main() {
+                    
+                    	srand((unsigned)time(NULL));
+                    
+                    	int arr[3][3];
+                    
+                    	PrintMatrix1(arr, 3, 3);
+                    
+                    	PrintFillMiddleRow(arr, 3, 3);
+                    
+                    	PrintFillMiddleCols(arr, 3, 3);
+                    
+                    	return 0;
+                    }
 
 
 
+## 10 -  Write a program to fill two 3*3 matrices with random numbers and them, then write a function to sum all numbers in this matrix and print it.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <ctime>  // for time function
+                    #include <cstdlib> // for rand and srand
+                    
+                    using namespace std;
+                    
+                    int RandomNumber(int from, int to) {
+                    	int RandNumber = rand() % (to - from + 1) + from;
+                    	return RandNumber;
+                    }
+                    void FillMatrix1(int arr[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			arr[i][j] = RandomNumber(1, 10);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix1(int arr[3][3], short Rows, short Cols) {
+                    	FillMatrix1(arr, Rows, Cols);
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			cout << arr[i][j] << " ";
+                    		}
+                    		cout << endl;
+                    	}
+                    	cout << endl;
+                    }
+                    int  CaclNumbersOfMatrix(int arr[3][3], short Rows, short Cols){
+                    
+                    	int sum = 0;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			sum +=  arr[i][j];
+                    		}
+                    	}
+                    	return sum;
+                    }
+                    int main() {
+                    
+                    	srand((unsigned)time(NULL));
+                    
+                    	int arr[3][3]  ;
+                    
+                    	PrintMatrix1(arr, 3, 3);
+                    
+                    	CaclNumbersOfMatrix(arr, 3, 3);
+                    
+                    	cout << "sum fo matrix1 is :  " << CaclNumbersOfMatrix(arr,3,3) << endl;
+                    
+                    
+                    	return 0;
+                    }
 
 
+                    
+## 11 - Write a program to compare two matrices and check if they are equal or not.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <ctime>  // for time function
+                    #include <cstdlib> // for rand and srand
+                    
+                    using namespace std;
+                    
+                    int RandomNumber(int from, int to) {
+                    	int RandNumber = rand() % (to - from + 1) + from;
+                    	return RandNumber;
+                    }
+                    void FillMatrix1(int arr[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			arr[i][j] = RandomNumber(1, 10);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix1(int arr[3][3], short Rows, short Cols) {
+                    	FillMatrix1(arr, Rows, Cols);
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			cout << arr[i][j] << " ";
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void FillMatrix2(int arr2[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			arr2[i][j] = RandomNumber(1, 10);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix2(int arr2[3][3], short Rows, short Cols) {
+                    	FillMatrix2(arr2, Rows, Cols);
+                    
+                    	cout << "Matrix 2 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			cout << arr2[i][j] << " ";
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    int  CaclNumbersOfMatrix1(int arr[3][3], short Rows, short Cols){
+                    
+                    	int sum = 0;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			sum +=  arr[i][j];
+                    		}
+                    	}
+                    	return sum;
+                    }
+                    int  CaclNumbersOfMatrix2(int arr2[3][3], short Rows, short Cols) {
+                    
+                    	int sum2 = 0;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			sum2 += arr2[i][j];
+                    		}
+                    	}
+                    	return sum2;
+                    }
+                    void CompareMatrixs(int arr[3][3], int arr2[3][3], short Rows, short Cols) {
+                    	
+                    	int sum = CaclNumbersOfMatrix1(arr, Rows, Cols);
+                    	int sum2 = CaclNumbersOfMatrix2(arr2, Rows, Cols);
+                    
+                    	if (sum == sum2) 
+                    		cout << sum <<" = " << sum2<< "\n matrices are equal" << endl;
+                    	else 
+                    		cout << sum << " != " << sum2 << "\n matrices not are equal" << endl;
+                    
+                    }
+                    int main() {
+                    
+                    	srand((unsigned)time(NULL));
+                    
+                    	int arr[3][3] , arr2[3][3];
+                    
+                    	PrintMatrix1(arr, 3, 3);
+                    
+                    	PrintMatrix2(arr2, 3, 3);
+                    
+                    	CompareMatrixs(arr, arr2, 3, 3);
+                    
+                    	return 0;
+                    }
+
+## 12 - anoter soluthion .
+
+                    #include <iostream>
+                    #include <string>
+                    #include <ctime>  // for time function
+                    #include <cstdlib> // for rand and srand
+                    
+                    using namespace std;
+                    
+                    int RandomNumber(int from, int to) {
+                    	int RandNumber = rand() % (to - from + 1) + from;
+                    	return RandNumber;
+                    }
+                    void FillMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			Matrix1[i][j] = RandomNumber(1, 10);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    	FillMatrix1(Matrix1, Rows, Cols);
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			cout << Matrix1[i][j] << " ";
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void FillMatrix2(int Matrix2[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			Matrix2[i][j] = RandomNumber(1, 10);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix2(int Matrix2[3][3], short Rows, short Cols) {
+                    	FillMatrix2(Matrix2, Rows, Cols);
+                    
+                    	cout << "Matrix 2 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			cout << Matrix2[i][j] << " ";
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    
+                    int  SumOfMatrix(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	int sum = 0;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			sum += Matrix1[i][j];
+                    		}
+                    	}
+                    	return sum;
+                    }
+                    bool AreEqual(int Matrix1[3][3], int Matrix2[3][3] , short Rows, short Cols) {
+                    	return (SumOfMatrix(Matrix1,Rows, Cols) == SumOfMatrix(Matrix2, Rows, Cols));
+                    }
+                    int main() {
+                    
+                    	srand((unsigned)time(NULL));
+                    
+                    	int Matrix1[3][3] , Matrix2[3][3];
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	PrintMatrix2(Matrix2, 3, 3);
+                    
+                    	if(AreEqual(Matrix1, Matrix2, 3, 3))
+                    		cout << "The sum of the elements of the two matrices is equal" << endl;
+                    	else
+                    		cout << "The sum of the elements of the two matrices is not equal" << endl;
+                    
+                    	return 0;
+                    }
+                    
+## 13 - Write a program to compare two matrices and check if they are typical or not.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <ctime>  // for time function
+                    #include <cstdlib> // for rand and srand
+                    
+                    using namespace std;
+                    
+                    int RandomNumber(int from, int to) {
+                    	int RandNumber = rand() % (to - from + 1) + from;
+                    	return RandNumber;
+                    }
+                    void FillMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			Matrix1[i][j] = RandomNumber(1, 2);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    	FillMatrix1(Matrix1, Rows, Cols);
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void FillMatrix2(int Matrix2[3][3], short Rows, short Cols) {
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			Matrix2[i][j] = RandomNumber(1, 2);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix2(int Matrix2[3][3], short Rows, short Cols) {
+                    	FillMatrix2(Matrix2, Rows, Cols);
+                    
+                    	cout << "Matrix 2 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix2[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    bool CheckTypical(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols) {
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			if (Matrix1[i][j] != Matrix2[i][j]) {
+                    				return false;
+                    			}
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    int main() {
+                    
+                    	srand((unsigned)time(NULL));
+                    
+                    	int Matrix1[3][3], Matrix2[3][3];
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	PrintMatrix2(Matrix2, 3, 3);
+                    
+                    	if (CheckTypical(Matrix1, Matrix2, 3, 3))
+                    	    cout << "Matrix 1 and Matrix 2 are typical" << endl;
+                    	else
+                    		cout << "Matrix 1 and Matrix 2 are not typical" << endl;
+                    	return 0;
+                    }
+
+## 14 - Write a program to check if the matrix is identity or not.
+
+                    #include <iostream>
+                    #include <string>
+                    
+                    
+                    using namespace std;
+                    
+                    
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    bool CheckIdentityMatrix(int Matrix1[3][3], short Rows, short Cols) {
+                    	
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			if(i == j && Matrix1[i][j] != 1 )
+                    				return false;
+                    			else if (i != j && Matrix1[i][j] != 0)
+                    				return false;
+                    		}
+                    		cout << endl;
+                    	}
+                    	return true;
+                    }	
+                    int main() {
+                    
+                    	int Matrix1[3][3] = { {1,0,0} ,{0,1,0},{0,0,1} };
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	if(CheckIdentityMatrix(Matrix1, 3, 3))
+                    		cout << "Matrix is Identity Matrix" << endl;
+                    	else
+                    		cout << "Matrix is not Identity Matrix" << endl;
+                    }
+
+ ## 15 -  Write a program to check if the matrix is scalar or not.
+
+ 
+                    #include <iostream>
+                    #include <string>
+                    
+                    
+                    using namespace std;
+                    
+                    
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    bool CheckScalarMatrix(int Matrix1[3][3], short Rows, short Cols) {
+                    	
+                    	int firstDeigit = Matrix1[0][0] ;
+                    	
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			if(i == j && Matrix1[i][j] != firstDeigit)
+                    				return false;
+                    			else if (i != j && Matrix1[i][j] != 0)
+                    				return false;
+                    		}
+                    		cout << endl;
+                    	}
+                    	return true;
+                    }
+                    int main() {
+                    
+                    	int Matrix1[3][3] = { {4,0,0} ,{0,4,0},{0,0,4} };
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	if(CheckScalarMatrix(Matrix1, 3, 3))
+                    		cout << "Matrix is Scalar Matrix" << endl;
+                    	else
+                    		cout << "Matrix is not Scalar Matrix" << endl;
+                    }
+
+## 16 - Write a program to count given number in matrix:-
 
 
+                    #include <iostream>
+                    #include <string>
+                    
+                    
+                    using namespace std;
+                    
+                    int ReadNumber(string message) {
+                    
+                    	int Number;
+                    	cout<< message;
+                    	cin >> Number;
+                    	return Number;
+                    }
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void CheckNumber(int Matrix1[3][3], short Rows, short Cols) {
+                    	int Number = ReadNumber("Enter number: ");
+                    	int counter = 0;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			if (Number == Matrix1[i][j])
+                    				counter++;
+                    		}
+                    	}
+                    	cout << "Number of iteration numbers: " << counter << endl;
+                    }
+                    int main() {
+                    
+                    	int Matrix1[3][3] = { {4,0,0} ,{0,4,0},{0,0,4} };
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	CheckNumber(Matrix1, 3, 3);
+                    
+                    	return 0;
+                    }
 
 
+## 17 - Write a program to check if the matrix is Sparce or not.
 
 
+                    #include <iostream>
+                    #include <string>
+                    
+                    
+                    using namespace std;
+                    
+                    
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    short CountNumberInMatrix(int Matrix1[3][3], int Number , short Rows, short Cols) {
+                    
+                    	int counterZero = 0;
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    
+                    			if (Matrix1[i][j] == Number )
+                    				counterZero++;
+                    		}
+                    	}
+                    	return counterZero;
+                    }
+                    bool IsSparseMatrix(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	short MatrixSize = Rows * Cols;
+                        
+                    	return CountNumberInMatrix(Matrix1, 0, 3, 3) > ceil((float)MatrixSize / 2);
+                    }
+                    int main() {
+                    
+                    	int Matrix1[3][3] = { {0,5,0} ,{30,0,0},{0,7,0} };
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	if (IsSparseMatrix(Matrix1, 3, 3))
+                    		cout << "Yes: It's Sparce" << endl;
+                    	else
+                    		cout << "No: It's Not Sparce" << endl;
+                    	return 0;
+                    }
 
 
+## 18 - Write a program to check if a given number exists im matrix or not.
 
 
+                    #include <iostream>
+                    #include <string>
+                    
+                    
+                    using namespace std;
+                    
+                    int ReadNumber(string message) {
+                    
+                    	int number;
+                    	cout << message;
+                    	cin >> number;
+                    	return number;
+                    }
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    bool CheckNumber(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	int number = ReadNumber("Enter Number to check: ");
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    
+                    			if (Matrix1[i][j] == number)
+                    				return true;
+                    			else
+                    				return false;
+                    		}
+                    	}
+                    }
+                    
+                    int main() {
+                    
+                    	int Matrix1[3][3] = { {0,5,0} ,{3,0,0},{0,7,0} };
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	if (CheckNumber(Matrix1, 3, 3))
+                    		cout << "Yes: It's there" << endl;
+                    	else
+                    		cout << "No: It's Not there" << endl;
+                    	return 0;
+                    }
+## 19 - Write a program to print the intersected Numners in two given matrices.
 
 
+                    #include <iostream>
+                    #include <string>
+                    using namespace std;
+                    
+                    
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void PrintMatrix2(int Matrix2[3][3], short Rows, short Cols) {
+                    
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix2[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void  CheckIntersectedNumber(int Matrix1[3][3], int Matrix2[3][3], short Rows, short Cols) {
+                    
+                    	cout << "the intersected numbers is:";
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    
+                    			if (Matrix1[i][j] == Matrix2[i][j])
+                    				cout << Matrix1[i][j] << " ";
+                    		}
+                    	}
+                    }
+                    
+                    int main() {
+                    
+                    	int Matrix1[3][3] = { {0,5,0} ,{3,23,1},{0,7,4} };
+                    	int Matrix2[3][3] = { {4,5,0} ,{3,23,2},{12,7,0} } , Matrix3[3][3] ;
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    	PrintMatrix2(Matrix2, 3, 3);
+                    
+                    	CheckIntersectedNumber(Matrix1, Matrix2, 3, 3);
+                    
+                    
+                    }
+
+## 20 - Write a program to print the minimum and maximum numbers in matrix.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    
+                    void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    
+                    	cout << "Matrix 1 " << endl;
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			printf(" %0*d ", 2, Matrix1[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    void MinNumberInArray(int Matrix1[3][3], short Rows, short Cols) {
+                    	
+                    	int min = Matrix1[0][0];
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			if(Matrix1[i][j] < min)
+                    				min = Matrix1[i][j];	
+                    		}
+                    	}
+                    		cout << "the min Number is:"<< min<< endl;
+                    }
+                    void MaxNumberInArray(int Matrix1[3][3], short Rows, short Cols) {
+                    
+                    	int Max = Matrix1[0][0];
+                    
+                    	for (short i = 0; i < Rows; i++) {
+                    		for (short j = 0; j < Cols; j++) {
+                    			if (Matrix1[i][j] > Max)
+                    				Max = Matrix1[i][j];
+                    		}
+                    	}
+                    		cout << "the min Number is:" << Max << endl;
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	int Matrix1[3][3] = { {235,5,0} ,{3,23,1},{34,7,4} };
+                    
+                    	PrintMatrix1(Matrix1, 3, 3);
+                    
+                    	MinNumberInArray(Matrix1, 3, 3);
+                    
+                    	MaxNumberInArray(Matrix1, 3, 3);
+                    
+                    
+                    
+                    }
 
 
+## 21 - Write a program to check palindrom Matrix.
+
+          #include <iostream>
+          #include <string>
+          #include <iomanip>
+          using namespace std;
+          
+          
+          void PrintMatrix1(int Matrix1[3][3], short Rows, short Cols) {
+          
+          
+          	cout << "Matrix 1 " << endl;
+          	for (short i = 0; i < Rows; i++) {
+          		for (short j = 0; j < Cols; j++) {
+          			printf(" %0*d ", 2, Matrix1[i][j]);
+          		}
+          		cout << endl;
+          	}
+          }
+          bool IsPalindromMatrix(int Matrix1[3][3], short Rows, short Cols) {
+          	for (int i = 0; i < Rows; i++) {
+          		for (int j = 0; j < Cols/2; j++) {
+          			if (Matrix1[i][j] == Matrix1[i][Cols - 1 - j]) {
+          				return true;
+          			}
+          		}
+          	}
+          	return false;
+          }
+          
+          int main() {
+          
+          	int Matrix1[3][3] = { {1,2,1} ,{5,5,5},{7,3,7} };
+          
+          	PrintMatrix1(Matrix1, 3, 3);
+          
+          	if(IsPalindromMatrix(Matrix1, 3, 3))
+          		cout << "Matrix is palindrom" << endl;
+          	else
+          		cout << "Matrix is not palindrom" << endl;
+          
+          }
 
 
+## 22 - Wriet a program to print Fibonacci Series of 10.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    void FibonacciSeries() {
+                    	
+                    	int First = 1;
+                    	int Second = 1;
+                    	int Next = 0;
+                    	for (int i = 2; i < 10; i++) {
+                    		
+                    		Next  = First + Second;
+                    		cout << Next << " ";
+                    		First = Second;
+                    		Second = Next;
+                    	}
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	cout << "Fibonacci Series:" << endl;
+                    	FibonacciSeries();
+                    
+                    	return 0;
+                    
+                    }
+
+## 23 -  Wriet a program to print Fibonacci Series with Recursion of 10.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    void FibonacciSeries(short Number, int First, int Second) {
+                    
+                    	int Next = 0;
+                    
+                    	if (Number > 0) {
+                    
+                    		Next = First + Second;
+                    		cout << Next << " ";
+                    		First = Second;
+                    		Second = Next;
+                    
+                    		FibonacciSeries(Number - 1, First, Second);
+                    	}
+                    
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	cout << "Fibonacci Series:" << endl;
+                    	FibonacciSeries(10, 0, 1);
+                    
+                    	return 0;
+                    
+                    }
+
+## 24 - Write a program to read a string then print the first letter of each word in that string.
 
 
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string name;
+                    	cout << "Please enter your name: ";
+                    	getline(cin, name);
+                    
+                    	return name;
+                    }
+                    void PrintFistLetter() {
+                    
+                    	string name = ReadString();
+                    
+                    	cout << "first letter is :" << endl;
+                    
+                    	for (short i = 0; i < name.length(); i++) {
+                    
+                    		if (i == 0)
+                    			cout << name[i] << endl;
+                    
+                    		else if (name[i] == ' ')
+                    			cout << name[i + 1] << endl;
+                    	}
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	PrintFistLetter();
+                    
+                    	system("pause > 0");
+                    
+                    }
 
-            
+
+## 25 - another solution 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string S;
+                    	cout << "Please enter your S: ";
+                    	getline(cin, S);
+                    
+                    	return S;
+                    }
+                    void PrintFistLetter() {
+                    
+                    	string S = ReadString();
+                    	cout << "first letter is :" << endl;
+                    
+                    	bool isFirstLetter = true;
+                    
+                    	for (short i = 0; i < S.length(); i++) {
+                    		if (S[i] != ' ' && isFirstLetter) {
+                    
+                    			cout << S[i] << endl;
+                    		}
+                    		isFirstLetter = (S[i] == ' ' ? true : false);
+                    	}
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	PrintFistLetter();
+                    
+                    	system("pause > 0");
+                    
+                    }
+
+## 26 - Write a program to read a string then Uppercase the first letter of each word in that string.
 
 
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string S;
+                    	cout << "Please enter your S: ";
+                    	getline(cin, S);
+                    
+                    	return S;
+                    }
+                    string UpperFirstLetterOfEachWord(string s) {
+                    
+                    
+                    	bool IsFirstLetter = true;
+                    	for (short i = 0; i < s.length(); i++) {
+                    
+                    		if (s[i] != ' ' && IsFirstLetter) {
+                    			  s[i] = toupper(s[i]);
+                    		}
+                    		IsFirstLetter = (s[i] == ' ' ?true: false);
+                    	}
+                    	return s;
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	string s = ReadString();
+                    
+                    	cout << "\n string after conversion \n";
+                    
+                    	s = UpperFirstLetterOfEachWord(s);
+                    
+                    	cout << s << endl;
+                    	
+                    	system("pause > 0");
+                    
+                    }
+
+## 27 - Write a program to read a string then lowercase the first letter of each word in that string.
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string S;
+                    	cout << "Please enter your S: ";
+                    	getline(cin, S);
+                    
+                    	return S;
+                    }
+                    string LowerFirstLetterOfEachWord(string s) {
+                    
+                    
+                    	bool IsFirstLetter = true;
+                    	for (short i = 0; i < s.length(); i++) {
+                    
+                    		if (s[i] != ' ' && IsFirstLetter) {
+                    			  s[i] = tolower(s[i]);
+                    		}
+                    		IsFirstLetter = (s[i] == ' ' ?true: false);
+                    	}
+                    	return s;
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	string s = ReadString();
+                    
+                    	cout << "\n string after conversion \n";
+                    
+                    	s = LowerFirstLetterOfEachWord(s);
+                    
+                    	cout << s << endl;
+                    	
+                    	system("pause > 0");
+                    
+                    }
+
+## 28 -  Write a program to read a string then lowercase the all letter of each word in that string.
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string S;
+                    	cout << "Please enter your S: ";
+                    	getline(cin, S);
+                    
+                    	return S;
+                    }
+                    string LowerLetterOfEachWord(string s) {
+                    
+                    
+                    	for (short i = 0; i < s.length(); i++) {
+                    		
+                    		s[i] = tolower(s[i]);
+                    	}
+                    	return s;
+                    }
+                    
+                    
+                    int main() {
+                    
+                    	string s = ReadString();
+                    
+                    	cout << "\n string after conversion \n";
+                    
+                    	s = LowerLetterOfEachWord(s);
+                    
+                    	cout << s << endl;
+                    	
+                    	system("pause > 0");
+                    
+                    }
+
+## 29 - Write a program to read a character then invert it's case and print it.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    char ReadChar() {
+                    	
+                    	char c;
+                    	cout << "Enter a character: ";
+                    	cin >> c;
+                    	return c;
+                    }
+                    void ConvertingChar() {
+                    	char c = ReadChar();
+                    
+                    	if (c == tolower(c)) {
+                    		cout << char(toupper(c)) << endl;
+                    	}
+                    	else {
+                    		cout << char(tolower(c)) << endl;
+                    	}
+                    	
+                    }
+                    int main() {
+                    
+                    	ConvertingChar();
+                    
+                    	return 0;
+                    }
+
+## 30 - another solution.
 
 
 
