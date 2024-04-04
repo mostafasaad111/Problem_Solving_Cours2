@@ -4992,6 +4992,415 @@ int main() {
 ## 30 - another solution.
 
 
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    char ReadChar() {
+                    	
+                    	char c;
+                    	cout << "Enter a character: ";
+                    	cin >> c;
+                    	return c;
+                    }
+                    char InvertingChar(char char1) {
+                    
+                    	return isupper(char1) ? tolower(char1) : toupper(char1);
+                    }
+                    
+                    int main() {
+                    
+                    	char char1 = ReadChar();
+                    	char1 = InvertingChar(char1);
+                    
+                    	cout << char1<< endl;
+                    
+                    	return 0;
+                    }
+
+## 31 -  Write a program to read a string then invert its letter's case and print it.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    	
+                    	string s;
+                    	cout << "Enter a string : ";
+                    	getline(cin, s);
+                    	return s;
+                    }
+                    string ConvertingString () {
+                    	string s = ReadString();
+                    
+                    	for (int i = 0; i < s.length(); i++) {
+                    
+                    		if (islower(s[i])) // إذا كان الحرف صغيرًا
+                    			s[i] = toupper(s[i]); // تحويله إلى حرف كبير
+                    
+                    		else if (isupper(s[i]))  // إذا كان الحرف كبيرًا
+                    			s[i] = tolower(s[i]); // تحويله إلى حرف صغير
+                    	}
+                    	return s;
+                    }
+                    
+                    int main() {
+                    
+                    	string s = ConvertingString();
+                    	cout << "The converted string is : " << s << endl;
+                    
+                        return 0;
+                    }
+
+## 32 - another solution 
+
+                              #include <iostream>
+                              #include <string>
+                              #include <iomanip>
+                              #include <cctype>
+                              
+                              using namespace std;
+                              
+                              string ReadString() {
+                              	
+                              	string s;
+                              	cout << "Enter a string : ";
+                              	getline(cin, s);
+                              	return s;
+                              }
+                              char InverAllLetter(char char1) {
+                              
+                              	return isupper(char1) ? tolower(char1) : toupper(char1);
+                              }
+                              string ConvertingString () {
+                              	string s = ReadString();
+                              
+                              	for (int i = 0; i < s.length(); i++) {
+                              
+                              	   s[i] = InverAllLetter(s[i]);
+                              	}
+                              	return s;
+                              }
+                              
+                              int main() {
+                              
+                              	string s = ConvertingString();
+                              	cout << "The converted string is : " << s << endl;
+                              
+                                  return 0;
+                              }
+
+## 33 - another solution by enum.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string s;
+                    	cout << "Enter a string : ";
+                    	getline(cin, s);
+                    	return s;
+                    }
+                    enum enWhatToCount { CapitalLetter = 0, SmallLetter = 1, All= 3 };
+                    
+                    short CountLetter(string s , enWhatToCount WhatToCount = enWhatToCount::All) {
+                    
+                    
+                    	if(WhatToCount == enWhatToCount::All)
+                    		return s.length();
+                    
+                    
+                    	short counter = 0;
+                    
+                    	for (short i = 0; i < s.length(); i++) {
+                    		if(isupper(s[i]) && WhatToCount == CapitalLetter)
+                    			counter++;
+                    		if(islower(s[i]) && WhatToCount == SmallLetter)
+                    			counter++;
+                    	}
+                    }
+                    int main() {
+                    
+                    	string s = ReadString();
+                    
+                    	cout << "the length of the string is : " << s.length() << endl;
+                    	cout << "The number of uppercase letters in the string is : " << CountLetter(s , enWhatToCount::CapitalLetter) << endl;
+                    	cout << "The number of lowercase letters in the string is : " << CountLetter(s , enWhatToCount::SmallLetter) << endl;
+                    	return 0;
+                    }
+                     
+## 34 - Write a program to read a string and read a character then count the character in that string.
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string s;
+                    	cout << "Enter a string : ";
+                    	getline(cin, s);
+                    	return s;
+                    }
+                    enum enWhatToCount { CapitalLetter = 0, SmallLetter = 1, All= 3 };
+                    
+                    short CountLetter(string s , enWhatToCount WhatToCount = enWhatToCount::All) {
+                    
+                    
+                    	if(WhatToCount == enWhatToCount::All)
+                    		return s.length();
+                    
+                    
+                    	short counter = 0;
+                    
+                    	for (short i = 0; i < s.length(); i++) {
+                    		if(isupper(s[i]) && WhatToCount == CapitalLetter)
+                    			counter++;
+                    		if(islower(s[i]) && WhatToCount == SmallLetter)
+                    			counter++;
+                    	}
+                    }
+                    int main() {
+                    
+                    	string s = ReadString();
+                    
+                    	cout << "the length of the string is : " << s.length() << endl;
+                    	cout << "The number of uppercase letters in the string is : " << CountLetter(s , enWhatToCount::CapitalLetter) << endl;
+                    	cout << "The number of lowercase letters in the string is : " << CountLetter(s , enWhatToCount::SmallLetter) << endl;
+                    	return 0;
+                    }
+                     
+## 35 -  Write a program to read a string and read a character then count the character in that string(Match case or Not) using enum .
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string s;
+                    	cout << "Enter a string : ";
+                    	getline(cin, s);
+                    	return s;
+                    }
+                    char ReadChar() {
+                    
+                    	char c;
+                    	cout << "Enter a char : ";
+                    	cin >> c;
+                    	return c;
+                    }
+                    enum enChar{Small = 0, SmallAndCapital = 1};
+                    
+                    short CalcChar(string s , char c , enChar Letter = SmallAndCapital ) {
+                    	short counter = 0;
+                    
+                    	for (short i = 0; i < s.length(); i++) {
+                    		if (s[i] == c && Letter == Small) {
+                    			counter++;
+                    		}
+                    
+                    		if ((isupper(s[i]) || islower(s[i])) && Letter == SmallAndCapital) {
+                    			counter++;
+                    		}
+                    
+                    	}
+                    	return counter;
+                    }
+                    int main() {
+                    	string s  = ReadString();
+                    	char c = ReadChar();
+                    	cout << "Length of string = " << s.length() << endl;
+                    	cout << "letter " << c << " count = " << CalcChar(s, c,enChar::Small) << endl;
+                    	cout << "letter   " << c << " Small or Capital count  = " << CalcChar(s, c, enChar::SmallAndCapital) << endl;
+                    }
+ ##  36 - Another Solution BY Using Bool.
+
+                     #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    
+                    	string s;
+                    	cout << "Enter a string : ";
+                    	getline(cin, s);
+                    	return s;
+                    }
+                    char ReadChar() {
+                    
+                    	char c;
+                    	cout << "Enter a char : ";
+                    	cin >> c;
+                    	return c;
+                    }
+                    
+                    short CalcChar(string s , char c , bool MatchCase = true ) {
+                    	short counter = 0;
+                    
+                    	for (short i = 0; i < s.length(); i++) {
+                    		if (MatchCase) {
+                    			if (s[i] == c ) {
+                    				counter++;
+                    			}
+                    		}
+                    		else {
+                    			if (tolower(s[i]) == tolower(c)) {
+                    				counter++;
+                    			}
+                    		}
+                    		
+                    
+                    	}
+                    	return counter;
+                    }
+                    int main() {
+                    	string s  = ReadString();
+                    	char c = ReadChar();
+                    	cout << "Length of string = " << s.length() << endl;
+                    	cout << "letter " << c << " count = " << CalcChar(s, c) << endl;
+                    	cout << "letter   " << c << " Small or Capital count  = " << CalcChar(s, c,false) << endl;
+                    }
+## 37 - write a program to read a character the check if it is a vowel or not (vowels are: a,e,I,o,u).
+
+
+                     #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    char ReadChar() {
+                    
+                    	char c;
+                    	cout << "Enter a char : ";
+                    	cin >> c;
+                    	return c;
+                    }
+                    short CheckChar(char c) {
+                    	if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+                    		return 1;
+                    	}
+                    	else {
+                    		return 0;
+                    	}
+                    }
+                    int main() {
+                    	char c = ReadChar();
+                    
+                    	if (CheckChar(c) == 1) {
+                    		cout << "The char is a vowel" << endl;
+                    	}
+                    	else
+                    	{
+                    		cout << "The char is a consonant" << endl;
+                    	}
+                    }
+                    
+ ## 38 -   write a program to read a string  then count all  vowels in that string  (vowels are: a,e, i,o,u). 
+
+ 
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    	string s;
+                    	cout << "Enter a string : ";
+                    	getline(cin, s);
+                        return s;
+                    }
+                    
+                    char IsVowel(char c) {
+                    	c = tolower(c);
+                    	return ((c == 'a') || (c == 'e') || (c == 'i') || (c == 'o') || (c == 'u'));
+                    }
+                    short CheckIsVowel( string s) {
+                    	
+                    	short counter = 0;
+                    
+                    	for(short i= 0; i< s.length(); i++) {
+                    		if ( IsVowel(s[i]))
+                    			counter++;
+                    	}
+                    	return counter;
+                    }
+                    int main() {
+                    	string s = ReadString();
+                    
+                    	cout << "Number of vowels in the string : " << CheckIsVowel(s) << endl;
+                    }
+
+## 39 -   write a program to read a string  then count all  vowels in that string  (vowels are: a,e, i,o,u). 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <cctype>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    	string s;
+                    	cout << "Enter a string : ";
+                    	getline(cin, s);
+                        return s;
+                    }
+                    
+                    bool IsVowel(char c) {
+                    	c = tolower(c);
+                    	return ((c == 'a') || (c == 'e') || (c == 'i') || (c == 'o') || (c == 'u'));
+                    }
+                    void PrintIsVowel( string s) {
+                    	
+                    	short counter = 0;
+                    
+                    	for (short i = 0; i < s.length(); i++) {
+                    		if (IsVowel(s[i]))
+                    			cout << s[i] << " ";
+                    	}
+                        cout << endl;
+                    
+                    }
+                    int main() {
+                    	string s = ReadString();
+                    
+                    	cout << "Number of vowels in the string : ";
+                    	PrintIsVowel(s);
+                    }
+
+ 
+## 40 - 
+ 
+ 
+                     
+
 
 
 
