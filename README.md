@@ -5391,15 +5391,399 @@ int main() {
                     int main() {
                     	string s = ReadString();
                     
-                    	cout << "Number of vowels in the string : ";
+                    	cout << "Number of vowels in the string: ";
                     	PrintIsVowel(s);
                     }
 
  
-## 40 - 
- 
- 
-                     
+## 40 - Write a program to read a string then print each word in that string.
+
+
+                     #include <iostream>
+                    #include <string>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    	string s  ;
+                    	cout << "Enter a string: ";
+                    	getline(cin, s);
+                    	return s;
+                    }
+                    void PrintEachString(string s) {
+                    
+                    	for (int i = 0; i < s.length(); i++) {
+                    		if (s[i] != ' ')
+                    			cout << s[i] ;
+                    		else
+                    			cout << endl;
+                    	}
+                    }
+                    int main() {
+                    	string s = ReadString();
+                    	cout << "Each character in the string is: " << endl;
+                    	PrintEachString(s);
+                    	return 0;
+                    }
+  ## 41 - Write a program to read a string then  count each word in that string.
+
+                   #include <string>
+                    #include <iostream>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                    	string s;
+                    	cout << "Enter a string: ";
+                    	getline(cin, s);
+                    	return s;
+                    }
+                    int PrintEachWordInString(string s) {
+                    	string delim = " "; // delimiter     
+                    	cout << "\nThe number of words in your string is: \n\n";
+                    	int pos = 0;
+                    	string sWord;
+                    	
+                    	short counter = 0;
+                    	while ((pos = s.find(delim)) != std::string::npos)
+                    	{
+                    		sWord = s.substr(0, pos); // store the word  
+                    		if (sWord != "")
+                    		{
+                    			counter++;
+                    		}
+                    		s.erase(0, pos + delim.length());  /* erase() until positon and move to next word. */
+                    	}
+                    	return counter;
+                    }
+                    
+                    int main() {
+                    
+                    	cout << PrintEachWordInString(ReadString());
+                    	return 0;
+                    }
+                    
+## 42 - Write a program to read string then make a function to split each word in vector.
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    string ReadString() {
+                        string s;
+                        cout << "Enter a string: ";
+                        getline( cin, s);
+                        return s;
+                    }
+                    int FullVectorEachString(string s, vector<string>& v) {
+                        
+                                            string delim = " ";
+                        short pos = 0;
+                        string token;
+                    
+                        short counter = 0;
+                        cout << "the number of token : " ;
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                            token = s.substr(0, pos);
+                            if (token != "") {
+                                v.push_back(token);
+                                counter++;
+                            }
+                            s.erase(0,pos+delim.length());
+                    
+                        }
+                        if (s != "") {
+                            v.push_back(s);
+                            counter++;
+                         }
+                        return  counter;
+                    }
+                    void PrintVector(vector <string> v) {
+                        cout << "\n-----the vector-----\n";
+                        for (string j : v) {
+                            cout << j << endl;
+                        }
+                    }
+                    int main()
+                    {
+                        vector <string> v;
+                        
+                        cout << FullVectorEachString(ReadString(), v);
+                        PrintVector(v);
+                    
+                    }
+## 43 - Write a program to read a string then trim left, right , all.
+
+
+                     #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string TrimLeft(string s) {
+                        for (short i = 0; i < s.length() - 1; i++) {
+                            if (s[i] != ' ') {
+                                return s.substr(i, s.length() - i);
+                            }
+                        }
+                        return "";
+                    }
+                    
+                    string TrimRight(string s) {
+                        for (short i = s.length() - 1; i >= 0; i--) {
+                            if (s[i] != ' ') {
+                                return s.substr(0, i + 1);
+                            }
+                        }
+                        return "";
+                    }
+                    
+                    string Trim(string s) {
+                        return TrimLeft(TrimRight(s));
+                    }
+                    
+                    int main() {
+                        string s = "   moustafa sad   ";
+                    
+                        cout << "Trimmed left:" << TrimLeft(s) << endl;
+                        cout << "Trimmed right:" << TrimRight(s) << endl;
+                        cout << "Trimmed:" << Trim(s) << endl;
+                    
+                        return 0;
+                    }
+ ## 44 - wriet a program to join vector of sttring into a one stringg with separators.
+
+                     #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string join(vector <string> v) {
+                        for (string i : v) {
+                            cout << i << " ";
+                        }
+                        return "";
+                    }
+                    int main() {
+                    
+                        vector <string> v = {"Mustafa" ,"Sad", "Mohammed","Mohammed"};
+                        join(v);
+                    
+                        return 0;
+                    }
+
+## 45- Another Solution.
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string join(vector <string> v , string delim) {
+                    
+                        string s1;
+                        for (string i : v) {
+                            s1 = s1 + i + delim;
+                        }
+                        return s1.substr(0 , s1.length()-delim.length());
+                    }
+                    int main() {
+                    
+                        vector <string> v = {"Mustafa" ,"Sad", "Mohammed","Mohammed"};
+                         cout <<  join(v ,"##");
+                    
+                        return 0;
+                    }
+
+## 46 - overloading example 
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string JoinString(vector <string> v, string delim) {
+                    
+                    	string s1;
+                    	for (string i : v) {
+                    		s1 = s1 + i + delim;
+                    	}
+                    	return s1.substr(0, s1.length() - delim.length());
+                    }
+                    string JoinString(string arr[], short length, string delim) {
+                    
+                    	string s1;
+                    	for (int i = 0; i < length; i++) {
+                    		s1 = s1 + arr[i] + delim;
+                    	}
+                    	return s1.substr(0, s1.length() - delim.length());
+                    }
+                    int main() {
+                    
+                    	vector <string> v = { "Mustafa" ,"Sad", "Mohammed","Mohammed" };
+                    	string arr[] = { "Mustafa" ,"Sad", "Mohammed","Mohammed" };
+                    
+                    	cout << "\nvector after join :" << endl;
+                    	cout << JoinString(v, "##");
+                    
+                    	cout << "\narray after join :" << endl;
+                    	cout << JoinString(arr, 4,"##");
+                    
+                    	return 0;
+                    }
+
+## 47 - Reverse string .
+
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string ReverseString(string arr[]) {
+                    	for (short i = arr->length(); i >= 0; i--) {
+                    		cout << arr[i] << " ";
+                    	}	
+                    	return "";
+                    }
+                    int main() {
+                    
+                    	string arr[100] = {"Mustafa" ,"Sad", "Mohammed","Mohammed"};
+                    
+                    	ReverseString(arr);
+                    	return 0;
+                    }
+
+## 48 - Reverse and split .
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string ReadString() {
+                        string s;
+                        cout << "Please enter string: ";
+                        getline(cin, s);
+                        return s;
+                    }
+                    
+                    vector<string> SplitString(string s, string delim) {
+                        short pos = 0;
+                        string word;
+                        vector<string> v1;
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                            word = s.substr(0, pos);
+                            if (word != " ") {
+                                v1.push_back(word);
+                            }
+                            s.erase(0, pos + delim.length());
+                        }
+                        if (s != "") {
+                            v1.push_back(s);
+                        }
+                        return v1;
+                    }
+                    string ReverseString(string s) {
+                        vector <string> vString = SplitString(s, " ");
+                        string s2 = "";
+                    
+                        vector <string>::iterator iter = vString.end();
+                        while (iter != vString.begin()) {
+                            --iter;
+                            s2 += *iter + " ";
+                        }
+                        s2 = s2.substr(0, s2.length() - 1); // remove last space 
+                        return s2;
+                    }
+                    
+                    int main() {
+                        string s = ReadString();
+                        cout << ReverseString(s);
+                        return 0;
+                    }
+
+## 49 - Replace string .
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string ReadString() {
+                        string s;
+                        cout << "Please enter string: ";
+                        getline(cin, s);
+                        return s;
+                    }
+                    
+                    vector<string> SplitString(string s, string delim) {
+                        short pos = 0;
+                        string word;
+                        vector<string> v1;
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                            word = s.substr(0, pos);
+                            if (word != " ") {
+                                v1.push_back(word);
+                            }
+                            s.erase(0, pos + delim.length());
+                        }
+                        if (s != "") {
+                            v1.push_back(s);
+                        }
+                        return v1;
+                    }
+                    string ReverseString(string s) {
+                    
+                        vector <string> vString = SplitString(s, " ");
+                    
+                        string s2 = "";
+                        for (string i : vString) {
+                            if (i == "jordan")
+                                i = "USA";
+                            s2 += i + " ";
+                        }
+                        return s2;
+                    }
+                    
+                    int main() {
+                        string s = ReadString();
+                        cout << ReverseString(s);
+                        return 0;
+                    }
+
+## 50 - Replace string 
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    string Replace(string s1, string s2R, string SR) {
+                    
+                        short pos =  s1.find(s2R);
+                    
+                        while ( pos != std::string::npos) {
+                            s1 = s1.replace(pos, s2R.length(), SR);
+                            pos = s1.find(s2R);
+                        }
+                        return s1;
+                    }
+                    
+                    
+                    int main() {
+                        string s1 = "Mustafa from Egypt , and welcom Egypt";
+                        string s2R = "Egypt";
+                        string SR = "USA";
+                    
+                        cout << Replace(s1, s2R, SR);
+                    }
+                    
+## 51 -                     
+
+
 
 
 
