@@ -5781,7 +5781,38 @@ int main() {
                         cout << Replace(s1, s2R, SR);
                     }
                     
-## 51 -                     
+## 51 -  Write a program to remove punctuation.
+
+
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    
+                    string RemovePunctuations(string &word) {
+                    	string s2 = "";
+                    	for (short i = 0; i < word.length(); i++) {
+                    		if (!ispunct(word[i]))
+                    			s2 += word[i];
+                    	}
+                    	return s2;
+                    
+                    }
+                    int main() {
+                    	string s = "Welcmoe to jordan, Jordan is a nice country; it's amazing.";
+                    
+                    	 cout << "example before Remove " << s << endl;
+                    
+                    	 cout << "example after Remove " << RemovePunctuations(s) << endl;
+                    
+                    	return 0;
+                    }
+
+## 53 - 
+
+
+
 
 
 
