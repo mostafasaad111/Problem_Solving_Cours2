@@ -5874,9 +5874,84 @@ int main() {
                     	return 0;
                     }
 
-## 54 - 
+## 54 - Write a program to convert line data to record and print it(split ):
 
 
+                              #include <string>
+                              #include <iostream>
+                              #include <vector>
+                              using namespace std;
+                              
+                              struct stClient {
+                                  string AccountNumber;
+                                  string PinCode;
+                                  string Name;
+                                  string Phone;
+                                  double AccountBlance; // Typo: AccountBalance
+                              };
+                              
+                              vector<string> SplitString(const string& s, const string& Delim) {
+                                  size_t pos = 0;
+                                  string word;
+                                  vector<string> v1;
+                              
+                                  string tempString = s; // Create a temporary string to avoid modifying the original
+                                  while ((pos = tempString.find(Delim)) != std::string::npos) {
+                                      word = tempString.substr(0, pos);
+                                      if (word != Delim) { // Avoid adding the delimiter itself
+                                          v1.push_back(word);
+                                      }
+                                      tempString.erase(0, pos + Delim.length());
+                                  }
+                                  if (!tempString.empty()) {
+                                      v1.push_back(tempString); // Add the remaining substring
+                                  }
+                                  return v1;
+                              }
+                              
+                              stClient converClintData(const string& s, const string& separator) {
+                                  vector<string> v1 = SplitString(s, separator);
+                                  stClient client;
+                              
+                                  if (v1.size() >= 5) { // Check if there are enough elements
+                                      client.AccountNumber = v1[0];
+                                      client.AccountBlance = stod(v1[1]); // Convert string to double
+                                      client.Name = v1[2];
+                                      client.Phone = v1[3];
+                                      client.PinCode = v1[4];
+                                  }
+                                  else {
+                                      cerr << "Invalid input format!" << endl;
+                                  }
+                              
+                                  return client;
+                              }
+                              
+                              void PrintValues(const stClient& client) {
+                                  cout << "AccountNumber: " << client.AccountNumber << endl;
+                                  cout << "AccountBalance: " << client.AccountBlance << endl;
+                                  cout << "Name: " << client.Name << endl;
+                                  cout << "Phone: " << client.Phone << endl;
+                                  cout << "PinCode: " << client.PinCode << endl;
+                              }
+                              
+                              int main() {
+                                  cout << "\nPlease enter client Data: \n";
+                              
+                                  string s = "A150#//#1234#//#Mohammed Abu-Hadhoud#//#079999#//#5270.000000";
+                              
+                                  cout << "\nLine Record is: \n";
+                                  cout << s << endl;
+                              
+                                  stClient client = converClintData(s, "#//#");
+                              
+                                  PrintValues(client);
+                              
+                                  return 0;
+                              }
+
+
+## 55 - 
 
 
 
