@@ -5809,9 +5809,72 @@ int main() {
                     	return 0;
                     }
 
-## 53 - 
+## 53 - write a program to read bank client data record and convert it to one line.
 
 
+                    #include <string>
+                    #include <iostream>
+                    #include <vector>
+                    using namespace std;
+                    
+                    
+                    struct stClient {
+                    	string AccountNumber;
+                    	string PinCode;
+                    	string Name;
+                    	string Phone;
+                    	double AccountBlance;
+                    
+                    };
+                    stClient Read() {
+                    
+                    	stClient client;
+                    
+                    
+                    	cout << "Enter Account Number?";
+                    	getline(cin, client.AccountNumber);
+                    
+                    	cout << "Enter PinCode ? ";
+                    	getline(cin, client.PinCode);
+                    
+                    	cout << "Enter Name?";
+                    	getline(cin, client.Name);
+                    
+                    	cout << "Enter Phone?";
+                    	getline(cin, client.Phone);
+                    
+                    
+                    	cout << "Enter AccountBalance ?";
+                    	cin >> client.AccountBlance;
+                    
+                    	return client;
+                    }
+                    string converClintData(stClient client, string sperator = "#//#") {
+                    
+                    	string Record = "";
+                    
+                    	Record += client.AccountNumber + sperator;
+                    	Record += to_string(client.AccountBlance) + sperator;
+                    	Record += client.Name + sperator;
+                    	Record += client.Phone + sperator;
+                    	Record += client.PinCode + sperator;
+                    
+                    	return Record;
+                    }
+                    
+                    int main() {
+                    
+                    	cout << "\nPlease enter client Data: \n";
+                    	stClient Client;
+                    
+                    	Client = Read();
+                    
+                    	cout << converClintData(Client);
+                    
+                    	return 0;
+                    }
+
+## 54 - 
 
 
 
