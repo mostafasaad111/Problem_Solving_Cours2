@@ -6376,7 +6376,251 @@ int main() {
                     	}
                     }
 
-## 61 
+## 61 write file 
+
+
+                    #include<iostream>
+                    #include<fstream>
+                    
+                    using namespace std;
+                    
+                    
+                    int main() {
+                    
+                    	fstream FileOne;
+                    
+                    	FileOne.open("FileOne.txt", ios::out);
+                    
+                    	if (FileOne.is_open()) {
+                    
+                    		FileOne << "Mustafa saad mohammed mohammed Elgabear\n";
+                    		FileOne << "Mustafa saad mohammed mohammed Elgabear\n";
+                    		FileOne << "Mustafa saad mohammed mohammed Elgabear\n";
+                    		FileOne << "Mustafa saad mohammed mohammed Elgabear\n";
+                    
+                    		FileOne.close();
+                    	}
+                    	return 0;
+                    
+                    }
+
+
+## 62- append word in file
+
+
+                    #include<iostream>
+                    #include<fstream>
+                    using namespace std;
+                    
+                    int main() {
+                    
+                    	fstream FileOne;
+                    
+                    	FileOne.open("FileOne.txt", ios::out | ios::app);
+                    
+                    	if (FileOne.is_open()) {
+                    
+                    		FileOne << "Mustafa saad mohammed mohammed Elgabear\n";
+                    		FileOne << "Mustafa saad mohammed mohammed Elgbear\n";
+                    		FileOne << "Mustafa  mohammed  \n";
+                    		FileOne << "Mustafa saad mohammed  \n";	
+                    		FileOne << "Mustafa saad mohammed  \n";
+                    		FileOne << "Mustafa saad mohammed  \n";
+                    
+                    		FileOne.close();
+                    	}
+                    	return 0;
+                    
+                    }
+
+
+
+## 63 Read from file 
+
+
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    
+                    using namespace std;
+                    
+                    void PrintFile(string FileName) {
+                    
+                    	fstream FileOne;
+                    
+                    	FileOne.open(FileName , ios::in);
+                    
+                    	if (FileOne.is_open()) {
+                    	
+                    		string Line;
+                    
+                    		while(getline(FileOne, Line))
+                    		{
+                    			cout << Line << endl;
+                    
+                    		}
+                    		FileOne.close();
+                    	}
+                    
+                    }
+                    
+                    int main() {
+                    
+                    	PrintFile("FileOne.txt");
+                    	return 0;
+                    
+                    }
+
+##   64  Load data from the file and store it in a vector 
+
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    void PrintFile(string FileName, vector <string>& Vfile) {
+                    
+                    	fstream FileOne;
+                    
+                    	FileOne.open(FileName , ios::in);
+                    
+                    	if (FileOne.is_open()) {
+                    	
+                    		string Line;
+                    
+                    		while(getline(FileOne, Line))
+                    		{
+                    			Vfile.push_back( Line);
+                    
+                    		}
+                    		FileOne.close();
+                    	}
+                    
+                    }
+                    
+                    int main() {
+                    
+                    	vector <string> Vfile;
+                  
+                    	PrintFile("FileOne.txt" , Vfile);
+                    
+                    	for (string& Line : Vfile) {
+                    		cout << Line << endl;
+                    	}
+                    	return 0;
+                    }
+
+## 65 Convert Record to Line:-
+
+
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    struct sClient
+                    {
+                    	string AccountNumber;
+                    	string Name;
+                    	string pincode; 
+                    	string phone;
+                    	double AccountBalance;
+                    
+                    };
+                    sClient ReadNewClient() {
+                    
+                    	sClient Client;
+                    
+                    	cout << "Please enter Client Data:" << endl;
+                    
+                    	cout << "enter Account Number?" << endl ;
+                    	getline(cin, Client.AccountNumber);
+                    	
+                    	cout << " enter PinCode?" << endl;
+                    	getline(cin, Client.pincode);
+                    	
+                    	cout << " enter Name?" << endl;
+                    	getline(cin, Client.Name);
+                    	
+                    	cout << " enter Phone?" << endl;
+                    	getline(cin, Client.phone);
+                    	
+                    	cout << " enter AccountBalance?" << endl;
+                    	getline(cin, Client.AccountNumber);
+                    
+                    	return Client;
+                    	
+                    }
+                    
+                    string ConvertRecord(sClient Client, string Sperator = "#//#") {
+                    
+                    	string addRecord; 
+                    
+                    	addRecord += Client.AccountNumber + Sperator;
+                    	addRecord += Client.Name + Sperator;
+                    	addRecord += Client.phone + Sperator;
+                    	addRecord += Client.pincode + Sperator;
+                    	addRecord += to_string( Client.AccountBalance) ;
+                    
+                    	return addRecord;
+                    }
+                    
+                    int main() {
+                    
+                    	sClient Client;
+                    	Client = ReadNewClient();
+                    	
+                    	cout << "\n\n Client Record for Saving is: \n";
+                    	cout << ConvertRecord(Client);
+                    
+                    	system("pause>0");
+                    	return 0;
+                    
+                    	
+                    
+                    }
+
+
+## 67 Splitting Function 
+
+
+                    vector<string> SplitString(string S1, string Delim) {
+                    
+                    	vector<string> vString; 
+                    	
+                    	short pos = 0; 
+                    	string sWord; 
+                    
+                    	while ((pos = S1.find(Delim)) != std::string::npos)     { 
+                    
+                    		sWord = S1.substr(0, pos); 
+                    
+                    		if (sWord != "")  
+                    		{ 
+                    			vString.push_back(sWord);       
+                    		} S1.erase(0, pos + Delim.length()); 
+                    	}
+                    	if (S1 != "")   
+                    	{     
+                    		vString.push_back(S1); 
+                    	}
+                    	return vString;
+                    } 
+
+
+## 68 
+
+
+
+
+
+
+
+
 
 
 
