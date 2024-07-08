@@ -6608,11 +6608,200 @@ int main() {
                     	{     
                     		vString.push_back(S1); 
                     	}
-                    	return vString;
+                    	return Vstring;
                     } 
 
 
-## 68 
+## 68 class and object 
+
+
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    
+                    class claPerson {
+                    
+                    public:
+                    	string FirstName;
+                    	string LastName;
+                    
+                    	string FullName() {
+                    
+                    		return FirstName + " " + LastName;
+                    	}
+                    };
+                    int main() {
+                    
+                    	claPerson Person1;
+                    
+                    	Person1.FirstName = "Mustafa";
+                    	Person1.LastName = "Sad";
+                    
+                    	cout << Person1.FullName() << endl;
+                    
+                    	return 0;
+                    }
+
+
+## 69 object in Memory 
+
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    
+                    class claPerson {
+                    
+                    public:
+                    	string FirstName;
+                    	string LastName;
+                    
+                    	string FullName() {
+                    
+                    		return FirstName + " " + LastName;
+                    	}
+                    };
+                    int main() {
+                    
+                    	claPerson Person1 , Person2 , Person3;
+                    
+                    	Person1.FirstName = "Mustafa";
+                    	Person1.LastName = "Sad";
+                    
+                    	Person2.FirstName = "mohammed";
+                    	Person2.LastName = "Sad";
+                    
+                    	Person3.FirstName = "mahmoud";
+                    	Person3.LastName = "Sad";
+                    
+                    
+                    	cout << Person1.FullName() << endl;
+                    	cout << Person2.FullName() << endl;
+                    	cout << Person3.FullName() << endl;
+                    
+                    	return 0;
+                    }
+                    
+
+## 70 public and protected and private
+
+
+                              #include<iostream>
+                              #include<fstream>
+                              #include<string>
+                              #include<vector>
+                              
+                              using namespace std;
+                              
+                              class clsPerson {
+                              
+                              private:
+                              	int varibel1 = 100;
+                              	int function1() {
+                              		return 20;
+                              	}
+                              
+                              protected:
+                              	int varibel2 = 100;
+                              	int function2() {
+                              		return 50;
+                              	}
+                              
+                              public:
+                              	string FirstName;
+                              	string LastName;
+                              
+                              	string FullName() {
+                              		return FirstName + " " + LastName;
+                              	}
+                              
+                              	float Function3() {
+                              		return function1() * function2() * varibel1 * varibel2;
+                              	}
+                              };
+                              
+                              int main() {
+                              
+                              	clsPerson person1;
+                              
+                              	person1.FirstName = "Mustafa";
+                              	person1.LastName = "saad";
+                              
+                              	cout << person1.Function3() << endl;
+                              	cout << person1.FullName() << endl;
+                              
+                              	return 0;
+                              }
+
+
+## 71   Set and Get properties 
+
+
+                              #include<iostream>
+                              #include<fstream>
+                              #include<string>
+                              #include<vector>
+                              
+                              using namespace std;
+                              
+                              class clsPerson {
+                              
+                              private:
+                              	string _FirstName;
+                              	string _LastName;
+                              
+                              
+                              public:
+                              	
+                              	void setFirstName(string firstName) {
+                              		_FirstName = firstName;
+                              	}
+                              	string FirstName() {
+                              		return _FirstName;
+                              	}
+                              	void setLastName(string lastName) {
+                              		_LastName = lastName;
+                              	}
+                              	string LastName() {
+                              		return _LastName;
+                              	}
+                              
+                              };
+                              
+                              int main() {
+                              
+                              	clsPerson person1;
+                              
+                              	person1.setFirstName("Mustafa");
+                              	person1.setLastName("saad");
+                              
+                              	cout << "firstName: " << person1.FirstName() << endl;
+                              	cout << "lastName: " << person1.LastName() << endl;
+                              
+                              	
+                              	system("pause>0"); 
+                              	return 0;
+                              }
+
+
+
+
+## 72 
+
+
+
+
+
+
+
+
 
 
 
