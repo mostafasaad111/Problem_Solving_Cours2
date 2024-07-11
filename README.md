@@ -6793,9 +6793,99 @@ int main() {
 
 
 
-## 72 
+## 72 Read Only Property 
+
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    class clsPerson {
+                    
+                    private:
+                    
+                    	int _ID = 10; 
+                    	string _FirstName;
+                    	string _LastName;
+                    
+                    
+                    public:
+                    	
+                    	int ID() {
+                    		return _ID;
+                    	}
+                    	void setFirstName(string firstName) {
+                    		_FirstName = firstName;
+                    	}
+                    	string FirstName() {
+                    		return _FirstName;
+                    	}
+                    	void setLastName(string lastName) {
+                    		_LastName = lastName;
+                    	}
+                    	string LastName() {
+                    		return _LastName;
+                    	}
+                    
+                    };
+                    
+                    int main() {
+                    
+                    	clsPerson person1;
+                    
+                    	person1.setFirstName("Mustafa");
+                    	person1.setLastName("saad");
+                    
+                    	cout << "firstName: " << person1.FirstName() << endl;
+                    	cout << "lastName: " << person1.LastName() << endl;
+                    	cout << "ID: " << person1.ID() << endl;
+                    
+                    	
+                    	system("pause>0"); 
+                    	return 0;
+                    }
+## 73  Properties get and set                  
+
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    class clsPerson {
+                    
+                    private:
+                    	string _FirstName;
+                    
+                    public:
+                    	
+                    	
+                    	void setFirstName(string firstName) {
+                    		_FirstName = firstName;
+                    	}
+                    	string GetFirstName() {
+                    		return _FirstName;
+                    	}
+                    	
+                    	__declspec(property(get = GetFirstName, put = setFirstName)) string FirstName;
+                    };
+                    
+                    int main() {
+                    
+                    	clsPerson person1;
+                    
+                    	person1.FirstName = "Mustafa";
+                    	cout << "firstName: " << person1.FirstName << endl;
+                    
+                    	system("pause>0"); 
+                    	return 0;
+                    }
 
 
+## 74  Properties get and set   
 
 
 
