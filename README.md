@@ -6885,7 +6885,134 @@ int main() {
                     }
 
 
-## 74  Properties get and set   
+## 74  A calculator program based on OOP standards 
+
+                    
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    class clsCacluator {
+                    
+                    private:
+                    	
+                    
+                    	float _Result = 0;
+                    	float _LastNumber = 0;
+                    	string _LastOperation = "Clear";
+                    	float _PreviousResult = 0;
+                    	bool _IsZero(float Number) {
+                    		return (Number == 0);
+                    	}
+                    
+                    public:
+                    
+                    	void Add(float Number) {
+                    		_LastNumber = Number;
+                    		_PreviousResult = _Result;
+                    		_LastOperation = "adding";
+                    		_Result += _LastNumber;
+                       }
+                    
+                    
+                    	void Substruct(float Number) {
+                    		_LastNumber = Number;
+                    		_PreviousResult = _Result;
+                    		_LastOperation = "Subtraction";
+                    		_Result -= _LastNumber;
+                       }
+                    
+                    
+                    	void Divide(float Number) {
+                    
+                    		_LastNumber = Number;
+                    
+                    		if (_IsZero(Number)) {
+                    			Number = 1; 
+                    		}
+                    
+                    		_PreviousResult = _Result;
+                    		_LastOperation = "Dividing";
+                    		_Result /= _LastNumber;
+                       }
+                    
+                    
+                    	void Multiply(float Number) {
+                    		_LastNumber = Number;
+                    		_PreviousResult = _Result;
+                    		_LastOperation = "Multiplying";
+                    		_Result *= _LastNumber;
+                       }	
+                    
+                    
+                    	float GetResult() {
+                    		return _Result;
+                    	}
+                    
+                    	void Clear() {
+                    		_LastNumber = 0;
+                    		_PreviousResult = 0;
+                    		_LastOperation = "Multiply";
+                    		_Result *= 0;
+                       }	
+                    
+                    
+                    	void CancellLastOperation() {
+                    		_LastNumber = 0;
+                    		_LastOperation = " Cancell last operation ";
+                    		_Result = _PreviousResult;
+                       }
+                    
+                    
+                    	void PrintResult() 
+                    	{
+                    		cout << "The Result After " << _LastOperation << " " << _LastNumber << " is : " << _Result << endl;
+                    	}
+                    	
+                    };
+                    
+                    int main() {
+                    
+                    	clsCacluator cacl1;
+                    
+                    	cacl1.Clear();
+                    
+                    	cacl1.Add(10);
+                    	cacl1.PrintResult();
+                    	
+                    	cacl1.Add(100);
+                    	cacl1.PrintResult();
+                    
+                    	cacl1.Divide(20);
+                    	cacl1.PrintResult();
+                    
+                    	cacl1.Multiply(20);
+                    	cacl1.PrintResult();	
+                    	
+                    	cacl1.Substruct(20);
+                    	cacl1.PrintResult();
+                    
+                    	
+                    	
+                    	system("pause>0"); 
+                    	return 0;
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
