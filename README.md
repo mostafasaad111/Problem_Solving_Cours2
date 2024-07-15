@@ -7002,31 +7002,463 @@ int main() {
                     }
 
 
-## 75 
+## 75 Fill Matrix 3*3 BY Random Number from 1 to 100:-
+
+                    
+                    #include <iostream>
+                    #include <cstdlib> // for rand() and srand()
+                    #include <ctime>   // for time()
+                    
+                    using namespace std;
+                    
+                    // Function to generate a random number between 'from' and 'to'
+                    int RandomNumber(int from, int to) {
+                        return rand() % (to - from + 1) + from;
+                    }
+                    
+                    // Function to fill the matrix with random numbers
+                    void FillMatrix(int Row, int Col, int arr[3][3]) {
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                arr[i][j] = RandomNumber(1, 100);
+                            }
+                        }
+                    }
+                    
+                    // Function to print the matrix
+                    void PrintMatrix(int Row, int Col, int arr[3][3]) {
+                        cout << "The value of the matrix:" << endl;
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                cout << arr[i][j] << " ";
+                            }
+                            cout << endl; // Move to the next line after each row
+                        }
+                    }
+                    
+                    int main() {
+                        srand(time(0)); // Seed the random number generator
+                    
+                        int arr[3][3];
+                    
+                        FillMatrix(3, 3, arr);
+                        PrintMatrix(3, 3, arr);
+                    
+                        return 0;
+                    }
+
+
+## 76 Sum Matrix Row 
+
+
+                    #include <iostream>
+                    #include <cstdlib> // for rand() and srand()
+                    #include <ctime>   // for time()
+                    #include <vector>
+                    using namespace std;
+                    
+                    // Function to generate a random number between 'from' and 'to'
+                    int RandomNumber(int from, int to) {
+                        return rand() % (to - from + 1) + from;
+                    }
+                    
+                    // Function to fill the matrix with random numbers
+                    void FillMatrix(int Row, int Col, int arr[3][3]) {
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                arr[i][j] = RandomNumber(1, 100);
+                            }
+                        }
+                    }
+                    
+                    
+                    // Function to calculate the sum of each row and store it in Vsum
+                    void SumOfRow(int Row, int Col, int arr[3][3], vector<int>& Vsum) {
+                        for (int i = 0; i < Row; i++) {
+                            int sum = 0; // Initialize sum for each row
+                            for (int j = 0; j < Col; j++) {
+                                sum += arr[i][j];
+                            }
+                            Vsum.push_back(sum);
+                        }
+                    }
+                    
+                    // Function to print the sum of each row
+                    void PrintSumOfRow(int Row, const vector<int>& Vsum) {
+                        for (int x = 0; x < Row; x++) {
+                            cout << "The Result of Row " << x << " is: " << Vsum[x] << endl;
+                        }
+                    }
+                    
+                    int main() {
+                        srand((unsigned)time(NULL)); // Seed the random number generator
+                    
+                        int arr[3][3];
+                        vector<int> Vsum;
+                    
+                        FillMatrix(3, 3, arr);
+                    
+                    
+                        SumOfRow(3, 3, arr, Vsum);
+                        PrintSumOfRow(3, Vsum);
+                    
+                        return 0;
+                    }
+
+## 77 Sum Colum of Matrix 
+
+                    #include <iostream>
+                    #include <cstdlib> // for rand() and srand()
+                    #include <ctime>   // for time()
+                    #include <vector>
+                    using namespace std;
+                    
+                    // Function to generate a random number between 'from' and 'to'
+                    int RandomNumber(int from, int to) {
+                        return rand() % (to - from + 1) + from;
+                    }
+                    
+                    // Function to fill the matrix with random numbers
+                    void FillMatrix(int Row, int Col, int arr[3][3]) {
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                arr[i][j] = RandomNumber(1, 100);
+                            }
+                        }
+                    }
+                    
+                    
+                    // Function to calculate the sum of each row and store it in Vsum
+                    void SumOfRow(int Row, int Col, int arr[3][3], vector<int>& Vsum) {
+                        for (int i = 0; i < Row; i++) {
+                            int sum = 0; // Initialize sum for each row
+                            for (int j = 0; j < Col; j++) {
+                                sum += arr[j][i];
+                            }
+                            Vsum.push_back(sum);
+                        }
+                    }
+                    void PrintMatrix(int Row, int Col, int arr[3][3]) {
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                               cout << arr[i][j] <<" ";
+                            }
+                            cout << endl;
+                        }
+                    }
+                    // Function to print the sum of each row
+                    void PrintSumOfRow(int Row, const vector<int>& Vsum) {
+                        for (int x = 0; x < Row; x++) {
+                            cout << "The Result of Cols " << x << " is: " << Vsum[x] << endl;
+                        }
+                    }
+                    
+                    int main() {
+                        srand((unsigned)time(NULL)); // Seed the random number generator
+                    
+                        int arr[3][3];
+                        vector<int> Vsum;
+                    
+                        FillMatrix(3, 3, arr);
+                        PrintMatrix(3, 3, arr);
+                        
+                    
+                        SumOfRow(3, 3, arr, Vsum);
+                        PrintSumOfRow(3, Vsum);
+                    
+                        return 0;
+                    }
 
 
 
+## 78 Write a program to fill a 3*3 Matrix with ordered Numbers.
+
+                    
+                    #include <iostream>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    // Function to fill the matrix with incremental numbers
+                    void FillMatrix(int Row, int Col, int arr[3][3]) {
+                        int counter = 0;
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                arr[i][j] = counter++;
+                            }
+                        }
+                    }
+                    
+                    // Function to print the matrix
+                    void PrintMatrix(int Row, int Col, int arr[3][3]) {
+                        cout << "The value of the matrix:" << endl;
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                cout << arr[i][j] << " ";
+                            }
+                            cout << endl;
+                        }
+                    }
+                    
+                    int main() {
+                        int arr[3][3];
+                    
+                        FillMatrix(3, 3, arr);
+                        PrintMatrix(3, 3, arr);
+                    
+                        return 0;
+                    }
 
 
+## 79 transpose the matrix and print it 
 
 
+                    #include <iostream>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    // Function to fill the matrix with incremental numbers
+                    void FillMatrix(int Row, int Col, int arr[3][3]) {
+                        int counter = 1;
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                arr[i][j] = counter++;
+                            }
+                        }
+                    }
+                    void TransposeMatrix(int Row , int Col , int arr[3][3] , int arr2[3][3]) {
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                arr2[j][i] = arr[i][j];
+                            }
+                        }
+                    }
+                    // Function to print the matrix
+                    void PrintMatrix(int Row, int Col, int arr[3][3]) {
+                        cout << "The value of the matrix:" << endl;
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                cout << arr[i][j] << " ";
+                            }
+                            cout << endl;
+                        }
+                    }
+                    void PrintTransposeMatrix(int Row, int Col, int arr2[3][3]) {
+                        cout << "The value of the TransposeMatrix:" << endl;
+                        for (int i = 0; i < Row; i++) {
+                            for (int j = 0; j < Col; j++) {
+                                cout << arr2[i][j] << " ";
+                            }
+                            cout << endl;
+                        }
+                    }
+                    
+                    
+                    int main() {
+                        int arr[3][3] , arr2[3][3];
+                    
+                        FillMatrix(3, 3, arr);
+                        PrintMatrix(3, 3, arr);
+                    
+                        TransposeMatrix(3, 3, arr, arr2);
+                        PrintTransposeMatrix(3, 3, arr2);
+                    
+                        return 0;
+                    }
 
 
+## 80 Print First Letter in The Word 
+
+                    #include <iostream>  
+                    #include <vector>
+                    #include <string>
+                    
+                    using namespace std;
+                    
+                    
+                    string ReadString() {
+                        string  Name;
+                        cout << "Please Eneter Your Name : ";
+                        getline(cin, Name);
+                        return Name;
+                    
+                    }
+                    
+                    void PrintFirsLetter(string S1) {
+                         S1 = ReadString();
+                        
+                         cout << S1[0] << endl;
+                        for (int i = 0; i < S1.length(); i++) {
+                    
+                    
+                            if (S1[i] == ' ') {
+                                ++i;
+                                cout << S1[i] << endl;
+                            }
+                        }
+                    }
+                    int main() {
+                        
+                        string S1;
+                        PrintFirsLetter(S1);
+                        return 0;
+                    }
 
 
+## 81 Print First Letter in The Word 
+
+                    #include <iostream>  
+                    #include <vector>
+                    #include <string>
+                    
+                    using namespace std;
+                    
+                    
+                    string ReadString() {
+                        string  Name;
+                        cout << "Please Eneter Your Name : ";
+                        getline(cin, Name);
+                        return Name;
+                    
+                    }
+                    
+                    void PrintFirsLetter(string S) {
+                        bool isFirstLetter = true;
+                    
+                        for (short i = 0; i < S.length(); i++) {
+                            if ( S[i] != ' '  && isFirstLetter) {
+                                cout << S[i] << endl;
+                            }
+                            isFirstLetter = (S[i] == ' ' ? true : false);
+                        }
+                    }
+                    int main() {
+                        
+                        PrintFirsLetter(ReadString());
+                        return 0;
+                    }
+
+## 82 Convert the first letter to a Capital letter
+
+                    #include <iostream>  
+                    #include <vector>
+                    #include <string>
+                    
+                    using namespace std;
+                    
+                    
+                    string ReadString() {
+                        string  Name;
+                        cout << "Please Eneter Your Name : ";
+                        getline(cin, Name);
+                        return Name;
+                    
+                    }
+                    
+                    string PrintFirsLetter(string S) {
+                        bool isFirstLetter = true;
+                    
+                        for (short i = 0; i < S.length(); i++) {
+                            if ( S[i] != ' '  && isFirstLetter) {
+                                S[i] = toupper(S[i]);
+                            }
+                            isFirstLetter = (S[i] == ' ' ? true : false);
+                        }
+                        return S;
+                    }
+                    int main() {
+                        
+                        string S = ReadString();
+                       
+                        S =  PrintFirsLetter(S);
+                    
+                        cout << S << endl;
+                    
+                        return 0;
+                    }
+
+## 83  Convert the first letter to a Lower letter
 
 
+                    #include <iostream>  
+                    #include <vector>
+                    #include <string>
+                    
+                    using namespace std;
+                    
+                    
+                    string ReadString() {
+                        string  Name;
+                        cout << "Please Eneter Your Name : ";
+                        getline(cin, Name);
+                        return Name;
+                    
+                    }
+                    
+                    string PrintFirsLetter(string S) {
+                        bool isFirstLetter = true;
+                    
+                        for (short i = 0; i < S.length(); i++) {
+                            if ( S[i] != ' '  && isFirstLetter) {
+                                S[i] = tolower(S[i]);
+                            }
+                            isFirstLetter = (S[i] == ' ' ? true : false);
+                        }
+                        return S;
+                    }
+                    int main() {
+                        
+                        string S = ReadString();
+                       
+                        S =  PrintFirsLetter(S);
+                    
+                        cout << S << endl;
+                    
+                        return 0;
+                    }
+
+## 84 if word capital converts to small and Same thing in reverse
 
 
-
-
-
-
-
-
-
-
-
+                    #include <iostream>
+                    #include <string>
+                    
+                    using namespace std;
+                    
+                    string ReadString() {
+                        string Name;
+                        cout << "Please Enter Your Name: ";
+                        getline(cin, Name);
+                        return Name;
+                    }
+                    
+                    string PrintUpperWord(string S) {
+                        for (short i = 0; i < S.length(); i++) {
+                            S[i] = toupper(S[i]);
+                        }
+                        return S;
+                    }
+                    
+                    string PrintLowerWord(string S) {
+                        for (short i = 0; i < S.length(); i++) {
+                            S[i] = tolower(S[i]);
+                        }
+                        return S;
+                    }
+                    
+                    int main() {
+                    
+                        string S = ReadString();
+                    
+                        string a = PrintUpperWord(S);
+                        cout << "The upper name: " << a << endl;
+                    
+                        string b = PrintLowerWord(S);
+                        cout << "The lower name: " << b << endl;
+                    
+                        return 0;
+                    }
 
 
 
