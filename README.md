@@ -7460,8 +7460,255 @@ int main() {
                         return 0;
                     }
 
+## 85 Invert all letter case 
 
 
+                    #include <iostream>
+                    #include <string>
+                    #include <string>
+                    using namespace std;
+                    
+                    
+                    string ReadWord() {
+                        
+                        string name;
+                        cout << "Please enter your name:";
+                        getline(cin, name);
+                        return name;
+                    
+                    }
+                    
+                    string ConvertLetter(string S) {
+                    
+                        for (int i = 0; i < S.length(); i++) {
+                            if (isupper(S[i])) {
+                                 S[i] = tolower(S[i]);
+                            }
+                            else 
+                            {
+                                S[i] = toupper(S[i]);
+                            }
+                        }
+                        return S;
+                    }
+                    
+                    int main() {
+                    
+                         string S = ReadWord();
+                    
+                         S = ConvertLetter(S);
+                    
+                        cout <<"Convert Word is: \n" << S << endl;
+                    
+                        return 0;
+                    }
+
+
+## 86 program counts all letters in the word 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <string>
+                    using namespace std;
+                    
+                    
+                    string ReadWord() {
+                        
+                        string name;
+                        cout << "Please enter your name:";
+                        getline(cin, name);
+                        return name;
+                    
+                    }
+                    
+                    void countAllLetter(string S) {
+                    
+                        int counter = 0 , counter2 = 0 , counter3 = 0;
+                       
+                    
+                        for (int i = 0; i < S.length(); i++) {
+                            if (isupper(S[i])) {
+                                counter2++;
+                            }
+                            else 
+                            {
+                                counter3++;
+                            }
+                    
+                            counter++;
+                        }
+                        cout << "string Length = " << counter<< endl;
+                        cout << "Capital letters = " << counter2 << endl;
+                        cout << "Small Letters = " << counter3 << endl;
+                    }
+                    
+                    int main() {
+                    
+                        countAllLetter(ReadWord());
+                    
+                        return 0;
+                    }
+
+## 87  How much Char Repeated 
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <string>
+                    using namespace std;
+                    
+                    
+                    string ReadWord() {
+                        
+                        string name;
+                        cout << "Please enter your name:";
+                        getline(cin, name);
+                        return name;
+                    
+                    }
+                    
+                    void countAllLetter(string S) {
+                    
+                        int counter = 0;
+                    
+                        for (int i = 0; i < S.length(); i++) {
+                            if (S[i] == 'M' || S[i] == 'm') {
+                                counter++;
+                            }
+                        }
+                        cout << "the char repeated  " << counter << " times";
+                    }
+                    int main() {
+                    
+                        countAllLetter(ReadWord());
+                    
+                        return 0;
+                    }
+
+## 88  program counts how many letters repeated in a word :-
+
+                    #include <iostream>
+                    #include <string>
+                    using namespace std;
+                    
+                    string ReadWord() {
+                        string name;
+                        cout << "Please enter your name: ";
+                        getline(cin, name);
+                        return name;
+                    }
+                    
+                    char ReadChar() {
+                        char char1;
+                        cout << "Please enter the letter: ";
+                        cin >> char1;
+                        return char1;
+                    }
+                    
+                    short CountLetter(string S, char char1, bool MatchCase = true) {
+                        short counter = 0;
+                    
+                        for (short i = 0; i < S.length(); i++) {
+                            if (MatchCase) {
+                                if (S[i] == char1)
+                                    counter++;
+                            }
+                            else {
+                                if (tolower(S[i]) == tolower(char1))
+                                    counter++;
+                            }
+                        }
+                    
+                        return counter;
+                    }
+                    
+                    int main() {
+                        string s = ReadWord();
+                        char c = ReadChar();
+                    
+                        short count = CountLetter(s, c);
+                        cout << "The letter repeats " << count << " times (case-sensitive)" << endl;
+                    
+                        count = CountLetter(s, c, false);
+                        cout << "The letter repeats " << count << " times (case-insensitive)" << endl;
+                    
+                        return 0;
+                    }
+
+## 89 program Check if the letter is a vowel or not 
+
+
+                    #include <iostream>
+                    #include <string>
+                    using namespace std;
+                    
+                    char ReadChar() {
+                        char char1;
+                        cout << "Please enter the letter: ";
+                        cin >> char1;
+                        return char1;
+                    }
+                    
+                    bool IsVowel(char char1) {
+                    
+                        char1 = tolower(char1);
+                    
+                        return ((char1 == 'a') || (char1 == 'o') || (char1 == 'u') || (char1 == 'e') || (char1 == 'i'));
+                    
+                    }
+                    
+                    int main() {
+                    
+                        char Ch1 = ReadChar(); 
+                    
+                        if (IsVowel(Ch1))    
+                            cout << "\nYES Letter \'" << Ch1 << "\' is vowel";
+                        else      
+                            cout << "\nNO Letter \'" << Ch1 << "\' is NOT vowel";
+                    
+                        return 0;
+                    }
+## 90 program counts how many vowel letters repeated in a word 
+
+                    #include <iostream>
+                    #include <string>
+                    using namespace std;
+                    string ReadString() {
+                        string name;
+                        cout << "Please enter your name ";
+                        getline(cin, name);
+                        return name;
+                    }
+                    bool IsVowel(char char1) {
+                    
+                        char1 = tolower(char1);
+                    
+                        return ((char1 == 'a') || (char1 == 'o') || (char1 == 'u') || (char1 == 'e') || (char1 == 'i'));
+                    
+                    }
+                    short CountVowel(string s ) {
+                    
+                        short counter = 0;
+                        for (short i = 0; i < s.length(); i++) {
+                            if (IsVowel(s[i]))
+                                counter++;
+                        }
+                        return counter;
+                    }
+                    
+                    int main() {
+                    
+                        string s = ReadString();
+                    
+                        short a = CountVowel(s);
+                    
+                        cout << "The count of vowel letter is " << a;
+                    
+                        return 0;
+                    }
+
+
+## 91  
 
 
 
