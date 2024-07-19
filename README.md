@@ -7708,11 +7708,241 @@ int main() {
                     }
 
 
-## 91  
+## 91  Print Vowel letter 
+
+                    #include <iostream>
+                    #include <string>
+                    using namespace std;
+                    string ReadString() {
+                        string name;
+                        cout << "Please enter your name ";
+                        getline(cin, name);
+                        return name;
+                    }
+                    bool IsVowel(char char1) {
+                    
+                        char1 = tolower(char1);
+                    
+                        return ((char1 == 'a') || (char1 == 'o') || (char1 == 'u') || (char1 == 'e') || (char1 == 'i'));
+                    
+                    }
+                    void PrintVowel(string s ) {
+                    
+                    
+                        for (short i = 0; i < s.length(); i++) {
+                            if (!IsVowel(s[i]))
+                                cout << " ";
+                            else
+                                cout << s[i];
+                        }
+                       
+                    }
+                    
+                    int main() {
+                    
+                        PrintVowel(ReadString());
+                    
+                        return 0;
+                    }
+
+## 92 program prints Each word 
 
 
+                              #include <iostream>
+                              #include <string>
+                              #include <vector>
+                              
+                              using namespace std;
+                              string ReadString() {
+                                  string name;
+                                  cout << "Please enter your name ";
+                                  getline(cin, name);
+                                  return name;
+                              }
+                              
+                              void PrintEachWord(string s ) {
+
+                        string delim = " ";
+                        short pos = 0;
+                        string sWrod;
+                    
+                        cout << "the string words is: \n\n";
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                    
+                                sWrod = s.substr(0, pos);
+                                if (sWrod != " ") {
+                                    cout << sWrod << endl;
+                                }
+                                s.erase(0, pos + delim.length());
+                        }
+                    
+                                if (s != " ") {
+                                    cout << s << endl;
+                                 }
+                       
+                    }
+                    
+                    int main() {
+                    
+                        PrintEachWord(ReadString());
+                    
+                        return 0;
+                    }
+
+## 93 program reads string and counts each word in the string 
 
 
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    string ReadString() {
+                        string name;
+                        cout << "Please enter your name ";
+                        getline(cin, name);
+                        return name;
+                    }
+                    
+                    short PrintEachWord(string s ) {
+                    
+                        string delim = " ";
+                        short pos = 0;
+                        string sWrod;
+                        short counter = 0;
+                    
+                        cout << "the string words is: \n\n";
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                    
+                                sWrod = s.substr(0, pos);
+                                if (sWrod != " ") {
+                                    counter++;
+                                }
+                                s.erase(0, pos + delim.length());
+                        }
+                        if (s != " ") 
+                        {
+                            counter++;
+                    
+                        }
+                    
+                        return counter;
+                       
+                    }
+                    
+                    int main() {
+                    
+                        
+                       short s =  PrintEachWord(ReadString());
+                    
+                       cout << "The number of word in string is :" << s << endl;
+                    
+                    
+                        return 0;
+                    }
+## 94 Splitting function 
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    string ReadString() {
+                        string name;
+                        cout << "Please enter your name ";
+                        getline(cin, name);
+                        return name;
+                    }
+                    
+                    vector <string> SplitString(string s, string delim) {
+                    
+                        short pos = 0;
+                        string sWrod;
+                        vector <string> Vstring;
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                    
+                            sWrod = s.substr(0, pos);
+                            if (sWrod != " ") {
+                    
+                                Vstring.push_back(sWrod);
+                            }
+                            s.erase(0, pos + delim.length());
+                        }
+                    
+                        return  Vstring;
+                    
+                    }
+                    
+                    
+                    int main() {
+                    
+                       vector <string> Vstring =  SplitString(ReadString(), " ");
+                    
+                       cout << "the number of word is " << Vstring.size() << endl;
+                    
+                       for (string& s : Vstring) {
+                           cout << s << endl;
+                       }
+                    
+                    
+                        return 0;
+                    }
+
+## 95  TrimLeft TrimRight TrimAll String 
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    
+                    string TrimLeft(string s ) {
+                        
+                        for (short i = 0; i < s.length(); i++) {
+                            if (s[i] != ' ') {
+                                return  s.substr(i, s.length() - i);
+                            }
+                       }
+                        return "";
+                    }
+                    string TrimRight(string s ) {
+                        
+                        for (short i = s.length(); i >= 0 ; i--) {
+                            if (s[i] != ' ') {
+                                return  s.substr(0, i+1);
+                            }
+                       }
+                        return "";
+                    }
+                    
+                    string Trim(string s) {
+                        return TrimRight(TrimLeft(s));
+                    }
+                    
+                    
+                    
+                    int main() {
+                    
+                        
+                        string word = "     muustafa saad  ";
+                    
+                       
+                        cout << "Right = " << TrimRight(word) << endl;
+                    
+                        cout << "left  = "<< TrimLeft(word) << endl;
+                    
+                    
+                        cout << "All = " << Trim(word) << endl;
+                    
+                    
+                        return 0;
+                    }
 
 
 
