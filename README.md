@@ -7945,11 +7945,126 @@ int main() {
                     }
 
 
+## 96 program to join string 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    string ALlString(vector <string> Vstring , string delim ) {
+                    
+                        string Result;
+                        for (string& word : Vstring) {
+                    
+                            Result = Result + word + delim ;
+                        }
+                        return Result.substr(0,Result.length()-delim.length());
+                    }
+                    int main() {
+                    
+                        
+                        vector <string> Vstring = { "Mohammed " , "Faid" , "Ali" , "Maher" };
+                    
+                        cout << "words after join : " << endl;
+                        cout << ALlString(Vstring ," ");
+                    
+                        return 0;
+                    }
+
+## 97 join string and Reverse string 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    string Readstring() {
+                        string name;
+                        cout << "Please enter your name" << endl;
+                        getline(cin, name);
+                        return name;
+                    }
+                    
+                    vector<string> LoadString(string s, vector<string>& Vstring, string delim) {
+                        size_t pos = 0;
+                        string word;
+                    
+                        while ((pos = s.find(delim)) != string::npos) {
+                            word = s.substr(0, pos);
+                            if (!word.empty() && word != " ") {
+                                Vstring.push_back(word);
+                            }
+                            s.erase(0, pos + delim.length());
+                        }
+                        if (!s.empty() && s != " ") {
+                            Vstring.push_back(s);
+                        }
+                    
+                        return Vstring;
+                    }
+                    
+                    void ReverseString(vector <string> Vstring) {
+                    
+                        cout << "the Reverse word is :";
+                    
+                        for (short i = Vstring.size() - 1; i >= 0; i--) {
+                            cout << Vstring[i] + " ";
+                        }
+                    }
+                    
+                    int main() {
+                        vector<string> Vstring;
+                        string inputString = Readstring();
+                        LoadString(inputString, Vstring, " ");
+                        ReverseString(Vstring);
+                    
+                        return 0;
+                    }
+
+## 98 Replace string 
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    string Readstring() {
+                        string name;
+                        cout << "Please enter your name" << endl;
+                        getline(cin, name);
+                        return name;
+                    }
+                    
+                    string ReplaceWord(string s, string r, string rto) {
+                        short pos = s.find(r);
+                    
+                        while(pos != std::string::npos) {
+                    
+                            s = s.replace(pos, r.length(), rto);
+                            pos = s.find(r);
+                        }
+                        return s;
+                    }
+                    
+                    int main() {
+                        string s = Readstring();
+                        string r = "Egypt", r2 = "USA";
+                    
+                        cout << ReplaceWord(s, r, r2);
+                    
+                        
+                        
+                    
+                        return 0;
+                    }
 
 
-
-
-
+## 99 
 
 
 
