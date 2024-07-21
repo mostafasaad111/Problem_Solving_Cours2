@@ -8064,10 +8064,103 @@ int main() {
                     }
 
 
-## 99 
+## 99 Remove Punctuations 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    string Readstring() {
+                        string name;
+                        cout << "Please enter your name" << endl;
+                        getline(cin, name);
+                        return name;
+                    }
+                    string RemovePunctuations(string s) {
+                    
+                        string S2 = " ";
+                    
+                        for (short i = 0; i < s.length() - 1; i++) {
+                            if (!ispunct(s[i])) {
+                                S2 += s[i] ;
+                            }
+                        }
+                        return S2;
+                    }
+                    
+                    
+                    int main() {
+                    
+                      
+                    
+                        cout << "string after remove \n " << RemovePunctuations(Readstring());
+                    
+                        return 0;
+                    }
 
 
+## 100 program converts string to record 
 
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    struct stClient {
+                    
+                        string Name, AccountNumber, Phone, PinCode;
+                        double AccountBalance ;
+                    
+                    };
+                    stClient  ReadClinet() {
+                    
+                        stClient Client;
+                      
+                        cout << "Please enter your name" << endl;
+                        getline(cin, Client.Name);
+                    
+                        cout << "Please enter Account Number " << endl;
+                        cin >> Client.AccountNumber; 
+                    
+                        cout << "Please enter Account Balance " << endl;
+                        cin >> Client.AccountBalance;
+                    
+                        cout << "Please enter Phone " << endl;
+                        cin >> Client.Phone;
+                    
+                        cout << "Please enter Pin Code " << endl;
+                        cin >> Client.PinCode;
+                    
+                        return  Client;
+                    }
+                    string ConvertRecord(stClient Client, string Sperator = "###") {
+                    
+                        string stClientRecord = " ";
+                    
+                        stClientRecord += Client.Name + Sperator;
+                        stClientRecord += Client.AccountNumber + Sperator;
+                        stClientRecord += Client.Phone + Sperator;
+                        stClientRecord += Client.PinCode + Sperator;
+                        stClientRecord += to_string( Client.AccountBalance) ;
+                    
+                        return stClientRecord;
+                    }
+                    
+                    int main() {
+                    
+                        stClient Client = ReadClinet();
+                    
+                        cout << "the Record " << endl;
+                    
+                        cout << ConvertRecord(Client);
+                    
+                        return 0;
+                    }
+
+## 101 
 
 
 
