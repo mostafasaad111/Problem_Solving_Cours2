@@ -8160,7 +8160,89 @@ int main() {
                         return 0;
                     }
 
-## 101 
+## 101 Convert line to Record 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <vector>
+                    
+                    using namespace std;
+                    
+                    struct stClient {
+                        string Name, AccountNumber, Phone, PinCode;
+                        double AccountBalance;
+                    };
+                    
+                    vector<string> SplitString(const string& s, const string& delim = "##") {
+                        size_t pos = 0, start = 0;
+                        vector<string> Vstring;
+                        string token;
+                        string temp = s; // Create a copy of the string to manipulate
+                    
+                        while ((pos = temp.find(delim, start)) != string::npos) {
+                            token = temp.substr(start, pos - start);
+                            if (!token.empty()) {
+                                Vstring.push_back(token);
+                            }
+                            start = pos + delim.length();
+                        }
+                    
+                        // Add the last token
+                        token = temp.substr(start);
+                        if (!token.empty()) {
+                            Vstring.push_back(token);
+                        }
+                    
+                        return Vstring;
+                    }
+                    
+                    stClient ConvertClientToRecord(const vector<string>& Vstring) {
+                        stClient Client;
+                    
+                        if (Vstring.size() == 5) {
+                            Client.PinCode = Vstring[0];
+                            Client.AccountNumber = Vstring[1];
+                            Client.Name = Vstring[2];
+                            Client.Phone = Vstring[3];
+                            Client.AccountBalance = stod(Vstring[4]);
+                        }
+                        else {
+                            cerr << "Invalid input data!" << endl;
+                        }
+                    
+                        return Client;
+                    }
+                    
+                    void Print(const stClient& Client) {
+                        cout << "The Record is:" << endl;
+                        cout << "Name: " << Client.Name << endl;
+                        cout << "Account Number: " << Client.AccountNumber << endl;
+                        cout << "Phone: " << Client.Phone << endl;
+                        cout << "Pin Code: " << Client.PinCode << endl;
+                        cout << "Account Balance: " << Client.AccountBalance << endl;
+                    }
+                    
+                    int main() {
+                        string stringClient = "A150##1234##Mustafa Saad##08987894##5270.0000";
+                    
+                        vector<string> Vstring = SplitString(stringClient);
+                        stClient Client = ConvertClientToRecord(Vstring);
+                    
+                        Print(Client);
+                    
+                        return 0;
+                    }
+
+## 102 
+
+
+
+
+
+
+
+
+
 
 
 
