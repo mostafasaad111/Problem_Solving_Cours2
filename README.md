@@ -9187,7 +9187,106 @@ int main() {
                     }
 
 
-## 108 
+## 108 Update file and word conversion by another word 
+
+
+                    
+                    #include<iostream>
+                    #include<fstream>
+                    #include<string>
+                    #include<vector>
+                    using namespace std;
+                    void LoadDataFromFileToVector(string FileName, vector <string> & vFileContent)
+                    {
+                    	fstream MyFile;   
+                    	MyFile.open("file.txt", ios::in);//read Mode
+                    	if (MyFile.is_open()) 
+                    	{ 
+                    		string Line;
+                    		
+                    	 while (getline(MyFile, Line))  
+                    	{
+                    			vFileContent.push_back(Line);      
+                    	}   
+                    		MyFile.close();   
+                    	}
+                    }
+                    void SaveVectorToFile(string FileName, vector <string> vFileContent) 
+                    { 
+                    	fstream MyFile;   
+                    	MyFile.open("file.txt", ios::out);
+                    	if (MyFile.is_open()) 
+                    	{
+                    		for (string Line : vFileContent)  
+                    		{ 
+                    			if (Line != "") 
+                    		{            
+                    			MyFile << Line << endl;  
+                    		}  
+                    
+                    		}  
+                    
+                    		MyFile.close(); 
+                    	}
+                    } 
+                    
+                    void UpdateRecordFromFile(string FileName, string Record , string UpdateTo) 
+                    	{ 
+                    	vector <string> vFileContent; 
+                    
+                    	LoadDataFromFileToVector(FileName, vFileContent);
+                    
+                    	for (string &Line : vFileContent) 
+                    	{ 
+                    		short pos = 0; 
+                    		while ((pos = Line.find(Record, pos)) != std::string::npos) {
+                    			Line.replace(pos, Record.length(), UpdateTo);
+                    			pos += UpdateTo.length();
+                    		}
+                    	
+                    	}   
+                    	        SaveVectorToFile(FileName, vFileContent);
+                    	
+                    }
+                    void PrintFileContent(string FileName) {
+                    
+                    		fstream MyFile;   
+                    		MyFile.open(FileName, ios::in);//read Mode
+                    
+                    		if (MyFile.is_open())
+                    		{ 
+                    			string Line; while (getline(MyFile, Line))  
+                    		{          
+                    				cout << Line << endl;    
+                    		}       
+                    			MyFile.close();  
+                    		} 
+                    }
+                    int main() {
+                    
+                    			cout << "File Content Before Delete.\n";
+                    			PrintFileContent("file.txt"); 
+                    
+                    			UpdateRecordFromFile("file.txt", "ali" , "Omar");
+                    
+                    			cout << "\n\nFile Content After Delete.\n";
+                    
+                    			PrintFileContent("file.txt"); return 0;
+                    
+                    }
+
+## 109  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
