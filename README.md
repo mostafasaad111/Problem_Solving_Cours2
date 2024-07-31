@@ -9275,17 +9275,224 @@ int main() {
                     
                     }
 
-## 109  
+## 109  Two matrices filled by a random number and compare to if equal or not equal 
 
 
 
 
+                    
+                    #include <iostream>
+                    #include <cstdlib>
+                    #include <ctime>
+                    using namespace std;
+                    
+                    int RandomNumber(int From, int To) {
+                        return rand() % (To - From + 1) + From;
+                    }
+                    
+                    void FillMatrix1(int Matrix1[3][3], int Size) {
+                        for (int i = 0; i < Size; i++) {
+                            for (int j = 0; j < Size; j++) {
+                                Matrix1[i][j] = RandomNumber(0, 10);
+                            }
+                        }
+                    }
+                    
+                    void FillMatrix2(int Matrix2[3][3], int Size) {
+                        for (int i = 0; i < Size; i++) {
+                            for (int j = 0; j < Size; j++) {
+                                Matrix2[i][j] = RandomNumber(0, 10);
+                            }
+                        }
+                    }
+                    
+                    int SumMatrix(int Matrix[3][3], int Size) {
+                        int Sum = 0;
+                        for (int i = 0; i < Size; i++) {
+                            for (int j = 0; j < Size; j++) {
+                                Sum += Matrix[i][j];
+                            }
+                        }
+                        return Sum;
+                    }
+                    void PrintMatrix(int Matrix[3][3] ) {
+                        
+                        for (int i = 0; i < 3; i++) {
+                            for (int j = 0; j < 3; j++) {
+                                cout << Matrix[i][j] << " ";
+                            }
+                            cout << endl;
+                        }
+                    
+                    }
+                    void CheckMatrices(int arr1[3][3], int arr2[3][3], int Size) {
+                        int Sum1 = SumMatrix(arr1, Size);
+                        int Sum2 = SumMatrix(arr2, Size);
+                    
+                        if (Sum1 == Sum2) {
+                            cout << "Sum1 = " << Sum1 << "\nSum2 = " << Sum2 << "\nMatrices are Equal" << endl;
+                        }
+                        else {
+                            cout << "Sum1 = " << Sum1 << "\nSum2 = " << Sum2 << "\nMatrices are not Equal" << endl;
+                        }
+                    }
+                    
+                    int main() {
+                        srand((unsigned)time(NULL));
+                    
+                        int Matrix1[3][3], Matrix2[3][3];
+                    
+                        FillMatrix1(Matrix1, 3);
+                        FillMatrix2(Matrix2, 3);
+                    
+                        
+                        cout << "\nMatrix1:" << endl;
+                        PrintMatrix(Matrix1);
+                    
+                        cout << "\nMatrix2:" << endl;
+                        PrintMatrix(Matrix2);
+                    
+                        CheckMatrices(Matrix1, Matrix2, 3);
+                    
+                        return 0;
+                    }
 
 
+## 110 Print Each Row in the Matrix 
 
 
+                    #include <iostream>
+                    #include <cstdlib>
+                    #include <ctime>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int RandomNumber(int From, int To) {
+                        return rand() % (To - From + 1) + From;
+                    }
+                    
+                    void FillMatrix1(int Matrix1[3][3], int Size) {
+                        for (int i = 0; i < Size; i++) {
+                            for (int j = 0; j < Size; j++) {
+                                Matrix1[i][j] = RandomNumber(0, 10);
+                            }
+                        }
+                    }
+                    
+                    
+                    vector <int> SumEachRow( int Matrix[3][3], int Size) {
+                     
+                        vector <int> vSum ;
+                    
+                        for (int i = 0; i < Size; i++) {
+                            int Sum = 0;
+                            for (int j = 0; j < Size; j++) {
+                    
+                                Sum += Matrix[i][j];
+                            }
+                            vSum.push_back(Sum);
+                        }
+                        return vSum;
+                    }
+                    void PrintEachRow(vector <int> & vSum) {
+                        
+                        int counter = 1;
+                        for (int sum : vSum) {
+                            cout << "Row (" << counter << ") = "<< sum << endl;
+                            counter++;
+                        }
+                    }
+                    
+                    int main() {
+                    
+                        srand((unsigned)time(NULL));
+                    
+                        int Matrix1[3][3];
+                    
+                        FillMatrix1(Matrix1, 3);
+                    
+                        vector <int> vSum =  SumEachRow( Matrix1, 3);
+                    
+                        cout << "\nMatrix Row Sums :" << endl;
+                        PrintEachRow(vSum);
+                    
+                    
+                        return 0;
+                    }
 
 
+## 111  Sum Clomns in Matrix 
+
+
+                    #include <iostream>
+                    #include <cstdlib>
+                    #include <ctime>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int RandomNumber(int From, int To) {
+                        return rand() % (To - From + 1) + From;
+                    }
+                    
+                    void FillMatrix1(int Matrix1[3][3], int Size) {
+                        for (int i = 0; i < Size; i++) {
+                            for (int j = 0; j < Size; j++) {
+                                Matrix1[i][j] = RandomNumber(0, 10);
+                            }
+                        }
+                    }
+                    
+                    
+                    vector <int> SumEachRow( int Matrix[3][3], int Size) {
+                     
+                        vector <int> vSum ;
+                    
+                        for (int i = 0; i < Size; i++) {
+                            int Sum = 0;
+                            for (int j = 0; j < Size; j++) {
+                    
+                                Sum += Matrix[j][i];
+                            }
+                            vSum.push_back(Sum);
+                        }
+                        return vSum;
+                    }
+                    void PrintMatrix(int Matrix[3][3] , int Size) {
+                    
+                        for (int i = 0; i < Size; i++) {
+                            for (int j = 0; j < Size; j++) {
+                                cout << Matrix[i][j] << " ";
+                            }
+                            cout << endl;
+                        }
+                    }
+                    void PrintEachRow(vector <int> & vSum) {
+                        
+                        int counter = 1;
+                        for (int sum : vSum) {
+                            cout << "Row (" << counter << ") = "<< sum << endl;
+                            counter++;
+                        }
+                    }
+                    
+                    int main() {
+                    
+                        srand((unsigned)time(NULL));
+                    
+                        int Matrix1[3][3];
+                    
+                        FillMatrix1(Matrix1, 3);
+                        PrintMatrix(Matrix1, 3);
+                    
+                        
+                        vector <int> vSum =  SumEachRow( Matrix1, 3);
+                    
+                        cout << "\nMatrix Cols Sums :" << endl;
+                        PrintEachRow(vSum);
+                    
+                    
+                        return 0;
+                    }
 
 
 
