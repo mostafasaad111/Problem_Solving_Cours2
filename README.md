@@ -9495,5 +9495,410 @@ int main() {
                     }
 
 
+## 112 Reverse String 
+
+                    #include <iostream>
+                    #include <vector>
+                    #include <string>
+                    using namespace std;
+                    
+                    string ReadString() {
+                        string Name;
+                        cout << "Please Enter Your String ?" << endl;
+                        getline(cin, Name);
+                        return Name;
+                    }
+                    
+                    vector<string> SplitString(const string& s, const string& delim) {
+                        vector<string> vWord;
+                        size_t pos = 0;
+                        size_t start = 0;
+                    
+                        while ((pos = s.find(delim, start)) != string::npos) {
+                            string sWord = s.substr(start, pos - start);
+                            if (!sWord.empty()) {
+                                vWord.push_back(sWord);
+                            }
+                            start = pos + delim.length();
+                        }
+                    
+                        if (start < s.size()) {
+                            vWord.push_back(s.substr(start));
+                        }
+                    
+                        return vWord;
+                    }
+                    
+                    void PrintReverse(const vector<string>& vWord) {
+                        for (int i = vWord.size() - 1; i >= 0; i--) {
+                            cout << vWord[i] << " ";
+                        }
+                        cout << endl;
+                    }
+                    
+                    int main() {
+                        vector<string> vWord = SplitString(ReadString(), " ");
+                        PrintReverse(vWord);
+                        return 0;
+                    }
+
+## 113 Load Data to file 
+
+
+                    #include <iostream>
+                    #include <vector>
+                    #include <string>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    struct sClient {
+                        string AccountNumber , pinCode , Name , Phone ;
+                        double AccountBalance; 
+                    
+                    };
+                    sClient ReadRecord() {
+                    
+                        sClient Client;
+                        cout << "Enter Account Number? ";
+                       getline( cin , Client.AccountNumber);
+                    
+                        cout << "Enter Pin Code ? ";
+                        getline(cin, Client.pinCode);
+                    
+                        cout << "Enter Name? ";
+                        getline(cin, Client.Name);
+                    
+                        cout << "Enter Phone? ";
+                        getline(cin, Client.Phone);
+                    
+                        cout << "Enter Account Balance? ";
+                        cin >> Client.AccountBalance;
+                    
+                        return Client;
+                    
+                    }
+                    string SumString(string Delim) {
+                    
+                        sClient  Client = ReadRecord();
+                        string S2;
+                    
+                        S2 += Client.AccountNumber + Delim;
+                        S2 += Client.Name + Delim;
+                        S2 += Client.Phone + Delim;
+                        S2 += Client.pinCode + Delim;
+                        S2 += to_string(Client.AccountBalance) ;
+                    
+                        return S2;
+                    
+                    }
+                    void LoadDataToFile() {
+                    
+                    
+                        string s = SumString("#//#");  
+                        
+                        fstream MyFile;
+                    
+                        MyFile.open("file.txt", ios::out);
+                    
+                        if (MyFile.is_open()) {
+                            MyFile << s;
+                        }
+                        MyFile.close();
+                    }
+                    int main() {
+                      
+                    
+                        LoadDataToFile();
+                    
+                        return 0;
+                    }
+
+
+## 114 Load Data from the file and print it 
+
+
+                              #include <iostream>
+                              #include <vector>
+                              #include <string>
+                              #include <fstream>
+                              using namespace std;
+                              
+                              struct sClient {
+                                  string AccountNumber, pinCode, Name, Phone;
+                                  double AccountBalance;
+                              
+                              };
+                              
+                              string LoadDataFromFile() {
+
+                        fstream MyFile;
+                        MyFile.open("file.txt", ios::in); // read from file 
+                    
+                        string Line , AllData;
+                        
+                        if (MyFile.is_open()) {
+                    
+                            while (getline(MyFile, Line)) {
+                                AllData +=  Line + "\n";
+                            }
+                        }
+                        MyFile.close();
+                        return AllData;
+                    }
+                    vector <string> SplitLine( string delim) {
+                        vector <string> vClient ;
+                    
+                        string s = LoadDataFromFile();
+                        short pos = 0;
+                        string sWord;
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                    
+                            sWord = s.substr(0, pos);
+                    
+                            if (sWord != " ") {
+                                vClient.push_back(sWord);
+                            }
+                            s.erase(0, pos + delim.length());
+                    
+                        }
+                        if (s != " ") {
+                            vClient.push_back(s);
+                        }
+                        return vClient;
+                    }
+                    sClient ConvertLineToRecord() {
+                    
+                            sClient Client;
+                            vector <string> vClient = SplitLine("#//#");
+                    
+                            Client.AccountNumber = vClient[0];
+                            Client.pinCode = vClient[1];
+                            Client.Name = vClient[2];
+                            Client.Phone = vClient[3];
+                            Client.AccountBalance = stod(vClient[4]);
+                    
+                            return Client;
+                    
+                    }
+                    void PrintRecod(sClient Client) {
+                    
+                        cout << "Account Number: " << Client.AccountNumber << endl;
+                        cout << "Pin Code : " << Client.pinCode << endl;
+                        cout << "Name : " << Client.Name << endl;
+                        cout << "Phone : " << Client.Phone << endl;
+                        cout << "Account Balance : " << Client.AccountBalance << endl;
+                        cout << "=========================================" << endl;
+                    }
+                    int main() {
+                        
+                        sClient Client =  ConvertLineToRecord();
+                    
+                        PrintRecod(Client);
+                    
+                        return 0;
+                    }
+
+## 115 Add More Client in File 
+
+
+                    #include <iostream>
+                    #include <vector>
+                    #include <string>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    struct sClient {
+                        string AccountNumber, pinCode, Name, Phone;
+                        double AccountBalance;
+                    
+                    };
+                    sClient ReadRecord() {
+                    
+                        sClient Client;
+                        cout << "Enter Account Number? ";
+                        getline(cin >> ws, Client.AccountNumber);
+                    
+                        cout << "Enter Pin Code ? ";
+                        getline(cin, Client.pinCode);
+                    
+                        cout << "Enter Name? ";
+                        getline(cin, Client.Name);
+                    
+                        cout << "Enter Phone? ";
+                        getline(cin, Client.Phone);
+                    
+                        cout << "Enter Account Balance? ";
+                        cin >> Client.AccountBalance;
+                    
+                        return Client;
+                    
+                    }
+                    string ConvertRecordToLine(string Delim) {
+                    
+                        sClient  Client = ReadRecord();
+                        string S2;
+                    
+                        S2 += Client.AccountNumber + Delim;
+                        S2 += Client.Name + Delim;
+                        S2 += Client.Phone + Delim;
+                        S2 += Client.pinCode + Delim;
+                        S2 += to_string(Client.AccountBalance);
+                    
+                        return S2;
+                    
+                    }
+                    void LoadDataToFile() {
+                    
+                    
+                        string s = ConvertRecordToLine("#//#");
+                    
+                        fstream MyFile;
+                    
+                        MyFile.open("file.txt", ios::out | ios::app);
+                    
+                        if (MyFile.is_open()) {
+                            MyFile << s << endl;
+                        }
+                        MyFile.close();
+                    }
+                    void AddMoreClient() {
+                        char c1; 
+                    
+                    
+                        do {
+                    
+                            LoadDataToFile();
+                            cout << "Do you need add more client (y/n)?";
+                            cout << endl;
+                            cin >> c1;
+                        } while (c1 == 'y' || c1 == 'Y');
+                    }
+                    int main() {
+                    
+                    
+                        AddMoreClient();
+                        
+                    
+                        return 0;
+                    }
+
+## 116 Print All Clients in File 
+
+
+                    #include <iostream>
+                    #include <vector>
+                    #include <string>
+                    #include <fstream>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    const string ClientsFileName = "file.txt";
+                    
+                    struct sClient {
+                        string AccountNumber, pinCode, Name, Phone;
+                        double AccountBalance;
+                    
+                    };
+                    vector <string> SplitLine(string s, string delim) {
+                        vector <string> vClient;
+                    
+                        short pos = 0;
+                        string sWord;
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                    
+                            sWord = s.substr(0, pos);
+                    
+                            if (sWord != " ") {
+                                vClient.push_back(sWord);
+                            }
+                            s.erase(0, pos + delim.length());
+                    
+                        }
+                        if (s != " ") {
+                            vClient.push_back(s);
+                        }
+                        return vClient;
+                    }
+                    sClient ConvertLineToRecord(string Line , string sper = "#//#") {
+                    
+                        sClient Client;
+                    
+                        vector <string> vClient = SplitLine(Line , sper);
+                    
+                        Client.AccountNumber = vClient[0];
+                        Client.pinCode = vClient[1];
+                        Client.Name = vClient[2];
+                        Client.Phone = vClient[3];
+                        Client.AccountBalance = stod(vClient[4]);
+                    
+                        return Client;
+                    
+                    }
+                    
+                    vector <sClient> LoadDataFromFile(string FileName) {
+                    
+                        fstream MyFile;
+                        MyFile.open(FileName, ios::in); // read from file 
+                    
+                        string Line;
+                        sClient Client;
+                    
+                        vector <sClient> vClient;
+                    
+                        if (MyFile.is_open()) {
+                    
+                            while (getline(MyFile, Line)) {
+                                Client = ConvertLineToRecord(Line);
+                                vClient.push_back(Client);
+                            }
+                        }
+                        MyFile.close();
+                        return vClient;
+                    }
+                    
+                    
+                    void PrintClientRecord(sClient Client) {
+                    
+                        cout << "| " << setw(15) << left << Client.AccountNumber; 
+                        cout << "| " << setw(30) << left << Client.pinCode;   
+                        cout << "| " << setw(40) << left << Client.Name; 
+                        cout << "| " << setw(12) << left << Client.Phone;  
+                        cout << "| " << setw(12) << left << Client.AccountBalance;
+                    }
+                    void PrintAllClient(vector <sClient> vClients) {
+                        
+                        cout << "\n\t\t\t\tClient List( " << vClients.size() << ") Client(s)";
+                    
+                        cout << "\n_______________________________________________________";  
+                        cout << "_________________________________________\n" << endl;  
+                    
+                        cout << "| " << left << setw(15) << "Accout Number";   
+                        cout << "| " << left << setw(40) << "Client Name"; 
+                        cout << "| " << left << setw(10) << "Pin Code";   
+                        cout << "| " << left << setw(12) << "Phone";   
+                        cout << "| " << left << setw(12) << "Balance";  
+                    
+                        cout << "\n_______________________________________________________";    
+                        cout << "_________________________________________\n" << endl;
+                    
+                        for (sClient Client : vClients) {
+                            PrintClientRecord(Client);
+                            cout << endl;
+                        }
+                    
+                    }
+                    int main() {
+                    
+                       
+                        vector < sClient> vClients = LoadDataFromFile(ClientsFileName);
+                    
+                    
+                        PrintAllClient(vClients);
+                    
+                        return 0;
+                    }
+                    
 
 
