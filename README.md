@@ -9901,4 +9901,346 @@ int main() {
                     }
                     
 
+## 117 Find Client by Account Number 
 
+
+
+                    #include <iostream>
+                    #include <vector>
+                    #include <string>
+                    #include <fstream>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    const string ClientsFileName = "file.txt";
+                    
+                    struct sClient {
+                        string AccountNumber, pinCode, Name, Phone;
+                        double AccountBalance;
+                    
+                    };
+                    vector <string> SplitLine(string s, string delim) {
+                        vector <string> vClient;
+                    
+                        short pos = 0;
+                        string sWord;
+                    
+                        while ((pos = s.find(delim)) != std::string::npos) {
+                    
+                            sWord = s.substr(0, pos);
+                    
+                            if (sWord != " ") {
+                                vClient.push_back(sWord);
+                            }
+                            s.erase(0, pos + delim.length());
+                    
+                        }
+                        if (s != " ") {
+                            vClient.push_back(s);
+                        }
+                        return vClient;
+                    }
+                    sClient ConvertLineToRecord(string Line , string sper = "#//#") {
+                    
+                        sClient Client;
+                    
+                        vector <string> vClient = SplitLine(Line , sper);
+                    
+                        Client.AccountNumber = vClient[0];
+                        Client.pinCode = vClient[1];
+                        Client.Name = vClient[2];
+                        Client.Phone = vClient[3];
+                        Client.AccountBalance = stod(vClient[4]);
+                    
+                        return Client;
+                    
+                    }
+                    
+                    vector <sClient> LoadDataFromFile(string FileName) {
+                    
+                        fstream MyFile;
+                        MyFile.open(FileName, ios::in); // read from file 
+                    
+                        string Line;
+                        sClient Client;
+                    
+                        vector <sClient> vClient;
+                    
+                        if (MyFile.is_open()) {
+                    
+                            while (getline(MyFile, Line)) {
+                                Client = ConvertLineToRecord(Line);
+                                vClient.push_back(Client);
+                            }
+                        }
+                        MyFile.close();
+                        return vClient;
+                    }
+                    void PrintRecord(sClient &Client) {
+                           
+                            cout << "Account Number: " << Client.AccountNumber << endl;
+                            cout << "pin code: " << Client.pinCode << endl;
+                            cout << "Name : " << Client.Name << endl;
+                            cout << "Phone : " << Client.Phone << endl;
+                            cout << "Account Balance: " << Client.AccountBalance << endl;
+                    
+                    }
+                    void FindClient(vector < sClient>& vClients) {
+                    
+                        string Account;
+                        cout << "Please Enter Account Number : ";
+                        cin >> Account;
+                    
+                        bool Found = false;
+                        
+                        for (sClient Client : vClients) {
+                            if (Account == Client.AccountNumber) {
+                    
+                                PrintRecord(Client);
+                            }
+                        }
+                        if (!Found) {
+                            cout << "Client with Account Number " << Account << "Not found." << endl;
+                        }
+                    
+                    }
+                    
+                    int main() {
+                    
+                       
+                        vector < sClient> vClients = LoadDataFromFile(ClientsFileName);
+                    
+                        FindClient(vClients);
+                    
+                        return 0;
+                    }
+
+ ## 118 Delete Client From File 
+
+                     #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    const string ClientsFileName = "Clients.txt";
+                    
+                    struct sClient {
+                        string AccountNumber;
+                        string PinCode;
+                        string Name;
+                        string Phone;
+                        double AccountBalance;
+                        bool MarkForDelete = false;
+                    };
+                    
+                    vector<string> SplitString(string S1, const string& Delim) {
+                        vector<string> vString;
+                        size_t pos = 0;
+                        while ((pos = S1.find(Delim)) != string::npos) {
+                            string sWord = S1.substr(0, pos);
+                            if (!sWord.empty()) {
+                                vString.push_back(sWord);
+                            }
+                            S1.erase(0, pos + Delim.length());
+                        }
+                        if (!S1.empty()) {
+                            vString.push_back(S1);
+                        }
+                        return vString;
+                    }
+                    
+                    sClient ConvertLinetoRecord(const string& Line, const string& Seperator = "#//#") {
+                        sClient Client;
+                        vector<string> vClientData = SplitString(Line, Seperator);
+                        if (vClientData.size() == 5) {
+                            Client.AccountNumber = vClientData[0];
+                            Client.PinCode = vClientData[1];
+                            Client.Name = vClientData[2];
+                            Client.Phone = vClientData[3];
+                            Client.AccountBalance = stod(vClientData[4]);
+                        }
+                        return Client;
+                    }
+                    
+                    string ConvertRecordToLine(const sClient& Client, const string& Seperator = "#//#") {
+                        string stClientRecord = Client.AccountNumber + Seperator +
+                                                Client.PinCode + Seperator +
+                                                Client.Name + Seperator +
+                                                Client.Phone + Seperator +
+                                                to_string(Client.AccountBalance);
+                        return stClientRecord;
+                    }
+                    
+                    vector<sClient> LoadCleintsDataFromFile(const string& FileName) {
+                        vector<sClient> vClients;
+                        fstream MyFile(FileName, ios::in);
+                        if (MyFile.is_open()) {
+                            string Line;
+                            while (getline(MyFile, Line)) {
+                                sClient Client = ConvertLinetoRecord(Line);
+                                vClients.push_back(Client);
+                            }
+                            MyFile.close();
+                        }
+                        return vClients;
+                    }
+                    
+                    void SaveCleintsDataToFile(const string& FileName, const vector<sClient>& vClients) {
+                        fstream MyFile(FileName, ios::out);
+                        if (MyFile.is_open()) {
+                            for (const sClient& C : vClients) {
+                                if (!C.MarkForDelete) {
+                                    string DataLine = ConvertRecordToLine(C);
+                                    MyFile << DataLine << endl;
+                                }
+                            }
+                            MyFile.close();
+                        }
+                    }
+                    
+                    void PrintClientCard(const sClient& Client) {
+                        cout << "\nThe following are the client details:\n";
+                        cout << "\nAccount Number: " << Client.AccountNumber;
+                        cout << "\nPin Code     : " << Client.PinCode;
+                        cout << "\nName         : " << Client.Name;
+                        cout << "\nPhone        : " << Client.Phone;
+                        cout << "\nAccount Balance: " << Client.AccountBalance << endl;
+                    }
+                    
+                    bool FindClientByAccountNumber(const string& AccountNumber, const vector<sClient>& vClients, sClient& Client) {
+                        for (const sClient& C : vClients) {
+                            if (C.AccountNumber == AccountNumber) {
+                                Client = C;
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    
+                    bool MarkClientForDeleteByAccountNumber(const string& AccountNumber, vector<sClient>& vClients) {
+                        for (sClient& C : vClients) {
+                            if (C.AccountNumber == AccountNumber) {
+                                C.MarkForDelete = true;
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    
+                    bool DeleteClientByAccountNumber(const string& AccountNumber, vector<sClient>& vClients) {
+                        sClient Client;
+                        char Answer = 'n';
+                    
+                        if (FindClientByAccountNumber(AccountNumber, vClients, Client)) {
+                            PrintClientCard(Client);
+                            cout << "\n\nAre you sure you want to delete this client? y/n ? ";
+                            cin >> Answer;
+                            if (Answer == 'y' || Answer == 'Y') {
+                                MarkClientForDeleteByAccountNumber(AccountNumber, vClients);
+                                SaveCleintsDataToFile(ClientsFileName, vClients);
+                                cout << "\n\nClient Deleted Successfully." << endl;
+                                return true;
+                            }
+                        } else {
+                            cout << "\nClient with Account Number (" << AccountNumber << ") is Not Found!" << endl;
+                        }
+                        return false;
+                    }
+                    
+                    string ReadClientAccountNumber() {
+                        string AccountNumber;
+                        cout << "\nPlease enter Account Number? ";
+                        cin >> AccountNumber;
+                        return AccountNumber;
+                    }
+                    
+                    int main() {
+                        vector<sClient> vClients = LoadCleintsDataFromFile(ClientsFileName);
+                        string AccountNumber = ReadClientAccountNumber();
+                        DeleteClientByAccountNumber(AccountNumber, vClients);
+                        return 0;
+                    }
+          
+
+## 119 Program Convert Number to String Value 
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    
+                    string NumberToText(int Number) {
+                    
+                        if (Number == 0) {
+                            return  " ";
+                        }
+                        if (Number >= 1 && Number <= 19) 
+                        {
+                            string arr[] = { "" ," One ","Two ","Three ","Four ","Five","Six","Seven",
+                                "Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen", "Fifteen",
+                                "Sixteen","Seventeen","Eighteen","Nineteen" };
+                            return arr[Number] + " ";
+                        }
+                        if (Number >= 20 && Number <= 99)
+                        {
+                            string arr[] = { "" , "", " Twenty " , " Thirty " ,  " Forty" , " Fifty " 
+                                ," Sixty " , " Seventy " , " Eighty " , " Ninety " };
+                            return arr[Number / 10] + " " + NumberToText(Number % 10);
+                            
+                        }
+                        if (Number >= 100 && Number <= 199) 
+                        {
+                            return " One Hundred " + NumberToText(Number % 100);
+                        }
+                        if (Number >= 200 && Number <= 999)
+                        {
+                            return NumberToText(Number / 100) + " Hundreds " + NumberToText(Number % 100);
+                        }
+                        if (Number >= 1000 && Number <= 1999)
+                        {
+                            return  " One Thousand " + NumberToText(Number % 1000);
+                        }
+                        if (Number >= 2000 && Number <= 999999 ) {
+                            return NumberToText(Number / 1000) + " Thousands " + NumberToText(Number % 1000);
+                        }
+                        if (Number >= 2000000 && Number <= 999999999) {
+                            return   NumberToText(Number / 1000000) + " Millions " + NumberToText(Number % 1000000);
+                        }
+                        if (Number >= 1000000000 && Number <= 1999999999) { 
+                            return"One Billion " + NumberToText(Number % 1000000000);
+                        }
+                        else { 
+                            return   NumberToText(Number / 1000000000) + " Billions " + NumberToText(Number % 1000000000);
+                        }
+                    }
+                    int ReadNumber() {
+                    
+                        int Number = 0;
+                        cout << "Please Enter Number : ";
+                        cin >> Number;
+                        return Number;
+                    }
+                    int main() {
+                        
+                        int Number = ReadNumber();
+                    
+                        cout << NumberToText(Number);
+                        return 0;
+                    }
+                    
+
+
+## 120 
+
+
+
+
+
+
+
+ 
