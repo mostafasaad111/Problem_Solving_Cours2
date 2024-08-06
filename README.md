@@ -10278,8 +10278,42 @@ int main() {
                         return 0;
                     }
                     
-   ## 121                  
+   ## 121  Write a program to check whether the year is a leap year or not Leap.
+
+                       
+                      #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int ReadYear() {
+                        int Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    bool IsLeapYear(int Year) {
+                    
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                     
+                    }
+                    
+                    int main() {
+                    
+                        
+                        int Year = ReadYear();
+                    
+                        if (IsLeapYear(Year)) {
+                            cout << "Yes, Year [ " << Year << "] is a leap \n";
+                        }
+                        else {
+                            cout << "No, Year [ " << Year << "] is a No't leap \n";
+                        }
+                        return 0;
+                    }
 
 
-
+## 122 
  
