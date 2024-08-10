@@ -10315,5 +10315,724 @@ int main() {
                     }
 
 
-## 122 
- 
+## 122 Write a program print all day and hours and minutes and seconds in years 
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int ReadYear() {
+                        int Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    bool IsLeapYear(int Year) {
+                    
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                     
+                    }
+                    
+                    void Printleap(int Year) {
+                        cout << "Number of Days       in Year [" << Year << "] is 365\n" ;
+                        cout << "Number of Hours      in Year [" << Year << "] is 8760\n";
+                        cout << "Number of Minutes    in Year [" << Year << "] is 525600\n";
+                        cout << "Number of Seconds    in Year [" << Year << "] is 31536000\n";
+                    }
+                    void PrintNotleap(int Year) {
+                        cout << "Number of Days       in Year [" << Year << "] is 366\n";
+                        cout << "Number of Hours      in Year [" << Year << "] is 8784\n";
+                        cout << "Number of Minutes    in Year [" << Year << "] is 527040\n";
+                        cout << "Number of Seconds    in Year [" << Year << "] is 31622400\n";
+                    }
+                    int main() {
+                    
+                        
+                        int Year = ReadYear();
+                    
+                        if (IsLeapYear(Year)) {
+                            Printleap(Year);
+                        }
+                        else {
+                            PrintNotleap(Year);
+                        }
+                        return 0;
+                    }
+
+
+## 123 Another solution 
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    bool IsLeapYear(int Year) {
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                    }
+                    short NumberOfDaysInYear(short Year) {
+                        return IsLeapYear(Year) ? 365 : 366;
+                    }
+                    short NumberOfHoursInYear(short Year) {
+                        return NumberOfDaysInYear(Year) * 24;
+                    }
+                    int NumberOfMinutesInYear(short Year) {
+                        return NumberOfHoursInYear(Year) * 60;
+                    }
+                    int NumberOfSecondsInYear(short Year) {
+                        return NumberOfMinutesInYear(Year) * 60;
+                    }
+                    int main() {
+                    
+                        
+                        short Year = ReadYear();
+                    
+                        cout << "\n Number of Days       in Year [" << Year << "] is " << NumberOfDaysInYear (Year);
+                        cout << "\n Number of Hours      in Year [" << Year << "] is " << NumberOfHoursInYear(Year);
+                        cout << "\n Number of Minutes    in Year [" << Year << "] is " << NumberOfMinutesInYear(Year);
+                        cout << "\n Number of Seconds    in Year [" << Year << "] is " << NumberOfSecondsInYear(Year);
+                        return 0;
+                    }
+
+ ## 124  Write a program print all day and hours and minutes and seconds in Month
+
+                     #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    short ReadMonth() {
+                        short Month;
+                        cout << "Please Enter Month";
+                        cin >> Month;
+                        return Month;
+                    }
+                    bool IsLeapYear(short Year, short Month) {
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                    }
+                    short NumberOfDaysInMonth(short Year, short Month) {
+                    
+                        if (Month < 1 || Month > 12)
+                            return 0;
+                    
+                        if (Month == 2) {
+                    
+                            return IsLeapYear(Year, Month) ? 28 : 29;
+                        }
+                    
+                        short arr31Day[7] = { 1,3,5,7,8,10,12 };
+                    
+                        for (short i = 0; i < 7; i++) {
+                            if (arr31Day[i] == Month) {
+                    
+                                return 31;
+                            }
+                        }
+                    
+                        return 30;
+                    }
+                    short NumberOfHoursInMonth(short Year, short Month) {
+                        return NumberOfDaysInMonth(Year, Month) * 24;
+                    }
+                    int NumberOfMinutesInMonth(short Year, short Month) {
+                        return NumberOfHoursInMonth(Year, Month) * 60;
+                    }
+                    int NumberOfSecondsInYear(short Year, short Month) {
+                        return NumberOfMinutesInMonth(Year, Month) * 60;
+                    }
+                    int main() {
+                    
+                    
+                        short Year = ReadYear();
+                        short Month = ReadMonth();
+                    
+                        cout << "\n Number of Days       in Month [" << Month << "] is " << NumberOfDaysInMonth(Year, Month);
+                        cout << "\n Number of Hours      in Month [" << Month << "] is " << NumberOfHoursInMonth(Year, Month);
+                        cout << "\n Number of Minutes    in Month [" << Month << "] is " << NumberOfMinutesInMonth(Year, Month);
+                        cout << "\n Number of Seconds    in Month [" << Month << "] is " << NumberOfSecondsInYear(Year, Month);
+                        return 0;
+                    }
+
+## 125  another solution 
+
+
+                    
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    short ReadMonth() {
+                        short Month;
+                        cout << "Please Enter Month";
+                        cin >> Month;
+                        return Month;
+                    }
+                    bool IsLeapYear(short Year, short Month) {
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                    }
+                    short NumberOfDaysInMonth(short Year, short Month) {
+                    
+                        short NumberOfMonth[12] = { 31,29,31,30,31,30,31,31,30,31,30,31 };
+                        return Month == 2 ? (IsLeapYear(Year, Month) ? 28 : 29) : NumberOfMonth[Month - 1];
+                    }
+                    short NumberOfHoursInMonth(short Year, short Month) {
+                        return NumberOfDaysInMonth(Year, Month) * 24;
+                    }
+                    int NumberOfMinutesInMonth(short Year, short Month) {
+                        return NumberOfHoursInMonth(Year, Month) * 60;
+                    }
+                    int NumberOfSecondsInYear(short Year, short Month) {
+                        return NumberOfMinutesInMonth(Year, Month) * 60;
+                    }
+                    int main() {
+                    
+                    
+                        short Year = ReadYear();
+                        short Month = ReadMonth();
+                    
+                        cout << "\n Number of Days       in Month [" << Month << "] is " << NumberOfDaysInMonth(Year, Month);
+                        cout << "\n Number of Hours      in Month [" << Month << "] is " << NumberOfHoursInMonth(Year, Month);
+                        cout << "\n Number of Minutes    in Month [" << Month << "] is " << NumberOfMinutesInMonth(Year, Month);
+                        cout << "\n Number of Seconds    in Month [" << Month << "] is " << NumberOfSecondsInYear(Year, Month);
+                        return 0;
+                    }
+
+## 126 program calculates the day order and day name from the number of (year, month, day)
+
+
+
+                    
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    short ReadMonth() {
+                        short Month;
+                        cout << "Please Enter Month : ";
+                        cin >> Month;
+                        return Month;
+                    }
+                    short ReadDay() {
+                        short Day;
+                        cout << "Please Enter Day : ";
+                        cin >> Day;
+                        return Day;
+                    }
+                    short DayOfWeekOrder(short Day, short Month, short Year) {
+                        
+                        short a, y, m;
+                        a = (14 - Month) / 12;
+                        y = Year - a;
+                        m = Month + (12 * a) - 2;
+                        //Gregoraian low
+                        return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
+                    
+                    }
+                    string DayShortName(short DayOfWeekOrder) {
+                        string arrDayName[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+                    
+                        return arrDayName[DayOfWeekOrder];
+                    }
+                    void Print(short Year , short Month , short Day) {
+                    
+                        cout << "Date       :" << Year << "/" << Month << "/" << Day << endl;
+                        cout << "Day Order  :" << DayOfWeekOrder(Year, Month, Day);
+                        cout << "\nDay Name  :" << DayShortName(DayOfWeekOrder(Year, Month, Day));
+                    }
+                    int main() {
+                    
+                    
+                        short Year = ReadYear();
+                        short Month = ReadMonth();
+                        short Day = ReadDay();
+                    
+                        Print(Year, Month, Day);
+                        return 0;
+                    }
+
+## 127 Write program print the calendar month 
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    short ReadMonth() {
+                        short Month;
+                        cout << "Please Enter Month : ";
+                        cin >> Month;
+                        return Month;
+                    }
+                    short DayOfWeekOrder(short Day, short Month, short Year) {
+                    
+                        short a, y, m;
+                        a = (14 - Month) / 12;
+                        y = Year - a;
+                        m = Month + (12 * a) - 2;
+                        //Gregoraian low
+                        return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
+                    
+                    }
+                    string DayShortName(short DayOfWeekOrder) {
+                        string arrDayName[] = { "Sun","Mon","Tue","Wed","Thu","Fri","Sat" };
+                    
+                        return arrDayName[DayOfWeekOrder];
+                    }
+                    bool IsLeapYear(short Year, short Month) {
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                    }
+                    short NumberOfDaysInMonth(short Year, short Month) {
+                    
+                        if (Month < 1 || Month > 12) {
+                            return 0;
+                        }
+                    
+                        short NumberOfMonth[] = { 31,IsLeapYear(Year, Month) ? 28 : 29,31,30,31,30,31,31,30,31,30,31 };
+                        return  NumberOfMonth[Month - 1];
+                    }
+                    string MonthName(short Month) {
+                    
+                        string arrMonth[12] = { "Jan" , "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec" };
+                        return arrMonth[Month - 1];
+                    }
+                    void Print(short Year, short Month) {
+                    
+                        short DaysInMonth = NumberOfDaysInMonth(Year, Month);
+                        string sMonth = MonthName(Month);
+                    
+                        cout << "__________________" << sMonth << "__________________" << endl;
+                    
+                        printf("  Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
+                    
+                        short StartDay = DayOfWeekOrder(1, Month, Year);
+                    
+                        for (short i = 0; i < StartDay; i++) {
+                            cout << setw(5) << " ";
+                        }
+                    
+                        for (int i = 1; i <= DaysInMonth; i++) {
+                    
+                            cout << setw(5) << i;
+                            if ((StartDay + i) % 7 == 0)
+                                cout << endl;
+                    
+                        }
+                        printf("\n_______________________________________");
+                    }
+                    int main() {
+                    
+                    
+                        short Year = ReadYear();
+                        short Month = ReadMonth();
+                        
+                    
+                        Print(Year, Month);
+                        return 0;
+                    }
+
+## 128 Write a program to print a year's calendar 
+                    
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    short DayOfWeekOrder(short Day, short Month, short Year) {
+                    
+                        short a, y, m;
+                        a = (14 - Month) / 12;
+                        y = Year - a;
+                        m = Month + (12 * a) - 2;
+                        //Gregoraian low
+                        return (Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12)) % 7;
+                    
+                    }
+                    bool IsLeapYear(short Year, short Month) {
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                    }
+                    short NumberOfDaysInMonth(short Year, short Month) {
+                    
+                        if (Month < 1 || Month > 12) {
+                            return 0;
+                        }
+                    
+                        short NumberOfMonth[] = { 31,IsLeapYear(Year, Month) ? 28 : 29,31,30,31,30,31,31,30,31,30,31 };
+                        return  NumberOfMonth[Month - 1];
+                    }
+                    string MonthName(short Month) {
+                    
+                        string arrMonth[12] = { "Jan" , "Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec" };
+                        return arrMonth[Month - 1];
+                    }
+                    void Print(short Year, short Month) {
+                    
+                        short DaysInMonth = NumberOfDaysInMonth(Year, Month);
+                        string sMonth = MonthName(Month);
+                    
+                        cout << "__________________" << sMonth << "__________________" << endl;
+                    
+                        printf("  Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
+                    
+                        short StartDay = DayOfWeekOrder(1, Month, Year);
+                    
+                        for (short i = 0; i < StartDay; i++) {
+                            printf("    ");
+                        }
+                    
+                        for (int i = 1; i <= DaysInMonth; i++) {
+                    
+                            cout << setw(5) << i;
+                            if ((StartDay + i) % 7 == 0)
+                                cout << endl;
+                    
+                        }
+                        printf("\n_______________________________________");
+                    }
+                    int main() {
+                    
+                    
+                    
+                        short Year = ReadYear();
+                        
+                        for (short i = 1; i <= 12; i++) {
+                    
+                          short Month = i;
+                          Print(Year, Month);
+                          cout << endl;
+                        }
+                    
+                        return 0;
+                    }
+
+
+## 129 Write a program to print the total number of days from one day in a year to user inter 
+
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    short ReadMonth() {
+                        short Month;
+                        cout << "Please enter Month : ";
+                        cin >> Month;
+                        return Month;
+                    }
+                    short ReadDay() {
+                        short Day;
+                        cout << "Please enter Day : ";
+                        cin >> Day;
+                        return Day;
+                    }
+                    
+                    
+                    bool IsLeapYear(short Year, short Month) {
+                        return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                    }
+                    short NumberOfDaysInMonth(short Year, short Month) {
+                    
+                        if (Month < 1 || Month > 12) {
+                            return 0;
+                        }
+                    
+                        short NumberOfMonth[] = { 31,IsLeapYear(Year, Month) ? 28 : 29,31,30,31,30,31,31,30,31,30,31 };
+                        return  NumberOfMonth[Month - 1];
+                    }
+                    short PrintTotalNumberOfDay(short Day ,  short Month, short Year) {
+                    
+                        short TotalDays = 0;
+                    
+                        for (int i = 1; i <= Month - 1; i++) {
+                            TotalDays += NumberOfDaysInMonth(Year,i );
+                        }
+                    
+                        TotalDays += Day;
+                    
+                        return  TotalDays ;
+                    }
+                    int main() {
+                    
+                    
+                    
+                        short Year = ReadYear();
+                        short Month = ReadMonth();
+                        short Day = ReadDay();
+                    
+                        cout << "Number of days from the begining of the year is " <<
+                            PrintTotalNumberOfDay(Day, Month, Year);
+                    
+                        return 0;
+                    }
+
+## 130  Write program print date 
+
+
+                              #include <iostream>
+                              #include <fstream>
+                              #include <string>
+                              #include <vector>
+                              #include <iomanip>
+                              using namespace std;
+                              
+                              short ReadYear() {
+                                  short Year;
+                                  cout << "Please enter year : ";
+                                  cin >> Year;
+                                  return Year;
+                              }
+                              short ReadMonth() {
+                                  short Month;
+                                  cout << "Please enter Month : ";
+                                  cin >> Month;
+                                  return Month;
+                              }
+                              short ReadDay() {
+                                  short Day;
+                                  cout << "Please enter Day : ";
+                                  cin >> Day;
+                                  return Day;
+                              }
+                              
+                              
+                              bool IsLeapYear(short Year) {
+                                  return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                              }
+                              short NumberOfDaysInMonth(short Year, short Month) {
+                              
+                                  if (Month < 1 || Month > 12) {
+                                      return 0;
+                                  }
+                              
+                                  short NumberOfMonth[] = { 31,IsLeapYear(Year) ? 28 : 29,31,30,31,30,31,31,30,31,30,31 };
+                                  return  NumberOfMonth[Month - 1];
+                              }
+                              short PrintTotalNumberOfDay(short Day, short Month, short Year) {
+                              
+                                  short TotalDays = 0;
+                              
+                                  for (int i = 1; i <= Month - 1; i++) {
+                                      TotalDays += NumberOfDaysInMonth(Year, i);
+                                  }
+                              
+                                  TotalDays += Day;
+                              
+                                  return  TotalDays;
+                              }
+                              struct sDate {
+                                  short Day, Month;
+                              };
+                              sDate PrintDate(short TotalDay, short Year) {
+                              
+                                  sDate Date;
+                                  short MonthDays = 0;
+                                  Date.Month = 1;
+                              
+                                  while (true) {
+                              
+                                      MonthDays = NumberOfDaysInMonth(Year, Date.Month);
+                              
+                                      if (TotalDay > MonthDays) {
+                              
+                                          TotalDay -= MonthDays;
+                                          Date.Month++;
+                                      }
+                                      else {
+                                          Date.Day = TotalDay;
+                                          break;
+                                      }
+                              
+                                  }
+                                  return Date;
+                              }
+                              
+                              int main() {
+                              
+                              
+                              
+                                  short Year = ReadYear();
+                                  short Month = ReadMonth();
+                                  short Day = ReadDay();
+                              
+                                  short TotalDay = PrintTotalNumberOfDay(Day, Month, Year);
+                              
+                              
+                                  sDate Date = PrintDate(TotalDay, Year);
+                              
+                                  cout << "Number of days from the begining of the year is " << TotalDay << endl;
+                                  cout << "Date for [" << TotalDay << "[ is: " << Date.Day << "/" << Date.Month << "/" << Year;
+                              
+                                  return 0;
+                              }
+
+## 131 Write a program to read date and read how many days to add to it, print the results on screen 
+
+
+                              #include <iostream>
+                              #include <fstream>
+                              #include <string>
+                              #include <vector>
+                              #include <iomanip>
+                              using namespace std;
+                              
+                              short ReadYear() {
+                                  short Year;
+                                  cout << "Please enter year : ";
+                                  cin >> Year;
+                                  return Year;
+                              }
+                              short ReadMonth() {
+                                  short Month;
+                                  cout << "Please enter Month : ";
+                                  cin >> Month;
+                                  return Month;
+                              }
+                              short ReadDay() {
+                                  short Day;
+                                  cout << "Please enter Day : ";
+                                  cin >> Day;
+                                  return Day;
+                              }
+                              short AddDays() {
+                                  short Days;
+                                  cout << "How Many days to add? " ;
+                                  cin >> Days;
+                                  return Days;
+                              
+                              }
+                              
+                              bool IsLeapYear(short Year) {
+                                  return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                              }
+                              short NumberOfDaysInMonth(short Year, short Month) {
+                              
+                                  if (Month < 1 || Month > 12) {
+                                      return 0;
+                                  }
+                              
+                                  short NumberOfMonth[] = { 31,IsLeapYear(Year) ? 28 : 29,31,30,31,30,31,31,30,31,30,31 };
+                                  return  NumberOfMonth[Month - 1];
+                              }
+                              short PrintTotalNumberOfDay(short Day, short Month, short Year) {
+                              
+                                  short TotalDays = 0;
+                              
+                                  for (int i = 1; i <= Month - 1; i++) {
+                                      TotalDays += NumberOfDaysInMonth(Year, i);
+                                  }
+                              
+                                  TotalDays += Day;
+                              
+                                  return  TotalDays;
+                              }
+                              struct sDate {
+                                  short Day, Month;
+                              };
+                              sDate PrintDate(short TotalDay, short Year) {
+                              
+                                  sDate Date;
+                                  short MonthDays = 0;
+                                  Date.Month = 1;
+                              
+                                  while (true) {
+                              
+                                      MonthDays = NumberOfDaysInMonth(Year, Date.Month);
+                              
+                                      if (TotalDay > MonthDays) {
+                              
+                                          TotalDay -= MonthDays;
+                                          Date.Month++;
+                                      }
+                                      else {
+                                          Date.Day = TotalDay;
+                                          break;
+                                      }
+                              
+                                  }
+                                  return Date;
+                              }
+                              
+                              int main() {
+                              
+                              
+                              
+                                  short Year = ReadYear();
+                                  short Month = ReadMonth();
+                                  short Day = ReadDay();
+                                  short Days = AddDays();
+                              
+                                  short TotalDay = Days +  PrintTotalNumberOfDay(Day, Month, Year);
+                              
+                              
+                                  sDate Date = PrintDate(TotalDay, Year);
+                              
+                                  cout << "Date after adding  [" << Days << "] days is: " << Date.Day << "/" << Date.Month << "/" << Year;
+                              
+                                  return 0;
+                              }
+
+## 132 
+
