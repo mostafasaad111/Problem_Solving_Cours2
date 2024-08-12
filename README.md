@@ -11034,5 +11034,91 @@ int main() {
                                   return 0;
                               }
 
-## 132 
+## 132 Write a program  to read a date and check if it is last day in month  2- if it is last Month in year 
+
+
+                              #include <iostream>
+                              #include <fstream>
+                              #include <string>
+                              #include <vector>
+                              #include <iomanip>
+                              using namespace std;
+                              
+                              short ReadYear() {
+                                  short Year;
+                                  cout << "Please enter year : " ;
+                                  cin >> Year;
+                                  return Year;
+                              }
+                              short ReadMonth() {
+                                  short Month;
+                                  cout << "Please enter Month : ";
+                                  cin >> Month;
+                                  return Month;
+                              }
+                              short ReadDay() {
+                                  short Day;
+                                  cout << "Please enter Day : ";
+                                  cin >> Day;
+                                  return Day;
+                              }
+                              struct sDate {
+                                  short year, month, day;
+                              };
+                              static sDate ReadFullDate() {
+                                  sDate Date;
+                              
+                                  Date.year = ReadYear();
+                                  Date.month = ReadMonth();
+                                  Date.day = ReadDay();
+                              
+                                  return Date;
+                              }
+                              bool IsLeapYear(short Year) {
+                                  return (Year % 400 == 0) || (Year % 4 == 0 && Year % 100 != 0);
+                              }
+                              short NumberOfDaysInMonth(short Year, short Month ) {
+                              
+                                  if (Month < 1 || Month > 12) {
+                                      return 0;
+                                  }
+                              
+                                  short NumberOfMonth[] = { 31,IsLeapYear(Year) ? 28 : 29,31,30,31,30,31,31,30,31,30,31 };
+                                  return  NumberOfMonth[Month - 1];
+                              }
+                              bool checkDay(sDate Date ) {
+                                 
+                                  return (Date.day == NumberOfDaysInMonth(Date.year, Date.month));
+                              }
+                              bool  CheckMonth(sDate Date) {
+                                  
+                                  return (Date.month == 12);
+                              }
+                              int main()
+                              {
+                                  sDate Date = ReadFullDate();
+                              
+                              
+                                  if (checkDay(Date))
+                                      cout << " \n You, day is last day in month ";
+                                  else
+                                      cout << "\n No , day is not last in month ";
+                                  
+                                   if (CheckMonth (Date))
+                                       cout << "\n You , month  is last Month  in Year ";
+                                   else
+                                       cout << "\n No , Month is not last in Month in year  ";
+                              
+                                  return 0;
+                              }
+
+## 133 
+
+
+
+
+
+
+
+
 
