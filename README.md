@@ -11301,11 +11301,40 @@ int main() {
 #       OOP  [Object Oriented Programming ] 
 
 
-## 1- 
+## 1-  class  
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private:
+                    
+                        int x = 5; 
+                    public :
+                        string FirstName, LastName;
+                    
+                        string FullName() {
+                            return FirstName + " " + LastName;
+                        }
+                    
+                    };
+                    int main()
+                    {
+                        clsPerson Person1;
+                    
+                        Person1.FirstName = "Mustafa";
+                        Person1.LastName = "Saad";
+                    
+                        cout << Person1.FullName() << endl;
+                      
+                        return 0;
+                    }
 
 
-
-
+## 2 - 
 
 
 
