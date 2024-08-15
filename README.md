@@ -11112,9 +11112,193 @@ int main() {
                                   return 0;
                               }
 
-## 133 
+## 133 Write a program to read a date and  make a function to increase the date by one day.
 
 
+
+                              #include <iostream>
+                              #include <fstream>
+                              #include <string>
+                              #include <vector>
+                              #include <iomanip>
+                              using namespace std;
+                              
+                              short ReadYear() {
+                                  short Year;
+                                  cout << "Please enter year : ";
+                                  cin >> Year;
+                                  return Year;
+                              }
+                              short ReadMonth() {
+                                  short Month;
+                                  cout << "Please enter Month : ";
+                                  cin >> Month;
+                                  return Month;
+                              }
+                              short ReadDay() {
+                                  short Day;
+                                  cout << "Please enter Day : ";
+                                  cin >> Day;
+                                  return Day;
+                              }
+                              struct sDate {
+                                  short year, month, day;
+                              };
+                              sDate ReadFullDate() {
+                                  sDate Date;
+                              
+                                  Date.year = ReadYear();
+                                  Date.month = ReadMonth();
+                                  Date.day = ReadDay();
+                              
+                                  return Date;
+                              }
+                              bool isLeapYear(short Year) {  
+                                  return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+                              }
+                              short NumberOfDaysInAMonth(short Month, short Year) 
+                              { 
+                                  if (Month < 1 || Month>12)
+                                      return  0; 
+                              
+                                  int days[12] = { 31,isLeapYear(Year) ? 29 : 28,31,30,31,30,31,31,30,31,30,31 };
+                              
+                                  return days[ Month - 1];
+                              }
+                              
+                              bool IsLastDayInMonth(sDate Date) {
+                              
+                                  return (Date.day == NumberOfDaysInAMonth(Date.month, Date.year));
+                              
+                              }
+                              bool IsLastMonthInYear(short  month) {
+                                  return (month == 12);
+                              }
+                              sDate IncreaseDateByOneDay(sDate Date) {
+                              
+                                  if (IsLastDayInMonth(Date)) {
+                              
+                                      if (IsLastMonthInYear(Date.month)) {
+                                          Date.month = 1; 
+                                          Date.day = 1;
+                                          Date.year++; 
+                                      }
+                                      else {
+                                          Date.day = 1; 
+                                          Date.month++;
+                                      }
+                                  }
+                                  else {
+                                      Date.day++;
+                                  }
+                                  return Date;
+                              }
+                              int main()
+                              {
+                                  sDate Date = ReadFullDate();
+                              
+                                  Date = IncreaseDateByOneDay(Date);
+                              
+                              
+                                  cout << "the new date is : " << Date.day << "/" << Date.month << "/" << Date.year << endl;
+                              
+                                  return 0;
+                              }
+
+
+
+## 134  Write a program to read date1 and date2 and make a function to calculate  the difference in days. 
+## Date1 should be less than Date2 
+
+                   
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    short ReadYear() {
+                        short Year;
+                        cout << "Please enter year : ";
+                        cin >> Year;
+                        return Year;
+                    }
+                    short ReadMonth() {
+                        short Month;
+                        cout << "Please enter Month : ";
+                        cin >> Month;
+                        return Month;
+                    }
+                    short ReadDay() {
+                        short Day;
+                        cout << "Please enter Day : ";
+                        cin >> Day;
+                        return Day;
+                    }
+                    struct sDate {
+                        short year, month, day;
+                    };
+                    sDate ReadFullDate() {
+                        sDate Date;
+                    
+                        Date.year = ReadYear();
+                        Date.month = ReadMonth();
+                        Date.day = ReadDay();
+                    
+                        return Date;
+                    }
+                    bool isLeapYear(short Year) {  
+                        return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+                    }
+                    short NumberOfDaysInAMonth(short Month, short Year) 
+                    { 
+                        if (Month < 1 || Month>12)
+                            return  0; 
+                    
+                        int days[12] = { 31,isLeapYear(Year) ? 29 : 28,31,30,31,30,31,31,30,31,30,31 };
+                    
+                        return days[ Month - 1];
+                    }
+                    
+                    short DifferneceBettwenTwoDates(sDate Date , sDate Date2) {
+                    
+                        short Diffrence = 0;
+                    
+                        if (Date.year > Date2.year)
+                            Diffrence = Date.year - Date2.year; 
+                        else
+                            Diffrence = Date2.year - Date.year ;
+                    
+                        if(Date.month > Date2.month)
+                            Diffrence += Date.month - Date2.month;
+                        else
+                            Diffrence += Date2.month - Date.month;
+                    
+                        if (Date.day > Date2.day)
+                            Diffrence += Date.day - Date2.day;
+                        else
+                            Diffrence += Date2.day - Date.day;
+                    
+                        return Diffrence; 
+                    
+                    }
+                    
+                    int main()
+                    {
+                        sDate Date = ReadFullDate();
+                        sDate Date2 = ReadFullDate();
+                    
+                        cout << "Diffrence (Including End Day ) is:" << DifferneceBettwenTwoDates(Date, Date2);
+                    
+                        return 0;
+                    }
+
+
+
+
+
+#                   oop 
 
 
 
