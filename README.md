@@ -11334,7 +11334,267 @@ int main() {
                     }
 
 
-## 2 - 
+## 2 - property set and get 
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private:
+                    
+                        string _FirstName, _LastName; 
+                    public :
+                      
+                        void setFirstName(string name) {  // set property 
+                    
+                            _FirstName = name;
+                        }
+                    
+                        string FirstName() {
+                            return _FirstName;
+                        }
+                    
+                        void setLastName(string name) {  // set property 
+                    
+                            _LastName = name;
+                        }
+                    
+                        string LastName() {
+                            return _LastName;
+                        }
+                    
+                        string FullName() {
+                            return   _FirstName + " " + _LastName;
+                        }
+                    
+                    };
+                    int main()
+                    {
+                        clsPerson Person1;
+                    
+                        Person1.setFirstName("Mustafa") ;
+                        Person1.setLastName("Saad");
+                    
+                        cout << Person1.FullName() << endl;
+                    
+                      
+                        return 0;
+                    }
+
+
+## 3 - Read Only property 
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private:
+                    
+                        string _FirstName, _LastName; 
+                        short _ID = 10;
+                    
+                    public :
+                      
+                        void setFirstName(string name) {  // set property 
+                    
+                            _FirstName = name;
+                        }
+                    
+                        string FirstName() {
+                            return _FirstName;
+                        }
+                    
+                        void setLastName(string name) {  // set property 
+                    
+                            _LastName = name;
+                        }
+                    
+                        string LastName() {
+                            return _LastName;
+                        }
+                    
+                        string FullName() {
+                            return   _FirstName + " " + _LastName;
+                        }
+                    
+                        int ID() {  // Read only property Get 
+                            return _ID;
+                        }
+                    };
+                    int main()
+                    {
+                        clsPerson Person1;
+                    
+                        Person1.setFirstName("Mustafa") ;
+                        Person1.setLastName("Saad");
+                    
+                        cout << Person1.FullName() << endl;
+                        cout << "Id = " << Person1.ID();
+                      
+                        return 0;
+                    }
+
+## 4 - Property Set and Get through "=" 
+                    
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private:
+                    
+                        string _FirstName; 
+                    
+                    public :
+                      
+                        void setFirstName(string name) {  // set property 
+                    
+                            _FirstName = name;
+                        }
+                    
+                        string GetFirstName() {
+                            return _FirstName;
+                        }
+                    
+                        __declspec(property(get = GetFirstName, put = setFirstName)) string FirstName;
+                      
+                    };
+                    int main()
+                    {
+                        clsPerson Person1;
+                    
+                        Person1.FirstName = "Mustafa";
+                        cout <<  Person1.FirstName;
+                        
+                    
+                        return 0;
+                    }
+                    
+
+## 5 - Calculator 
+
+                    
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std; 
+                    
+                    class clsCalcuator {
+                    private:
+                       
+                        float _Number = 0 , _Result = 0 , _PreivseValue = 0 ;
+                        string _LastOperation;
+                    
+                        bool _IsZero(float Number) {
+                            return (Number == 0);
+                        }
+                    
+                    public :
+                      
+                       
+                        void Adding(float Number ) {
+                            _Number = Number;
+                            _PreivseValue = _Result;
+                            _LastOperation = "Adding";
+                            _Result += Number;
+                           
+                        }
+                        void Subtraction(float Number) {
+                            _Number = Number;
+                            _PreivseValue = _Result;
+                            _LastOperation = "Subtracting";
+                            _Result -= Number;
+                    
+                        }
+                        void Divide(float Number) {
+                    
+                            _Number = Number;
+                    
+                           if( _IsZero(Number) ){
+                                Number = 1;
+                            }
+                    
+                            _PreivseValue = _Result;
+                            _LastOperation = "Dividing";
+                            _Result /= Number;
+                    
+                    
+                        }
+                        void Mulitply(float Number) {
+                    
+                            _Number = Number;
+                            _PreivseValue = _Result;
+                            _LastOperation = "Multiplying";
+                            _Result *= Number;
+                    
+                        }
+                        float GetFinalResult() {
+                            return _Result;
+                        }
+                        void Clear() {
+                    
+                            _Number = 0;
+                            _PreivseValue = 0;
+                            _LastOperation = "Clear";
+                            _Result = 0;
+                    
+                        }
+                        void CancelLastOperation() {
+                    
+                            _Number = 0;
+                            _LastOperation = "Cancelling Last Operation";
+                            _Result = _PreivseValue;
+                    
+                        }
+                        void PrintResult() {
+                           
+                            cout << " the Result After " << _LastOperation << " " << _Number  << " is " << _Result << endl;
+                        }
+                        
+                    
+                    };
+                    int main()
+                    {
+                        clsCalcuator Calcuator1;
+                    
+                        Calcuator1.Adding(1000);
+                        Calcuator1.PrintResult();
+                    
+                        Calcuator1.Subtraction(10);
+                        Calcuator1.PrintResult();
+                    
+                        Calcuator1.Mulitply(10);
+                        Calcuator1.PrintResult();
+                    
+                        Calcuator1.Divide(10);
+                        Calcuator1.PrintResult();
+                    
+                        Calcuator1.CancelLastOperation();
+                        Calcuator1.PrintResult();
+                    
+                        Calcuator1.Clear();
+                        Calcuator1.PrintResult();
+                    
+                    
+                        return 0;
+                    }
+
+
+## 6 
+
+
 
 
 
