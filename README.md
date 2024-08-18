@@ -11592,9 +11592,175 @@ int main() {
                     }
 
 
-## 6 
+## 6 Copy Constructor 
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std; 
+                    
+                    
+                    class clsAddress {
+                    private:
+                        string _AddressLine1;
+                        string _AddressLine2;
+                        string _POBox;
+                        string _ZipCode;
+                    public:
+                        clsAddress(string AddressLine1 , string AddressLine2, string POBox , string ZipCode ) {
+                            _AddressLine1 = AddressLine1;
+                            _AddressLine2 = AddressLine2;
+                            _POBox = POBox;
+                            _ZipCode = ZipCode;
+                        }
+                        // copy Constructor 
+                      /*  clsAddress(clsAddress& old_obj ) {
+                            _AddressLine1 = old_obj.AddressLine1();
+                            _AddressLine2 = old_obj.AddressLine2();
+                            _POBox = old_obj.PoBox();
+                            _ZipCode = old_obj.ZipCode();
+                        }*/
+                        void setAddressLine1(string AddressLine1) {
+                            _AddressLine1 = AddressLine1;
+                        }
+                        string AddressLine1() {
+                            return _AddressLine1;
+                        }
+                        void setAddressLine2(string AddressLine2) {
+                            _AddressLine2 = AddressLine2;
+                        }
+                        string AddressLine2() {
+                            return _AddressLine2;
+                        }
+                        void setPoBox(string POBox) {
+                            _POBox = POBox;
+                        }
+                        string PoBox() {
+                            return _POBox;
+                        }
+                        void setZipCode(string ZipCode) {
+                            _ZipCode = ZipCode;
+                        }
+                        string ZipCode() {
+                            return _ZipCode;
+                        }
+                        void Print() {
+                            cout << "\n Address Detalis: \n ";
+                            cout << "__________________________";
+                            cout << "\n AddressLine1 : " << _AddressLine1 << endl;
+                            cout << "AddressLine2 : " << _AddressLine2 << endl;
+                            cout << "POBox        : " << _POBox << endl;
+                            cout << "ZipCode      : " << _ZipCode << endl;
+                        }
+                    };
+                    int main()
+                    {
+                        clsAddress Address1("Queen Alia Street " , "B 303" ,"111213" , "555555555");
+                        Address1.Print();
+                        
+                        clsAddress Address2 = Address1;
+                        Address2.Print(); 
+                    
+                    
+                        return 0;
+                    }
 
 
+## 7 Destructor 
+
+                    
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std; 
+                    
+                    
+                    class clsPerson {
+                    
+                    public:
+                        string FullName;
+                    
+                        clsPerson() {
+                            FullName = "Mustafa Sad ";
+                            cout << "\n hi , i'm constructor";
+                        }
+                        ~clsPerson() {
+                            cout << "\n hi , i'm Destructor ";
+                    
+                        }
+                        void fun1() {
+                            clsPerson person1;
+                        }
+                        void fun2() {
+                            clsPerson* Person2 = new clsPerson;
+                            delete Person2;
+                    
+                        }
+                    
+                    };
+                    
+                    int main() 
+                    {
+                        
+                        clsPerson obj; // إنشاء كائن للوصول إلى الدوال
+                    
+                        obj.fun1();  // استدعاء الدالة الأولى
+                        obj.fun2();  // استدعاء الدالة الثانية
+                    
+                        return 0;
+                    }
 
 
+## 8 static members 
 
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std; 
+                    
+                    
+                    class clsA {
+                    
+                    public:
+                        int var;
+                        static int counter;
+                        
+                        clsA() {
+                            counter++;
+                        }
+                        void Print() {
+                            cout << "\n var = " << var << endl;
+                            cout << "\n counter = " << counter;
+                        }
+                    
+                    };
+                    int clsA::counter = 0;
+                    int main() 
+                    {
+                        
+                        clsA A1, A2, A3;
+                    
+                        A1.var = 10;
+                        A2.var = 20;
+                        A3.var = 30;
+                    
+                        A1.Print();
+                        A2.Print();
+                        A3.Print();
+                    
+                        A1.counter = 500;
+                        
+                        cout << "\n after chaning \n";
+                        
+                        A1.Print();
+                        A2.Print();
+                        A3.Print();
+                    
+                        return 0;
+                    }
