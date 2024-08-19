@@ -11764,3 +11764,151 @@ int main() {
                     
                         return 0;
                     }
+
+
+## 9 Static method (function)
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std; 
+                    
+                    
+                    class clsA {
+                    
+                    public:
+                        
+                        static int Function1() {
+                            return 10;
+                        }
+                        int Function2() {
+                            return 20;
+                        }
+                    };
+                    int main() 
+                    {
+                       cout << clsA::Function1() << endl;
+                    
+                       clsA A1, A2;
+                    
+                       cout << A1.Function1() << endl;
+                       cout << A2.Function2() << endl;
+                       cout << A1.Function2() << endl;
+                    
+                        return 0;
+                    }
+
+
+## 10 Exercise 
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std; 
+                    
+                    
+                    class clsPerson {
+                    
+                        string _FirstName, _LastName, _FullName, _Email, _Phone;
+                        int _ID;
+                    
+                    public:
+                    
+                        clsPerson(int Id, string FirstName, string LastName, string FullName, string Email, string Phone) {
+                            _ID = Id;
+                            _FirstName = FirstName;
+                            _LastName = LastName;
+                            _FullName = FullName;
+                            _Email = Email;
+                            _Phone = Phone;
+                        }
+                    
+                        // read only property  يعني اللي بره ميقدرش يعدل عليها 
+                        int ID() {
+                            return _ID;
+                        }
+                    
+                        void setFristName(string FirstName) {
+                            _FirstName = FirstName;
+                        }
+                        string FirstName() {
+                            return _FirstName;
+                        }
+                        void setLastName(string LastName) {
+                            _LastName = LastName;
+                        }
+                        string LastName() {
+                            return _LastName;
+                        }
+                    
+                        string FullName() {
+                            return _FullName = _FirstName + " " + _LastName;
+                        }
+                        void setEmail(string Email) {
+                            _Email = Email;
+                        }
+                        string Email() {
+                            return _Email;
+                        }
+                    
+                        void setPhone(string Phone) {
+                            _Phone = Phone;
+                        }
+                        string Phone() {
+                            return _Phone;
+                        }
+                    
+                        void Print() {
+                    
+                            cout << "Info:" << endl;
+                    
+                            cout << "____________________________" << endl;
+                            cout << "ID       :" << _ID << endl;
+                            cout << "FirstName:" << _FirstName << endl;
+                            cout << "LastName :" << _LastName << endl;
+                            cout << "FullName :" << _FullName << endl;
+                            cout << "Email    :" << _Email << endl;
+                            cout << "Phone    :" << _Phone << endl;
+                            cout << "____________________________";
+                    
+                        }
+                    
+                        void SendEmail(string Subject, string Body) {
+                    
+                            cout << endl;
+                            cout << "the following messsage sent successfully to Email: " << _Email << endl;
+                            cout << "Subject : " << Subject << endl;
+                            cout << "Body : " << Body << endl;
+                    
+                        }
+                        void SendSMS(string TextMessage) {
+                            cout << "The following SMS sent successfully to phone: " << _Phone;
+                            cout << "\n" << TextMessage << endl;
+                        }
+                    };
+                    
+                    
+                    int main() 
+                    {
+                        
+                        clsPerson Person1(10 , "Mustafa" ,"saad" , "Mustafa saad " , "My@mail.com" , "0128183109");
+                        Person1.Print();
+                    
+                        Person1.SendEmail("Hi" , "How are you ? ");
+                        Person1.SendSMS("How are you ? ");
+                    
+                        return 0;
+                    }
+                    
+
+## 11 
+
+
+
+
+
