@@ -11909,7 +11909,186 @@ int main() {
 ## 11 Inheritance 
 
      
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    #include <iomanip>
+                    using namespace std; 
+                    
+                    
+                    class clsPerson {
+                    
+                        string _FirstName, _LastName, _FullName, _Email, _Phone;
+                        int _ID;
+                    
+                    public:
+                    
+                        clsPerson(int Id, string FirstName, string LastName, string Email, string Phone) {
+                            _ID = Id;
+                            _FirstName = FirstName;
+                            _LastName = LastName;
+                            _Email = Email;
+                            _Phone = Phone;
+                        }
+                    
+                        // read only property  يعني اللي بره ميقدرش يعدل عليها 
+                        int ID() {
+                            return _ID;
+                        }
+                    
+                        void setFristName(string FirstName) {
+                            _FirstName = FirstName;
+                        }
+                        string FirstName() {
+                            return _FirstName;
+                        }
+                        void setLastName(string LastName) {
+                            _LastName = LastName;
+                        }
+                        string LastName() {
+                            return _LastName;
+                        }
+                    
+                        string FullName() {
+                            return _FullName = _FirstName + " " + _LastName;
+                        }
+                        void setEmail(string Email) {
+                            _Email = Email;
+                        }
+                        string Email() {
+                            return _Email;
+                        }
+                    
+                        void setPhone(string Phone) {
+                            _Phone = Phone;
+                        }
+                        string Phone() {
+                            return _Phone;
+                        }
+                    
+                        void Print() {
+                    
+                            cout << "Info:" << endl;
+                    
+                            cout << "____________________________" << endl;
+                            cout << "ID                          :" << _ID << endl;
+                            cout << "FirstName                   :" << _FirstName << endl;
+                            cout << "LastName                    :" << _LastName << endl;
+                            cout << "FullName                    :" << FullName() << endl;
+                            cout << "Email                       :" << _Email << endl;
+                            cout << "Phone                       :" << _Phone << endl;
+                           
+                    
+                        }
+                    
+                        void SendEmail(string Subject, string Body) {
+                    
+                            cout << endl;
+                            cout << "the following messsage sent successfully to Email: " << _Email << endl;
+                            cout << "Subject : " << Subject << endl;
+                            cout << "Body : " << Body << endl;
+                    
+                        }
+                        void SendSMS(string TextMessage) {
+                            cout << "The following SMS sent successfully to phone: " << _Phone;
+                            cout << "\n" << TextMessage << endl;
+                        }
+                    };
+                    
+                    
+                    class clsEmployee : public clsPerson {
+                    
+                    
+                    
+                        string _Title, _Department;
+                        float  _Salary;
+                    public :
+                    
+                    
+                        clsEmployee(int Id, string FirstName, string LastName, string Email, string Phone , string Title , string Department , 
+                       float Salary )
+                         : clsPerson(Id , FirstName , LastName , Email , Phone )
+                        {
+                            _Title = Title;
+                            _Department = Department; 
+                            _Salary = Salary;
+                        }
+                        void setTitle(string Title ) {
+                            _Title = Title;
+                        }
+                        string Title() {
+                            return _Title;
+                        }
+                    
+                        void setSalary(float Salary) {
+                            _Salary = Salary; 
+                        }
+                        float Salary() {
+                            return _Salary;
+                        }
+                    
+                        void setDepartment(string Department) {
+                            _Department = Department;
+                        }
+                        string Department() {
+                            return _Department;
+                        }
+                        // Function Overriding 
+                        // ممكن اجيب القيم من الكلاس الاب الاصلي ولكن مقدرش اجيب الا الميمبر لكن البرايفت تورثها انما متقدرش تكتبها 
+                        void Print() {
+                            clsPerson::Print();
+                    
+                            cout << "Title                       :" << _Title << endl;
+                            cout << "Department                  :" << _Department << endl;
+                            cout << "Salary                      :" << _Salary << endl;
+                           
+                        }
+                    
+                    };
+                    
+                    class clsDeveloper :public clsEmployee {
+                        string _ProgrammingLanguage;
+                    
+                    public:
+                    
+                    
+                    
+                        clsDeveloper(int Id, string FirstName, string LastName, string Email, string Phone, string Title, string Department, 
+                    float Salary , string ProgrammingLanguage)
+                            : clsEmployee(Id, FirstName, LastName, Email, Phone , Title, Department , Salary ) {
+                    
+                            _ProgrammingLanguage = ProgrammingLanguage; 
+                        }
+                    
+                    
+                        void SetProgrammingLanguage(string Pl) {
+                            _ProgrammingLanguage = Pl;
+                        }
+                        string ProgrammingLanguage() {
+                            return _ProgrammingLanguage;
+                        }
+                    
+                        void Print() {
+                    
+                             clsEmployee::Print();
+                             cout << "Main Progarmming Language   : " << ProgrammingLanguage() << endl;
+                             cout << "____________________________";
+                        }
+                    
+                    };
+                    
+                    int main() 
+                    {
+                        
+                        clsDeveloper Developer1(10, "Mustafa " , "saad","a@.com","010234234","CEO","ProgrammingHero",5000 , "C#");
+                    
+                        Developer1.Print();
+                    
+                    
+                    
+                        return 0;
+                    }
 
-
-
+## 12 
 
