@@ -1,4 +1,4 @@
-# Problem_Solving_Cours2
+# Problem_Solving
 
 ## 1- Write a program to read how many keys to generate and print them on the screen.
 
@@ -12090,5 +12090,34 @@ int main() {
                         return 0;
                     }
 
-## 12 
+## 12 برنامج بيشوف القيمه اللي انت كاتبها لو رقم يطبعها لو لا بيرجع تاني يقولك اكتب الرقم مره اخري 
 
+                    #include <iostream>
+                    
+                    using namespace std;
+                    
+                    int ReadNumber() {
+                        int number;
+                        cout << "Please enter number" << endl;
+                        cin >> number;
+                        while (cin.fail()) {
+                    
+                            cin.clear();
+                            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            cout << "Invalid Number, Enter a valid one:" << endl;
+                            cin >> number;
+                    
+                        }
+                        return number;
+                    
+                    }
+                     
+                    int main()
+                    {
+                        
+                        cout << "yes number is " << ReadNumber();
+                         return 0;
+                    }
+
+                    
+## 13 
