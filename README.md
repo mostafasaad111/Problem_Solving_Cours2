@@ -12120,4 +12120,506 @@ int main() {
                     }
 
                     
-## 13 
+## 13 Two dimensional array
+
+                    #include <iostream>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int main()
+                    {
+                    	// int [row][cols];
+                    	int x[10][10];
+                    
+                    	for (int i = 0; i < 10; i++) {
+                    		for (int j = 0; j < 10; j++) {
+                    			 x[i][j] = (i+1) * (j+1) ;
+                    		}
+                    		cout << endl;
+                    	}
+                    	for (int i = 0; i < 10; i++) {
+                    		for (int j = 0; j < 10; j++) {
+                    			printf("%0*d ", 2, x[i][j]);
+                    		}
+                    		cout << endl;
+                    	}
+                    	return 0;
+                    }
+
+## 14 - Add elements in vector 
+
+                    #include <iostream>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    vector <int> ReadNumber(vector <int> &vNum) {
+                    	
+                    
+                    	int Number;
+                    	string check;
+                    
+                    	do {
+                    
+                    	cout << "Pleas enter number : ";
+                    	cin >> Number;
+                    	vNum.push_back(Number);
+                    	
+                    	cout << "Do you need enter more number? ";
+                    	cin >> check;
+                    	} while (check == "Yes" || check == "yes");
+                    	
+                    	return vNum;
+                    }
+                    void PrintNumbers(vector <int> &vNum ) {
+                    
+                    	cout << "vector Numbers" << endl;
+                    
+                    	for (int & Num : vNum) {
+                    		cout << Num << " ";
+                    
+                    	}
+                    	cout << endl;
+                    }
+                    int main()
+                    {
+                    	vector <int> vNum;
+                    
+                    	ReadNumber(vNum);
+                    	PrintNumbers(vNum);
+                    
+                    }
+
+## 15 - vector example 
+
+
+                    #include <iostream>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    vector <int> ReadNumber(vector <int> &vNum) {
+                    	
+                    
+                    	int Number;
+                    	string check;
+                    
+                    	do {
+                    
+                    	cout << "Pleas enter number : ";
+                    	cin >> Number;
+                    	vNum.push_back(Number);
+                    	
+                    	cout << "Do you need enter more number? ";
+                    	cin >> check;
+                    	} while (check == "Yes" || check == "yes");
+                    	
+                    	return vNum;
+                    }
+                    void PrintNumbers(vector <int> &vNum ) {
+                    
+                    	cout << "vector Numbers" << endl;
+                    
+                    	for (int & Num : vNum) {
+                    		cout << Num << " ";
+                    
+                    	}
+                    	cout << endl;
+                    }
+                    int main()
+                    {
+                    	vector <int> vNum;
+                    
+                    	ReadNumber(vNum);
+                    	PrintNumbers(vNum);
+                    
+                    }
+
+## 16 -  Vector of Structure
+
+
+                    #include <iostream>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    struct stEmployee {
+                    	string firstName;
+                    	string LastName;
+                    	float Salary;
+                    };
+                    
+                    vector <stEmployee>  ReadEmployee(vector <stEmployee> & vEmployee) {
+                    
+                    	stEmployee Employee;
+                    	
+                    	char check;
+                    	do {
+                    
+                    	cout << "Please enter first name: ";
+                    	cin >> Employee.firstName;
+                    
+                    	cout << "Please enter last name: ";
+                    	cin >> Employee.LastName;
+                    
+                    	cout << "Please enter you Salary: ";
+                    	cin >> Employee.Salary;
+                    
+                    	cout << "do you need add more employee (y/N)";
+                    	cin >> check;
+                    
+                    	vEmployee.push_back(Employee);
+                    
+                    	} while (check == 'y' || check == 'Y');
+                    	
+                    
+                    	return vEmployee;
+                    }
+                    
+                    void PrintEmployees(vector <stEmployee>& vEmployee) {
+                    
+                    	cout << endl;
+                    	for (stEmployee &Employees : vEmployee) {
+                    		cout << "first name : " <<  Employees.firstName << endl;
+                    		cout << "last name :" <<  Employees.LastName << endl;
+                    		cout << "salary :" <<  Employees.Salary << endl;
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	vector <stEmployee> vEmployee;
+                    
+                    	ReadEmployee(vEmployee);
+                    	PrintEmployees(vEmployee);
+                    
+                    	return 0;
+                    }
+
+## 17 - Remove elements from vector 
+
+                    
+                    #include <iostream>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main()
+                    {
+                    
+                    	vector <int> vNumbers;
+                    
+                    	vNumbers.push_back(10);
+                    	vNumbers.push_back(20);
+                    	vNumbers.push_back(30);
+                    	vNumbers.push_back(40);
+                    
+                    	cout << "Stack Size = " << vNumbers.size() << endl;
+                    
+                    	vNumbers.clear();
+                    
+                    	if (!vNumbers.empty())
+                    		vNumbers.pop_back();
+                    
+                    	//if (vNumbers.size() > 0)
+                    	//	vNumbers.pop_back();
+                    
+                    
+                    	for (int Num : vNumbers) {
+                    		cout << Num << endl;
+                    	}
+                    
+                    	return 0;
+                    }
+
+## 18 - more function about vector 
+
+                    #include <iostream>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    
+                    int main()
+                    {
+                    
+                    	vector <int> vNumbers;
+                    
+                    	vNumbers.push_back(10);
+                    	vNumbers.push_back(20);
+                    	vNumbers.push_back(30);
+                    	vNumbers.push_back(40);
+                    	vNumbers.push_back(5);
+                    
+                    	cout << "First Element : " << vNumbers.front() << endl;
+                    	cout << "End Element : " << vNumbers.back() << endl;
+                    
+                    	cout << "Size : " << vNumbers.size() << endl;
+                    	cout << "Capacity : " << vNumbers.capacity() << endl;
+                    
+                    	cout << "Empty : " << vNumbers.empty();
+                    
+                    
+                    	return 0;
+                    }
+
+## 19 - by Refernce by value
+                    
+                    #include <iostream>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    
+                    
+                    int main()
+                    {
+                    	int a = 10;
+                    	int& x = a;
+                    
+                    	cout << &a << endl;
+                    	cout << &x << endl; //hexadecimal address; 
+                    
+                    	x = 20;
+                    
+                    	cout << a << endl;
+                    	cout << x << endl;
+                    
+                    
+                    	return 0;
+                    }
+
+## 20 - Write Mode: Write Data To File
+
+                    #include <iostream>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    int main()
+                    {
+                    	fstream MyFile;
+                    
+                    	MyFile.open("MyFile.txt", ios::out);
+                    	
+                    	if (MyFile.is_open()) {
+                    		MyFile << "Hi , this is the first line\n";
+                    		MyFile << "Hi , this is the second line\n";
+                    		MyFile << "Hi , this is the third line\n";
+                    
+                    
+                    		MyFile.close();
+                    	}
+                    	return 0;
+                    }
+
+## 21 -  Append Mode: Append Data to File
+
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    int main()
+                    {
+                    	fstream MyFile;
+                    
+                    
+                    	MyFile.open("MyFile.txt",ios::out |  ios::app);  //append mode 
+                    
+                    	if (MyFile.is_open()) {
+                    
+                    		MyFile << "Mustafa sad mohammed mohammed" << endl;
+                    		MyFile << "Mustafa sad mohammed mohammed" << endl;
+                    		MyFile << "Mustafa sad mohammed mohammed" << endl;
+                    		MyFile << "Mustafa sad mohammed mohammed" << endl;
+                    
+                    		MyFile.close();
+                    	}
+                    	return 0;
+                    }
+
+## 22 - Read Mode: Print File Content 
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    using namespace std;
+                    
+                    void PrintFileContent(string FileName) {
+                    	fstream MyFile;
+                        
+                    	MyFile.open(FileName, ios::in);// Read Mode
+                    
+                        if (MyFile.is_open()) {
+                    			string Line; 
+                    
+                    			while (getline(MyFile, Line)) {
+                    				cout << Line << endl;
+                    			}
+                    			MyFile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    	PrintFileContent("MyFile.txt");
+                    	return 0;
+                    }
+
+
+## 23 -  Load Data From File to Vector
+
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    using namespace std;
+                    
+                    void LoadDataFromFileToVector(string FileName, vector <string> &vFile) {
+                    	fstream MyFile;
+                    
+                    	MyFile.open(FileName, ios::in);// Read Mode
+                    
+                        if (MyFile.is_open()) {
+                    			string Line; 
+                    
+                    			while (getline(MyFile, Line)) {
+                    				vFile.push_back( Line );
+                    			}
+                    			MyFile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	vector <string> vFile;
+                    
+                    	LoadDataFromFileToVector("MyFile.txt" , vFile);
+                    
+                    	for (string& Line : vFile) {
+                    		cout << Line << endl;
+                    	}
+                    	return 0;
+                    }
+
+## 24 -  Save Vector to File
+
+                    
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    using namespace std;
+                    
+                    void SaveVectorToFile(string FileName, vector <string> vFileContent) {
+                    	fstream MyFile;
+                    
+                    	MyFile.open(FileName, ios::out | ios::app);// append Mode
+                    
+                        if (MyFile.is_open()) {
+                    			
+                    		    for (string Line : vFileContent) {
+                    
+                    				if(Line != "")
+                    			     MyFile << Line << endl;
+                    			}
+                    	         
+                    			MyFile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	vector <string> vFileContent{ "Ali" ,"Mohammed" , "Sad" , "Fadi" , "Lama" };
+                    
+                    	SaveVectorToFile("MyFile.txt" , vFileContent);
+                    
+                    	return 0;
+                    }
+
+## 25 - Delete Record From File
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    using namespace std;
+                    
+                    void SaveVectorToFile(string FileName, vector <string>  vFileContent) {
+                    	fstream MyFile;
+                    
+                    	MyFile.open(FileName, ios::out );// append Mode
+                    
+                        if (MyFile.is_open()) {
+                    			
+                    		    for (string Line : vFileContent) {
+                    
+                    				if(Line != "")
+                    			     MyFile << Line << endl;
+                    			}
+                    	         
+                    			MyFile.close();
+                    	}
+                    }
+                    void LoadDataFromFile(string FileName , vector <string> & vFile) {
+                    
+                    	fstream MyFile;
+                    	MyFile.open(FileName, ios::in);
+                    
+                    	if (MyFile.is_open()) {
+                    
+                    		string Line;
+                    
+                    		while (getline(MyFile, Line)) {
+                    			vFile.push_back(Line);
+                    		}
+                    	}
+                    }
+                    void DeletRecordFromFile(string FileName, string Record) {
+                    
+                    	vector <string> vFile;
+                    	LoadDataFromFile(FileName, vFile);
+                    
+                    	for ( string& Line : vFile) {
+                    		if (Line == Record) {
+                    
+                    			Line = "";
+                    		}
+                    	}
+                    	SaveVectorToFile(FileName, vFile);
+                    }
+                    void PrintFileContent(string FileName ) {
+                    	fstream MyFile;
+                    	MyFile.open(FileName, ios::in);
+                    
+                    	if (MyFile.is_open()) {
+                    		string Line; 
+                    		while (getline(MyFile,Line))
+                    		{
+                    			cout << Line << endl;
+                    		}
+                    		MyFile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	cout << "File content Before Delete. \n";
+                    	PrintFileContent("MyFile.txt");
+                    	
+                    	DeletRecordFromFile("MyFile.txt" , "Sad");
+                    
+                    	cout << "File content After Delete. \n";
+                    	PrintFileContent("MyFile.txt");
+                    
+                    	return 0;
+                    }
+
+
+
+
+
+
+
+
+
+                    
