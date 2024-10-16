@@ -12614,12 +12614,672 @@ int main() {
                     	return 0;
                     }
 
+## 26 -  Update Record In File 
+
+
+                    #include <iostream>
+                    #include <fstream>
+                    #include <string>
+                    #include <vector>
+                    using namespace std;
+                    
+                    void SaveVectorToFile(string FileName, vector <string>  vFileContent) {
+                    	fstream MyFile;
+                    
+                    	MyFile.open(FileName, ios::out );// append Mode
+                    
+                        if (MyFile.is_open()) {
+                    			
+                    		    for (string Line : vFileContent) {
+                    
+                    				if(Line != "")
+                    			     MyFile << Line << endl;
+                    			}
+                    	         
+                    			MyFile.close();
+                    	}
+                    }
+                    void LoadDataFromFile(string FileName , vector <string> & vFile) {
+                    
+                    	fstream MyFile;
+                    	MyFile.open(FileName, ios::in);
+                    
+                    	if (MyFile.is_open()) {
+                    
+                    		string Line;
+                    
+                    		while (getline(MyFile, Line)) {
+                    			vFile.push_back(Line);
+                    		}
+                    	}
+                    }
+                    void UpdateRecordFromFile(string FileName, string Record , string Record2) {
+                    
+                    	vector <string> vFile;
+                    	LoadDataFromFile(FileName, vFile);
+                      
+                    	for ( string& Line : vFile) {
+                    		if (Line == Record) {
+                    
+                    			Line = Record2;
+                    		}
+                    	}
+                    	SaveVectorToFile(FileName, vFile);
+                    }
+                    void PrintFileContent(string FileName ) {
+                    	fstream MyFile;
+                    	MyFile.open(FileName, ios::in);
+                    
+                    	if (MyFile.is_open()) {
+                    		string Line; 
+                    		while (getline(MyFile,Line))
+                    		{
+                    			cout << Line << endl;
+                    		}
+                    		MyFile.close();
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	cout << "File content Before Delete. \n";
+                    	PrintFileContent("MyFile.txt");
+                    	
+                    	UpdateRecordFromFile("MyFile.txt" , "Lama" , "Mohammed");
+                    
+                    	cout << "File content After Delete. \n";
+                    	PrintFileContent("MyFile.txt");
+                    
+                    	return 0;
+                    }
+
+## 27 - Write a program to fill a 3*3 matrix with random numbers
+
+                                   
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int RandomNumber(int From, int To) {
+                    	
+                    	int RandomNumber = rand() % (To - From + 
+                        1) + From;
+                    	return RandomNumber;
+                    }
+                    void FillMatrixWithRandomNumber(int arr[3][3],     
+                    Row, short Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			arr[i][j] = 
+                  RandomNumber(1, 100);
+                    		}
+                    	}
+                    }
+                    void PrintMatrix(int arr[3][3], short Row, short 
+                       Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			cout << setw(3) << 
+                     arr[i][j] << "   ";
+                    		}
+                    		cout << "\n";
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	srand((unsigned)time(NULL));
+                    	int arr[3][3]; 
+                    
+                    	FillMatrixWithRandomNumber(arr, 3, 3);
+                    	PrintMatrix(arr, 3, 3);
+                    
+                    	return 0;
+                    }
+
+## 28 -- Write a program to fill a 3*3 matrix with random numbers, then print each row sum: 
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int RandomNumber(int From, int To) {
+                    	
+                    	int RandomNumber = rand() % (To - From + 1) + From;
+                    	return RandomNumber;
+                    }
+                    void FillMatrixWithRandomNumber(int arr[3][3], short Row, short Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			arr[i][j] = RandomNumber(1, 100);
+                    		}
+                    	}
+                    }
+                    void PrintMatrix(int arr[3][3], short Row, short Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			cout << setw(3) << arr[i][j] << "   ";
+                    		}
+                    		cout << "\n";
+                    	}
+                    }
+                    void SumArr(int arr[3][3], short Row, short Col) {
+                    
+                    	for (int i = 0; i < Row; i++) {
+                    		int Sum = 0;
+                    		for (int j = 0; j < Col; j++) {
+                    			Sum += arr[i][j];
+                    		}
+                    		cout << "Row " << i  << "Sum = " << Sum << endl;
+                    		cout << "\n";
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	srand((unsigned)time(NULL));
+                    	int arr[3][3]; 
+                    
+                    	FillMatrixWithRandomNumber(arr, 3, 3);
+                    	PrintMatrix(arr, 3, 3);
+                    
+                    	SumArr(arr, 3, 3);
+                    
+                    	return 0;
+                    }
+
+## 29 - Write a program to fill a 3*3 matrix with random numbers, then sum each row in a separate array and print the result :
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    int RandomNumber(int From, int To) {
+                    	
+                    	int RandomNumber = rand() % (To - From + 1) + From;
+                    	return RandomNumber;
+                    }
+                    void FillMatrixWithRandomNumber(int arr[3][3], short Row, short Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			arr[i][j] = RandomNumber(1, 100);
+                    		}
+                    	}
+                    }
+                    void PrintMatrix(int arr[3][3], short Row, short Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			cout << setw(3) << arr[i][j] << "   ";
+                    		}
+                    		cout << "\n";
+                    	}
+                    }
+                    void SumArr(int arr2[3], int arr[3][3], short Row, short Col) {
+                    
+                    	for (int i = 0; i < Row; i++) {
+                    		int Sum = 0;
+                    		for (int j = 0; j < Col; j++) {
+                    			Sum += arr[i][j];
+                    		}
+                    		arr2[i] = Sum;
+                    	}
+                    }
+                    void PrintSumArr(int arr2[3] , int Row ) {
+                    	for (int i = 0; i < Row; i++) {
+                    		cout << "Row " << i+1 << "Sum = " << arr2[i] << endl;
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	srand((unsigned)time(NULL));
+                    	int arr[3][3]; 
+                    	int arr2[3];
+                    
+                    	FillMatrixWithRandomNumber(arr, 3, 3);
+                    	PrintMatrix(arr, 3, 3);
+                    
+                        SumArr(arr2, arr, 3, 3);
+                    	PrintSumArr(arr2, 3);
+                    
+                    	return 0;
+                    }
+
+
+## 30 - write a program to fill a 3*3 matrix with random numbers, then print each col sum.
+
+
+                              #include <iostream>
+                              #include <string>
+                              #include <iomanip>
+                              using namespace std;
+                              
+                              int RandomNumber(int From, int To) {
+                              	
+                              	int RandomNumber = rand() % (To - From + 1) + From;
+                              	return RandomNumber;
+                              }
+                              void FillMatrixWithRandomNumber(int arr[3][3], short Row, short Col) {
+                              	for (int i = 0; i < Row; i++) {
+                              		for (int j = 0; j < Col; j++) {
+                              			arr[i][j] = RandomNumber(1, 100);
+                              		}
+                              	}
+                              }
+                              void PrintMatrix(int arr[3][3], short Row, short Col) {
+                              	for (int i = 0; i < Row; i++) {
+                              		for (int j = 0; j < Col; j++) {
+                              			cout << setw(3) << arr[i][j] << "   ";
+                              		}
+                              		cout << "\n";
+                              	}
+                              }
+                              void SumArrCols(int arr2[3], int arr[3][3], short Row, short Col) {
+                              
+                              	for (int i = 0; i < Row; i++) {
+                              		int Sum = 0;
+                              		for (int j = 0; j < Col; j++) {
+                              			Sum += arr[j][i];
+                              		}
+                              		arr2[i] = Sum;
+                              	}
+                              }
+                              void PrintSumArr(int arr2[3] , int Col ) {
+                              	for (int i = 0; i < Col; i++) {
+                              		cout << "cols " << i+1 << "Sum = " << arr2[i] << endl;
+                              	}
+                              }
+                              int main()
+                              {
+                              
+                              	srand((unsigned)time(NULL));
+                              	int arr[3][3]; 
+                              	int arr2[3];
+                              
+                              	FillMatrixWithRandomNumber(arr, 3, 3);
+                              	PrintMatrix(arr, 3, 3);
+                              
+                              	SumArrCols(arr2, arr, 3, 3);
+                              
+                              	cout << "The following are the sum of each col in the matrix: " << endl;
+                              	PrintSumArr(arr2, 3);
+                              
+                              	return 0;
+                              }
+
+## 31 - write aa program to fill a 3*3 orderd matrix:
+
+                                        
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    
+                    void FillMatrixWithRandomNumber(int arr[3][3], short Row, short Col) {
+                    
+                    	int Counter = 0 ;
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			Counter++;
+                    			arr[i][j] = Counter;
+                    		}
+                    	}
+                    }
+                    void PrintMatrix(int arr[3][3], short Row, short Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			cout << setw(3) << arr[i][j] << "   ";
+                    		}
+                    		cout << "\n";
+                    	}
+                    }
+                    
+                    int main()
+                    {
+                    
+                    	srand((unsigned)time(NULL));
+                    	int arr[3][3]; 
+                    	int arr2[3];
+                    
+                    	FillMatrixWithRandomNumber(arr, 3, 3);
+                    	PrintMatrix(arr, 3, 3);
+                    
+                    	return 0;
+                    }
+
+## 32 - write a program to fill a 3*3 matrix with orderd numbers and print it , then transpose matrix and print it.
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    
+                    void FillMatrixWithRandomNumber(int arr[3][3], short Row, short Col) {
+                    
+                    	int Counter = 0 ;
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			Counter++;
+                    			arr[i][j] = Counter;
+                    		}
+                    	}
+                    }
+                    void PrintMatrix(int arr[3][3], short Row, short Col) {
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			cout << setw(3) << arr[i][j] << "   ";
+                    		}
+                    		cout << "\n";
+                    	}
+                    }
+                    void ReverseMatrix(int arr2[3][3] , int arr[3][3], short Row, short Col) {
+                    
+                    	
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			arr2[i][j] = arr[j][i];
+                    		}
+                    	}
+                    }
+                    void PrintReverseMatrix(int arr2[3][3], short Row, short Col) {
+                    
+                    	cout << "The Rverse Matrix" << endl;
+                    	for (int i = 0; i < Row; i++) {
+                    		for (int j = 0; j < Col; j++) {
+                    			cout << setw(3) <<  arr2[i][j] << "   ";
+                    		}
+                    		cout << endl;
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	int arr[3][3]; 
+                    
+                    	int arr2[3][3];
+                    
+                    	FillMatrixWithRandomNumber(arr, 3, 3);
+                    	PrintMatrix(arr, 3, 3);
+                    
+                    	ReverseMatrix(arr2, arr, 3, 3);
+                    
+                    	PrintReverseMatrix(arr2, 3, 3);
+                    
+                    	return 0;
+                    }
+
+## 33 - write a program to read a string then print the first letter of each word in that string 
+
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    string  ReadName() {
+                    	 
+                    	string name;
+                    	cout << "Please Enter your name ? " << endl;
+                    	getline(cin  ,name); 
+                    	return name;
+                    }
+                    //void FirstLetterInName() {
+                    //
+                    //	string name = ReadName();
+                    //
+                    //	cout << "the first letter in string " << endl;
+                    //
+                    //	for (int i = 0; i < name.length(); i++) {
+                    //		if (name[i] == ' ') {
+                    //			cout << name[i + 1] << endl;
+                    //		}
+                    //	}
+                    //}
+                    
+                    void PrintFirstLetterOfEachWord(string S1) {
+                    	
+                    	bool IsFirstLetter = true; 
+                    
+                    	cout << "\n First Letter Of this string : \n";
+                    	 
+                    	for (short i = 0; i < S1.length(); i++) {
+                    		if (S1[i] != ' ' && IsFirstLetter) {
+                    			cout << S1[i] << endl;
+                    		}
+                    		IsFirstLetter = (S1[i] == ' ' ? true : false);
+                    	}
+                    }
+                    int main()
+                    {
+                    
+                    	PrintFirstLetterOfEachWord(ReadName());
+                    
+                    	return 0;
+                    }
+
+
+## 34 - write a program to read a stringg then uppercase the first letter of each word in that string :
+
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    string  ReadName() {
+                    	 
+                    	string name;
+                    	cout << "Please Enter your name ? " << endl;
+                    	getline(cin  ,name); 
+                    	return name;
+                    }
+                    
+                    string UpperFirstLetterOfEachWord(string S1) {
+                    	
+                    	bool IsFirstLetter = true; 
+                    
+                    	 
+                    	for (short i = 0; i < S1.length(); i++) {
+                    		if (S1[i] != ' ' && IsFirstLetter) {
+                    			S1[i] = toupper(S1[i]) ;
+                    		}
+                    		IsFirstLetter = (S1[i] == ' ' ? true : false);
+                    	}
+                    	return S1;
+                    }
+                    int main()
+                    {
+                    
+                    	string Name = ReadName();
+                    	Name = UpperFirstLetterOfEachWord(Name);
+                    
+                    	cout << "String after conversion : \n";
+                    	cout << Name << endl;
+                    
+                    	return 0;
+                    }
+                    
+## 35 - write a program to read a stringg then LowerCase the first letter of each word in that string :
+
+
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    string  ReadName() {
+                    	 
+                    	string name;
+                    	cout << "Please Enter your name ? " << endl;
+                    	getline(cin  ,name); 
+                    	return name;
+                    }
+                    
+                    string UpperFirstLetterOfEachWord(string S1) {
+                    	
+                    	bool IsFirstLetter = true; 
+                    
+                    	 
+                    	for (short i = 0; i < S1.length(); i++) {
+                    		if (S1[i] != ' ' && IsFirstLetter) {
+                    			S1[i] = tolower(S1[i]) ;
+                    		}
+                    		IsFirstLetter = (S1[i] == ' ' ? true : false);
+                    	}
+                    	return S1;
+                    }
+                    int main()
+                    {
+                    
+                    	string Name = ReadName();
+                    	Name = UpperFirstLetterOfEachWord(Name);
+                    
+                    	cout << "String after conversion : \n";
+                    	cout << Name << endl;
+                    
+                    	return 0;
+                    }
+
+
+## 36 - write a program to read a string then upper all letters, then lower all letters , and print them.
+
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    using namespace std;
+                    
+                    string  ReadName() {
+                    	 
+                    	string name;
+                    	cout << "Please Enter your name ? " << endl;
+                    	getline(cin  ,name); 
+                    	return name;
+                    }
+                    
+                    string UpperFirstLetterOfEachWord(string S1) {
+                    	
+                    	cout << "String After Upper" << endl;
+                    	for (short i = 0; i < S1.length(); i++) {
+                    		if (S1[i] != ' ' ) {
+                    			S1[i] = toupper(S1[i]) ;
+                    		}
+                    	}
+                    	return S1;
+                    }
+                    
+                    string LowerFirstLetterOfEachWord(string S1) {
+                    
+                    	cout << endl;
+                    
+                    	cout << "String After Upper" << endl;
+                    	for (short i = 0; i < S1.length(); i++) {
+                    		if (S1[i] != ' ') {
+                    			S1[i] = tolower(S1[i]);
+                    		}
+                    	}
+                    	return S1;
+                    }
+                    int main()
+                    {
+                    
+                    	string Name = ReadName();
+                        
+                    	cout << UpperFirstLetterOfEachWord(Name);
+                    
+                    	cout << LowerFirstLetterOfEachWord(Name);
+                    
+                    	return 0;
+                    }
+
+## 37 - writ ea program to read bank client data record and convert it ot on line:
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    
+                    struct stClient {
+                        string AccountNumber;
+                        string PinCode;
+                        string Name;
+                        string Phone;
+                        double AccountBalance;
+                    };
+                    
+                    // Function to read client data
+                    stClient ReadClientData() {
+                        stClient sClient;
+                    
+                        // Use getline for all string inputs to avoid mixing with cin
+                        cout << "Please enter account number: ";
+                        getline(cin, sClient.AccountNumber);
+                    
+                        cout << "Please enter pin code: ";
+                        getline(cin, sClient.PinCode);
+                    
+                        cout << "Please enter name: ";
+                        getline(cin, sClient.Name);
+                    
+                        cout << "Please enter phone: ";
+                        getline(cin, sClient.Phone);
+                    
+                        cout << "Please enter account balance: ";
+                        cin >> sClient.AccountBalance;
+                    
+                        return sClient;
+                    }
+                    
+                    // Function to convert client data to a delimited record string
+                    string ConvertLineToRecord(const stClient& sClient, const string& Delim) {
+                        string Record = "";
+                    
+                        // Construct the delimited string for the client
+                        Record += sClient.AccountNumber + Delim;
+                        Record += sClient.PinCode + Delim;
+                        Record += sClient.Name + Delim;
+                        Record += sClient.Phone + Delim;
+                        Record += to_string(sClient.AccountBalance);
+                    
+                        return Record;
+                    }
+                    
+                    int main() {
+                        // Read client data
+                        stClient sClient = ReadClientData();
+                    
+                        // Convert client data to delimited record
+                        string record = ConvertLineToRecord(sClient, "#//#");
+                    
+                        // Display the record
+                        cout << "Client record for saving is:\n" << record << endl;
+                    
+                        return 0;
+                    }
+
+
+## 38 - 
 
 
 
 
 
-
-
+                    
 
                     
