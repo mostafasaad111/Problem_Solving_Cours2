@@ -13274,9 +13274,77 @@ int main() {
                     }
 
 
-## 38 - 
+## 38 - Write a program to convert line data to record and print it:
 
+                    
+                   #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    using namespace std;
+                    
+                    struct stClient {
+                        string Name, PinCode, AccountNumber, Phone;
+                        double AccountBalance;
+                    };
+                    
+                    vector <string> SplitString(string S1, string Delim) {
+                        size_t Pos = 0;  // تعديل نوع المتغير إلى size_t
+                        string Word;
+                        vector<string> vString;
+                    
+                        while ((Pos = S1.find(Delim)) != std::string::npos) {
+                            Word = S1.substr(0, Pos);
+                            if (!Word.empty()) {
+                                vString.push_back(Word);
+                            }
+                            S1.erase(0, Pos + Delim.length());
+                        }
+                    
+                        if (!S1.empty()) {
+                            vString.push_back(S1);
+                        }
+                    
+                        return vString;
+                    }
+                    
+                    stClient ConvertLineToRecord(string S1, string Delim = "#//#") {
+                        stClient sClient;
+                    
+                        vector<string> vString = SplitString(S1, Delim);
+                    
+                        sClient.AccountNumber = vString[0];
+                        sClient.PinCode = vString[1];
+                        sClient.Name = vString[2];
+                        sClient.Phone = vString[3];
+                        sClient.AccountBalance = stod(vString[4]);
+                    
+                        return sClient;
+                    }
+                    
+                    void PrintRecord(stClient sClient) {
+                        cout << "Account Number: " << sClient.AccountNumber << endl;
+                        cout << "PinCode: " << sClient.PinCode << endl;
+                        cout << "Name: " << sClient.Name << endl;
+                        cout << "Phone: " << sClient.Phone << endl;
+                        cout << "Account Balance: " << sClient.AccountBalance << endl;
+                    }
+                    
+                    int main() {
+                        // مثال لنص مفصول
+                        string stLine = "A150#//#1234#//#Mohammed Abu-Hadhoud#//#079999#//#5270.000000";
+                    
+                        // تحويل النص إلى سجل عميل
+                        stClient sClient = ConvertLineToRecord(stLine, "#//#");
+                    
+                        // طباعة سجل العميل
+                        PrintRecord(sClient);
+                    
+                        return 0;
+                    }
+                    
 
+## 39 - 
 
 
 
