@@ -13344,7 +13344,335 @@ int main() {
                     }
                     
 
-## 39 - 
+## 39 - Write a program to ask you to enter clients and save them to a file:
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    struct stClient {
+                        string Name, PinCode, AccountNumber, Phone;
+                        double AccountBalance;
+                    };
+                    
+                    stClient ReadClient() {
+                        stClient sClient;
+                    
+                        cout << "Enter Account Number: ";
+                        getline(cin >> ws, sClient.AccountNumber);
+                    
+                        cout << "Enter PinCode: ";
+                        getline(cin, sClient.PinCode);
+                    
+                        cout << "Enter Name: ";
+                        getline(cin, sClient.Name);
+                    
+                        cout << "Enter Phone: ";
+                        getline(cin, sClient.Phone);
+                    
+                        cout << "Enter Account Balance: ";
+                        cin >> sClient.AccountBalance;
+                    
+                       
+                        
+                        return sClient;
+                    }
+                    
+                    string ConvertRecordToLine(const stClient& sClient, const string& Delim) {
+                        string Record = "";
+                    
+                        // Construct the delimited string for the client
+                        Record += sClient.AccountNumber + Delim;
+                        Record += sClient.PinCode + Delim;
+                        Record += sClient.Name + Delim;
+                        Record += sClient.Phone + Delim;
+                        Record += to_string(sClient.AccountBalance);
+                    
+                        return Record;
+                    }
+                    
+                    void SaveRecord(const stClient& sClient) {
+                    
+                        string Record = ConvertRecordToLine(sClient, "#//#");
+                    
+                        fstream MyFile;
+                        MyFile.open("MyFile.txt", ios::app);
+                    
+                        if (MyFile.is_open()) {
+                            MyFile << Record << endl;
+                            MyFile.close();
+                            cout << "Client Added Successfully." << endl;
+                        }
+                        else {
+                            cout << "Failed to open file for writing." << endl;
+                        }
+                    }
+                    
+                    void AddClients() {
+                        char AddMore = 'Y';
+                    
+                        do {
+                            
+                            system("cls");
+                            cout << "Adding New Client:\n\n";
+                    
+                            SaveRecord(ReadClient());
+                    
+                            cout << "Client Added Successfully, do you want to add more Clients (Y/N)? ";
+                            cin >> AddMore;
+                    
+                    
+                        } while (tolower(AddMore) == 'Y');
+                    }
+                    
+                    int main() {
+                        AddClients();
+                    
+                        return 0;
+                    }
+
+
+## 40 - write a program to read clients file and show them on the screen as follows:
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    struct stClient {
+                        string Name, PinCode, AccountNumber, Phone;
+                        double AccountBalance;
+                    };
+                    
+                    // دالة تقسيم النص باستخدام محدد معين
+                    vector<string> SplitString(string S1, string Delim) {
+                        size_t Pos = 0;
+                        string Word;
+                        vector<string> vString;
+                    
+                        while ((Pos = S1.find(Delim)) != std::string::npos) {
+                            Word = S1.substr(0, Pos);
+                            if (!Word.empty()) {
+                                vString.push_back(Word);
+                            }
+                            S1.erase(0, Pos + Delim.length());
+                        }
+                    
+                        if (!S1.empty()) {
+                            vString.push_back(S1);
+                        }
+                    
+                        return vString;
+                    }
+                    
+                    // دالة تحويل السطر من الملف إلى سجل عميل
+                    stClient ConvertLineToRecord(string S1, string Delim = "#//#") {
+                        stClient sClient;
+                        vector<string> vString = SplitString(S1, Delim);
+                    
+                        sClient.AccountNumber = vString[0];
+                        sClient.PinCode = vString[1];
+                        sClient.Name = vString[2];
+                        sClient.Phone = vString[3];
+                        sClient.AccountBalance = stod(vString[4]);
+                    
+                        return sClient;
+                    }
+                    
+                    // دالة تحميل بيانات العملاء من الملف
+                    vector<stClient> LoadClientsDataFromFile() {
+                        vector<stClient> vClients;
+                        fstream MyFile;
+                        MyFile.open("MyFile.txt", ios::in);
+                    
+                        if (MyFile.is_open()) {
+                            string Line;
+                            stClient sClient;
+                            while (getline(MyFile, Line)) {
+                                sClient = ConvertLineToRecord(Line);
+                                vClients.push_back(sClient);
+                            }
+                            MyFile.close();
+                        }
+                        return vClients;
+                    }
+                    
+                    // دالة لطباعة بيانات عميل واحد
+                    void PrintClientRecord(stClient Client) {
+                        cout << "| " << setw(15) << left << Client.AccountNumber;
+                        cout << "| " << setw(10) << left << Client.PinCode;
+                        cout << "| " << setw(40) << left << Client.Name;
+                        cout << "| " << setw(12) << left << Client.Phone;
+                        cout << "| " << setw(12) << left << fixed << setprecision(2) << Client.AccountBalance;
+                        cout << "|" << endl;
+                    }
+                    
+                    // دالة لطباعة جميع بيانات العملاء في جدول
+                    void PrintAllClientsData(vector<stClient> vClients) {
+                        cout << "\n\t\t\t\t\tClient List (" << vClients.size() << ") Client(s).";
+                        cout << "\n_______________________________________________________";
+                        cout << "_________________________________________\n" << endl;
+                        cout << "| " << left << setw(15) << "Accout Number";
+                        cout << "| " << left << setw(10) << "Pin Code";
+                        cout << "| " << left << setw(40) << "Client Name";
+                        cout << "| " << left << setw(12) << "Phone";
+                        cout << "| " << left << setw(12) << "Balance";
+                        cout << "\n_______________________________________________________";
+                        cout << "_________________________________________\n" << endl;
+                    
+                        for (stClient Client : vClients) {
+                            PrintClientRecord(Client);
+                        }
+                    
+                        cout << "\n_______________________________________________________";
+                        cout << "_________________________________________\n" << endl;
+                    }
+                    
+                    int main() {
+                        vector<stClient> vClients = LoadClientsDataFromFile();
+                        PrintAllClientsData(vClients);
+                    
+                        return 0;
+                    }
+
+## 41 - write a program to find client by account number and print it to the screen:
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    struct stClient {
+                        string Name, PinCode, AccountNumber, Phone;
+                        double AccountBalance;
+                    };
+                    
+                    // دالة تقسيم النص باستخدام محدد معين
+                    vector<string> SplitString(string S1, string Delim) {
+                        size_t Pos = 0;
+                        string Word;
+                        vector<string> vString;
+                    
+                        while ((Pos = S1.find(Delim)) != std::string::npos) {
+                            Word = S1.substr(0, Pos);
+                            if (!Word.empty()) {
+                                vString.push_back(Word);
+                            }
+                            S1.erase(0, Pos + Delim.length());
+                        }
+                    
+                        if (!S1.empty()) {
+                            vString.push_back(S1);
+                        }
+                    
+                        return vString;
+                    }
+                    
+                    // دالة تحويل السطر من الملف إلى سجل عميل
+                    stClient ConvertLineToRecord(string S1, string Delim = "#//#") {
+                        stClient sClient;
+                        vector<string> vString = SplitString(S1, Delim);
+                    
+                        sClient.AccountNumber = vString[0];
+                        sClient.PinCode = vString[1];
+                        sClient.Name = vString[2];
+                        sClient.Phone = vString[3];
+                        sClient.AccountBalance = stod(vString[4]);
+                    
+                        return sClient;
+                    }
+                    
+                    // دالة تحميل بيانات العملاء من الملف
+                    vector<stClient> LoadClientsDataFromFile() {
+                        vector<stClient> vClients;
+                        fstream MyFile;
+                        MyFile.open("MyFile.txt", ios::in);
+                    
+                        if (MyFile.is_open()) {
+                            string Line;
+                            stClient sClient;
+                            while (getline(MyFile, Line)) {
+                                sClient = ConvertLineToRecord(Line);
+                                vClients.push_back(sClient);
+                            }
+                            MyFile.close();
+                        }
+                        return vClients;
+                    }
+                    string ReadClientAccountNumber() {
+                    
+                        string AccountNumber;
+                    
+                        cout << "Please Enter AccountNumber?";
+                        cin >> AccountNumber;
+                    
+                        return AccountNumber;
+                    
+                    }
+                    bool FindClientByAccountNumber(string AccountNumber, stClient& Client) {
+                    
+                        vector<stClient> vClients = LoadClientsDataFromFile();
+                    
+                        for (stClient c : vClients) {
+                            if (AccountNumber == c.AccountNumber) {
+                                Client = c;
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    
+                    void PrintCard(stClient Client) {
+                        cout << "\nThe following are the client details:\n";   
+                        cout << "\nAccout Number: " << Client.AccountNumber;    
+                        cout << "\nPin Code     : " << Client.PinCode;   
+                        cout << "\nName         : " << Client.Name;  
+                        cout << "\nPhone        : " << Client.Phone;  
+                        cout << "\nAccount Balance: " << Client.AccountBalance;
+                       
+                    }
+                    
+                    int main() {
+                    
+                        stClient Client;
+                        vector<stClient> vClients = LoadClientsDataFromFile();
+                    
+                        string AccountNumber =   ReadClientAccountNumber();
+                        if (FindClientByAccountNumber(AccountNumber, Client)) 
+                        {
+                            PrintCard(Client);
+                        }
+                        else 
+                        {
+                            cout << "\nClient with Account Number (" << AccountNumber << ") is Not Found!";
+                        }
+                       
+                        return 0;
+                    }
+
+## 42 - 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
