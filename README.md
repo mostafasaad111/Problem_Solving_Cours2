@@ -13660,7 +13660,41 @@ int main() {
                         return 0;
                     }
 
-## 42 - 
+## 42 - class 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private: 
+                        int x = 0;
+                    public: 
+                    
+                        string FristName, LastName;
+                    
+                        string FullName() {
+                    
+                            return FristName + " " + LastName; 
+                        }
+                    };
+                    
+                    int main() {
+                    
+                        clsPerson Person1;
+                        
+                        Person1.FristName = "Mustafa";
+                        Person1.LastName = "Abu-Hadhoud";
+                    
+                        cout << Person1.FullName() << endl;
+                    
+                        
+                        return 0;
+                    }
+
 
 
 
