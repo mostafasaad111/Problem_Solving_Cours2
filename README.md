@@ -13846,10 +13846,41 @@ int main() {
                         return 0;
                     }
 
+## 45 - static method 
 
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    class clsA {
+                    public:
+                    	static int fun1() {
+                    		return 10;
+                    	}
+                    	int fun2() {
+                    		return  20;
+                    	}
+                    
+                    };
+                    
+                    int main() {
+                       
+                    	cout << clsA::fun1() << endl;
+                    	//cout << clsA::fun2() << endl;     Error 
+                    	
+                    	clsA A1, A2; 
+                    
+                    	cout << A1.fun1() << endl;
+                    	cout << A1.fun2() << endl;
+                    
+                    	return 0;
+                    }
 
-
-
+## 46 - 
 
 
 
