@@ -13882,8 +13882,380 @@ int main() {
 
 ## 46 - 
 
-
-
                     
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private:
+                    	int _ID ;
+                    	string _FirstName, _LastName, _Email, _Phone;
+                    
+                    
+                    public:
+                    
+                    	clsPerson(int ID , string FirstName ,string  LastName ,string  Email ,string Phone){
+                    		_ID = ID; 
+                    		_FirstName = FirstName; 
+                    		_LastName = LastName; 
+                    		_Email = Email; 
+                    		_Phone = Phone; 
+                    	}
+                    	int ID() {
+                    		return _ID;
+                    	}
+                    	void SetFirstName(string FirstName) {
+                    		_FirstName = FirstName;
+                    	}
+                    	string FirstName() {
+                    		return _FirstName;
+                    	}
+                    	void SetLastName(string LastName) {
+                    		_LastName = LastName;
+                    	}
+                    	string LastName() {
+                    		return _LastName;
+                    	}
+                    	void SetEmail(string Email) {
+                    		_Email = Email;
+                    	}
+                    	string Email() {
+                    		return _Email;
+                    	}
+                    	void SetPhone(string Phone) {
+                    		_Phone = Phone;
+                    	}
+                    	string Phone() {
+                    		return _Phone;
+                    	}
+                    
+                    	void Print() {
+                    		cout << "Info:" << endl;
+                    		cout << "___________________________" << endl;
+                    		cout << "ID		:" << _ID << endl;
+                    		cout << "FirstName:" << _FirstName << endl;
+                    		cout << "LastName:" << _LastName << endl;
+                    		cout << "FullName:" <<  FirstName() + LastName() << endl;
+                    		cout << "Email:" << _Email << endl;
+                    		cout << "Phone:" << _Phone << endl;
+                    		cout << "----------------------------" << endl;
+                    
+                    	}
+                    	void SendEmail(string Subject , string Body) {
+                    		cout << "The following message sent successfully to email : " << _Email << endl;
+                    		cout << "Subject: " << Subject << endl;
+                    		cout << "Body: " << Body <<  endl;
+                    
+                    
+                    	}
+                    	void SendSms(string Body) {
+                    		cout << "The following sms sent successfully to phone: " << _Phone << endl;
+                    		cout << Body << endl;
+                    
+                    	}
+                    
+                    };
+                    
+                    int main() {
+                    	clsPerson Person1(10, "Mustafa", "Saad", "@yahoo.com", "0102439534");
+                    	Person1.Print();
+                    
+                    	Person1.SendEmail("Hi", "How are you? ");
+                    	Person1.SendSms("How are you?");
+                    	return 0;
+                    }
+## 47- Third Principle/Concept of OOP: Inheritance 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private:
+                    	int _ID ;
+                    	string _FirstName, _LastName, _Email, _Phone;
+                    
+                    
+                    public:
+                    
+                    	clsPerson(){
+                    
+                    	}
+                    	clsPerson(int ID , string FirstName ,string  LastName ,string  Email ,string Phone){
+                    		_ID = ID; 
+                    		_FirstName = FirstName; 
+                    		_LastName = LastName; 
+                    		_Email = Email; 
+                    		_Phone = Phone; 
+                    	}
+                    	int ID() {
+                    		return _ID;
+                    	}
+                    	void SetFirstName(string FirstName) {
+                    		_FirstName = FirstName;
+                    	}
+                    	string FirstName() {
+                    		return _FirstName;
+                    	}
+                    	void SetLastName(string LastName) {
+                    		_LastName = LastName;
+                    	}
+                    	string LastName() {
+                    		return _LastName;
+                    	}
+                    	void SetEmail(string Email) {
+                    		_Email = Email;
+                    	}
+                    	string Email() {
+                    		return _Email;
+                    	}
+                    	void SetPhone(string Phone) {
+                    		_Phone = Phone;
+                    	}
+                    	string Phone() {
+                    		return _Phone;
+                    	}
+                    
+                    	void Print() {
+                    		cout << "Info:" << endl;
+                    		cout << "___________________________" << endl;
+                    		cout << "ID		:" << _ID << endl;
+                    		cout << "FirstName:" << _FirstName << endl;
+                    		cout << "LastName:" << _LastName << endl;
+                    		cout << "FullName:" <<  FirstName() + LastName() << endl;
+                    		cout << "Email:" << _Email << endl;
+                    		cout << "Phone:" << _Phone << endl;
+                    		cout << "----------------------------" << endl;
+                    
+                    	}
+                    	void SendEmail(string Subject , string Body) {
+                    		cout << "The following message sent successfully to email : " << _Email << endl;
+                    		cout << "Subject: " << Subject << endl;
+                    		cout << "Body: " << Body <<  endl;
+                    
+                    
+                    	}
+                    	void SendSms(string Body) {
+                    		cout << "The following sms sent successfully to phone: " << _Phone << endl;
+                    		cout << Body << endl;
+                    
+                    	}
+                    
+                    };
+                    class clsEmployee : public clsPerson {
+                    private:
+                    	string _Title;
+                    	float  _Salary;
+                    	string _Department;
+                    public:
+                    	void SetTitle(string Title) {
+                    		_Title = Title;
+                    	}
+                    	string Title() {
+                    		return _Title;
+                    	}	
+                    	void SetDepartment(string Department) {
+                    		_Department = Department;
+                    	}
+                    	string Department() {
+                    		return _Department;
+                    	}
+                    	void SetSalary(float Salary) {
+                    		_Salary = Salary;
+                    	}
+                    	float Salary() {
+                    		return _Salary;
+                    	}
+                    };
+                    int main() {
+                    	clsPerson Person1(10, "Mustafa", "Saad", "@yahoo.com", "0102439534");
+                    	Person1.Print();
+                    
+                    	Person1.SendEmail("Hi", "How are you? ");
+                    	Person1.SendSms("How are you?");
+                    	
+                    
+                    	clsEmployee Employee1;
+                    
+                    	Employee1.SendEmail("Hi", "How are you? ");
+                    	Employee1.SendSms("How are you?");
+                    
+                    	Employee1.SetSalary(500);
+                    	cout << endl << Employee1.Salary();
+                    
+                    	return 0;
+                    }
+
+## 48 -  Function Overriding 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    class clsPerson {
+                    private:
+                    	int _ID ;
+                    	string _FirstName, _LastName, _Email, _Phone;
+                    
+                    
+                    public:
+                    	
+                    	clsPerson(int ID , string FirstName ,string  LastName ,string  Email ,string Phone){
+                    		_ID = ID; 
+                    		_FirstName = FirstName; 
+                    		_LastName = LastName; 
+                    		_Email = Email; 
+                    		_Phone = Phone; 
+                    	}
+                    	int ID() {
+                    		return _ID;
+                    	}
+                    	void SetFirstName(string FirstName) {
+                    		_FirstName = FirstName;
+                    	}
+                    	string FirstName() {
+                    		return _FirstName;
+                    	}
+                    	void SetLastName(string LastName) {
+                    		_LastName = LastName;
+                    	}
+                    	string LastName() {
+                    		return _LastName;
+                    	}
+                    	void SetEmail(string Email) {
+                    		_Email = Email;
+                    	}
+                    	string Email() {
+                    		return _Email;
+                    	}
+                    	void SetPhone(string Phone) {
+                    		_Phone = Phone;
+                    	}
+                    	string Phone() {
+                    		return _Phone;
+                    	}
+                    
+                    	void Print() {
+                    		cout << "Info:" << endl;
+                    		cout << "___________________________" << endl;
+                    		cout << "ID		:" << _ID << endl;
+                    		cout << "FirstName:" << _FirstName << endl;
+                    		cout << "LastName:" << _LastName << endl;
+                    		cout << "FullName:" <<  FirstName() + LastName() << endl;
+                    		cout << "Email:" << _Email << endl;
+                    		cout << "Phone:" << _Phone << endl;
+                    		cout << "----------------------------" << endl;
+                    
+                    	}
+                    	void SendEmail(string Subject , string Body) {
+                    		cout << "The following message sent successfully to email : " << _Email << endl;
+                    		cout << "Subject: " << Subject << endl;
+                    		cout << "Body: " << Body <<  endl;
+                    
+                    
+                    	}
+                    	void SendSms(string Body) {
+                    		cout << "The following sms sent successfully to phone: " << _Phone << endl;
+                    		cout << Body << endl;
+                    
+                    	}
+                    
+                    };
+                    class clsEmployee : public clsPerson {
+                    private:
+                    	string _Title;
+                    	float  _Salary;
+                    	string _Department;
+                    public:
+                    
+                    	clsEmployee(int ID , string FirstName, string  LastName, string  Email, string Phone , string Title , string Department , float Salary )
+                    		:clsPerson(ID, FirstName , LastName , Email,Phone)
+                    	{
+                    		_Title = Title;
+                    		_Salary = Salary;
+                    		_Department = Department;
+                    	}
+                    	void SetTitle(string Title) {
+                    		_Title = Title;
+                    	}
+                    	string Title() {
+                    		return _Title;
+                    	}	
+                    	void SetDepartment(string Department) {
+                    		_Department = Department;
+                    	}
+                    	string Department() {
+                    		return _Department;
+                    	}
+                    	void SetSalary(float Salary) {
+                    		_Salary = Salary;
+                    	}
+                    	float Salary() {
+                    		return _Salary;
+                    	}
+                    
+                    	//void Print() {
+                    
+                    	//	clsPerson::Print();   // overriding function 
+                    	//	
+                    	//	cout << "\n Title: " << _Title;
+                    	//	cout << "\n Department: " << _Department;
+                    	//	cout << "\n Salary : " << _Salary;
+                    
+                    	//}
+                    
+                    
+                    	void Print() {
+                    		cout << "Info:" << endl;
+                    		cout << "___________________________" << endl;
+                    		cout << "ID		:" << ID() << endl;
+                    		cout << "FirstName:" << FirstName() << endl;
+                    		cout << "LastName:" << LastName()<< endl;
+                    		cout << "FullName:" << FirstName() + LastName() << endl;
+                    		cout << "Email:" << Email() << endl;
+                    		cout << "Phone:" << Phone() << endl;
+                    		cout << "Title: " << _Title << endl;
+                    		cout << "Department: " << _Department << endl;
+                    		cout << "Salary : " << _Salary << endl;
+                    		cout << "----------------------------" << endl;
+                    
+                    	}
+                    
+                    };
+                    
+                    
+                    int main() {
+                    
+                    	clsEmployee Employee1(10, "Mustafa" , "Sad" , "Mustafa.com" , "012423232" , "Eng" , "iT" ,1000);
+                    
+                    	Employee1.Print();
+                    
+                    	return 0;
+                    }
+                     
+## 49- 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     
