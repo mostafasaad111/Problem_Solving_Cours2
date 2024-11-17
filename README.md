@@ -14458,7 +14458,187 @@ int main() {
                     	return 0;
                     }
  
-## 51- 
+## 51- Up Casting vs Down Casting 
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    
+                    class clsPerson {
+                    public:
+                    	string FullName = "Mustafa Sad";
+                    };
+                    
+                    class clsEmployee : public clsPerson {
+                    public:
+                    	string Title = "CEO";
+                    };
+                    
+                    int main() {
+                     
+                    	clsEmployee Employee1;
+                    
+                    
+                    	cout << Employee1.FullName << endl;
+                    
+                    
+                    	// UpCasting 
+                    	clsPerson* Person1 = &Employee1;
+                    	cout << Person1->FullName << endl;
+                    	
+                    	return 0;
+                    }
+ 
+## 52 -   Virtual Functions
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    
+                    class clsPerson {
+                    public:
+                    	//هنا بقول ليه ان فيه هنا دوال اخري هيعمل ليها اوفر رايت 
+                    	virtual void Print() {
+                    		cout << "Hi , I'm Person" << endl;
+                    	}
+                    };
+                    
+                    class clsEmployee : public clsPerson {
+                    public:
+                    	void Print() {
+                    		cout << "Hi , I'm Employee" << endl;
+                    	}
+                    };
+                    class clsStudent : public clsPerson {
+                    public:
+                    	void Print() {
+                    		cout << "Hi , I'm Student" << endl;
+                    	}
+                    };
+                    
+                    int main() {
+                     
+                    	clsEmployee Employee1;
+                    	clsStudent Student1;
+                    
+                    
+                    	// هنا باشر علي العنوان اللي فيه القيم 
+                    	clsPerson* Person1 = &Employee1;
+                    	clsPerson* Person2 = &Student1;
+                    
+                    	 Person1->Print() ;
+                    	 Person2->Print() ;
+                    	
+                    	return 0;
+                    }
+ 
+## 53 -  Static/Early Binding vs Dynamic/Late Binding
+
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    
+                    class clsPerson {
+                    public:
+                    	//هنا بقول ليه ان فيه هنا دوال اخري هيعمل ليها اوفر رايت 
+                    	virtual void Print() {
+                    		cout << "Hi , I'm Person" << endl;
+                    	}
+                    };
+                    
+                    class clsEmployee : public clsPerson {
+                    public:
+                    	void Print() {
+                    		cout << "Hi , I'm Employee" << endl;
+                    	}
+                    };
+                    class clsStudent : public clsPerson {
+                    public:
+                    	void Print() {
+                    		cout << "Hi , I'm Student" << endl;
+                    	}
+                    };
+                    
+                    int main() {
+                     
+                    	clsEmployee Employee1;
+                    	clsStudent Student1;
+                    
+                    	// Early or static Binding  Faster than late Binding 
+                    	Employee1.Print();
+                    	Student1.Print();
+                    
+                    	//  late or Dynamic Binding 
+                        clsPerson* Person1 = &Employee1;
+                    	clsPerson* Person2 = &Student1;
+                    
+                    	 Person1->Print() ;
+                    	 Person2->Print() ;
+                    	
+                    	return 0;
+                    }
+ 
+## 54 -  Friend Class 
+
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    
+                    class clsA {
+                    private:
+                    	int _Var1;
+                    protected:
+                    	int var3;
+                    public:
+                    	int Var2;
+                    	clsA() {
+                    		_Var1 = 10;
+                    		var3 = 20;
+                    		Var2 = 30;
+                    	}
+                    	friend class clsB;
+                    };
+                    class clsB : public clsA {
+                    
+                    public:
+                    	void display(clsA A) {
+                    		cout << "\nThe value of var1 = " << A.Var2;
+                    		cout << "\nThe value of var1 = " << A._Var1;
+                    		cout << "\nThe value of var1 = " << A.var3;
+                    	}
+                    };
+                    int main() {
+                     
+                    	clsA A;
+                    	clsB B;
+                    
+                    	B.display(A);
+                    	return 0;
+                    }
+                     
+## 55 - 
+
+
+
+
 
 
 
