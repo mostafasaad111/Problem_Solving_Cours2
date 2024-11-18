@@ -14634,18 +14634,187 @@ int main() {
                     	return 0;
                     }
                      
-## 55 - 
+## 55 - friend Function
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    
+                    class clsA {
+                    private:
+                    	int _Var1;
+                    protected:
+                    	int var3;
+                    public:
+                    	int Var2;
+                    	clsA() {
+                    		_Var1 = 10;
+                    		var3 = 20;
+                    		Var2 = 30;
+                    	}
+                    	friend int MySum(clsA A1);
+                    };
+                    
+                    int MySum(clsA A1) {
+                    	return A1.Var2 + A1._Var1 + A1.var3;
+                    }
+                    int main() {
+                     
+                    	clsA A1;
+                        
+                    	cout << "The Value = " << MySum(A1);
+                    
+                    	return 0;
+                    }
+ 
+## 56- structure inside class 
 
 
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    
+                    class clsPerson {
+                    private:
+                    	struct stAddress {
+                    		string AddressLine1;
+                    		string AddressLine2;
+                    		string city;
+                    		string Country;
+                    	};
+                    public:
+                    	string FullName;
+                    	stAddress Address1;
+                    
+                    	clsPerson() {
+                    		FullName = "Mustafa Sad Mohammed";
+                    		Address1.AddressLine1 = "MitGamer";
+                    		Address1.AddressLine2 = "Simbo";
+                    		Address1.Country = "Egypt";
+                    		Address1.city = "Cairo";
+                    	}
+                    	void PrintAddress() {
+                    		cout << "Your Name : " << FullName << endl;
+                    		cout << "Address1 : " << Address1.AddressLine1 << endl;
+                    		cout << "Address2 : " << Address1.AddressLine2 << endl;
+                    		cout << "Your Country :" << Address1.Country << endl;
+                    		cout << "Your City :" << Address1.city << endl;
+                    	}
+                    };
+                    
+                    int main() {
+                     
+                    	clsPerson Person1;
+                    
+                    	cout << Person1.Address1.AddressLine1 << endl;
+                    	cout << Person1.Address1.AddressLine2 << endl;
+                    	cout << Person1.Address1.city << endl;
+                    	cout << Person1.Address1.Country << endl;
+                    
+                    	Person1.PrintAddress();
+                    
+                    	return 0;
+                    }
+ 
+## 57 - Nested Class 
+
+                    
+                    #include <iostream>
+                    #include <string>
+                    #include <iomanip>
+                    #include <vector>
+                    #include <fstream>
+                    using namespace std;
+                    
+                    
+                    class clsPerson {
+                    
+                    
+                    	class clsAddress {
+                    
+                    	public:
+                    		string AddressLine1;
+                    		string AddressLine2;
+                    		string City; 
+                    		string Country; 
+                    
+                    		void Print() {
+                    			cout << AddressLine1 << endl;
+                    			cout << AddressLine2 << endl;
+                    			cout << City << endl;
+                    			cout << Country << endl;
+                    		}
+                      };
+                    public:
+                    	string FullName;
+                    	clsAddress Address1;
+                    
+                    	clsPerson() {
+                    		FullName = "Mustafa Sad Mohammed";
+                    		Address1.AddressLine1 = "MitGamer";
+                    		Address1.AddressLine2 = "Simbo";
+                    		Address1.Country = "Egypt";
+                    		Address1.City = "Cairo";
+                    	}
+                    	
+                    };
+                    
+                    int main() {
+                     
+                    	clsPerson Person1;
+                    
+                    	Person1.Address1.Print();
+                    
+                    	return 0;
+                    }
+ 
+## 58 - Passing Objects to Functions (ByRef/ByVal)
 
 
+                    #include <iostream>
+                    using namespace std;
+                    
+                    class clsA {
+                    public:
+                    	int x;
+                    
+                    	void Print() {
+                    		cout << "the value of x= " << x << endl;
+                    	}
+                    };
+                    void Fun1(clsA A1) {
+                    	A1.x = 100;
+                    }
+                    void Fun2(clsA &A1) {
+                    	A1.x = 200;
+                    }
+                    
+                    int main(void)
+                    {
+                    	clsA A1;
+                    	A1.x = 50;
+                    
+                    	A1.Print();
+                        
+                    	Fun1(A1);
+                    	A1.Print();
+                    
+                    	Fun2(A1);
+                    	A1.Print();
+                    	return 0;
+                    }
 
 
-
-
-
-
-
+## 59 - 
 
 
 
