@@ -14814,9 +14814,105 @@ int main() {
                     }
 
 
-## 59 - 
+## 59 - Adding Objects to Vector
 
 
+
+                    #include<iostream>
+                    #include<vector>
+                    
+                    using namespace std;
+                    
+                    class clsA {
+                    public:
+                    	clsA(int value) {
+                    		x = value;
+                    	}
+                    	int x;
+                    	void print() {
+                    		cout << "The value of x = " << x << endl;
+                    	}
+                    };
+                    int main() {
+                    	vector <clsA>  V1;
+                    	short NumberOfObject = 5;
+                    	for (int i = 0; i < NumberOfObject; i++) {
+                    		V1.push_back(clsA(i));
+                    	}
+                    	for (int i = 0; i < NumberOfObject; i++) {
+                    		V1[i].print();
+                    	}
+                    
+                    }
+
+## 60 - Objects and Dynamic Array
+
+                    #include<iostream>
+                    using namespace std;
+                    
+                    class clsA {
+                    public:
+                        clsA(int value) {
+                            x = value;
+                        }
+                        int x;
+                        void print() {
+                            cout << "The value of x = " << x << endl;
+                        }
+                    };
+                    
+                    int main() {
+                        short NumberOfObject = 5;
+                    
+                        // إنشاء مصفوفة ديناميكية
+                        clsA** Arr1 = new clsA * [NumberOfObject];
+                    
+                        // تهيئة الكائنات
+                        for (int i = 0; i < NumberOfObject; i++) {
+                            Arr1[i] = new clsA(i);
+                        }
+                    
+                        // طباعة القيم
+                        for (int i = 0; i < NumberOfObject; i++) {
+                            Arr1[i]->print();
+                        }
+                    
+                        // تحرير الذاكرة
+                        for (int i = 0; i < NumberOfObject; i++) {
+                            delete Arr1[i];
+                        }
+                        delete[] Arr1;
+                    
+                        return 0;
+                    }
+
+## 61 - Objects with Parameterized Constructor and Array
+
+                              #include<iostream>
+                              using namespace std;
+                              
+                              class clsA {
+                              public:
+                                  clsA(int value) {
+                                      x = value;
+                                  }
+                                  int x;
+                                  void print() {
+                                      cout << "The value of x = " << x << endl;
+                                  }
+                              };
+                              
+                              int main() {
+                                 
+                                  clsA obj[] = { clsA{10} , clsA(20) , clsA(30) };
+                              
+                                  for (int i = 0; i < 3; i++) {
+                                      obj[i].print();
+                                  }
+                                  return 0;
+                              }
+
+## 62 - 
 
 
                     
