@@ -14912,7 +14912,176 @@ int main() {
                                   return 0;
                               }
 
-## 62 - 
+## 62 - stack 
+
+                    #include<iostream> 
+                    #include <stack>
+                    using namespace std;
+                    
+                    
+                    int main() {
+                    
+                        stack <int> stkNumbers;
+                    
+                        stkNumbers.push(10);
+                        stkNumbers.push(20);
+                        stkNumbers.push(30);
+                        stkNumbers.push(40);
+                        stkNumbers.push(50);
+                    
+                        cout << "Size : " << stkNumbers.size() << endl;
+                    
+                        while (!stkNumbers.empty())
+                        {
+                            cout << stkNumbers.top() << endl;
+                    
+                            stkNumbers.pop();
+                        }
+                        cout << "Size : " << stkNumbers.size() << endl;
+                    
+                        return 0;
+                    }
+
+## 63 - Swap Stack 
 
 
+                    #include<iostream> 
+                    #include <stack>
+                    using namespace std;
+                    
+                    
+                    int main() {
+                    
+                        stack <int> MyStack1;
+                        stack <int> MyStack2;
+                    
+                        MyStack1.push(10);
+                        MyStack1.push(20);
+                        MyStack1.push(30);
+                        MyStack1.push(40);
+                        MyStack1.push(50);
+                    
+                        MyStack2.push(60);
+                        MyStack2.push(70);
+                        MyStack2.push(80);
+                        MyStack2.push(90);
+                        MyStack2.push(100);
+                    
+                        MyStack1.swap(MyStack2);
+                    
+                        cout << "MyStack1 = ";
+                    
+                        while (!MyStack1.empty()) {
+                            cout << MyStack1.top() << " ";
+                            MyStack1.pop();
+                        }
+                        cout << "MyStack2 = ";
+                    
+                        while (!MyStack2.empty()) {
+                            cout << MyStack2.top() << " ";
+                            MyStack2.pop();
+                        }
+                        return 0;
+                    }
+
+
+## 64 - swap queue 
+
+
+                              #include<iostream> 
+                              #include <queue>
+                              using namespace std;
+                              
+                              
+                              int main() {
+                              
+                                  queue <int> Myqueue1;
+                                  queue <int> Myqueue2;
+                              
+                                  Myqueue1.push(10);
+                                  Myqueue1.push(20);
+                                  Myqueue1.push(30);
+                                  Myqueue1.push(40);
+                                  Myqueue1.push(50);
+                              
+                                  Myqueue2.push(60);
+                                  Myqueue2.push(70);
+                                  Myqueue2.push(80);
+                                  Myqueue2.push(90);
+                                  Myqueue2.push(100);
+                              
+                                  Myqueue1.swap(Myqueue2);
+                                  
+                                  cout << "coutnt" << Myqueue1.size() << endl;
+                                  cout << "back  " << Myqueue1.back() << endl;
+                                  cout << "Front " << Myqueue1.front() << endl;
+                                  cout << "Myqueue1 = ";
+                              
+                                  while (!Myqueue1.empty()) {
+                                      cout << Myqueue1.front() << " ";
+                                      Myqueue1.pop();
+                                  }
+                                  
+                                  cout << "coutnt" << Myqueue2.size() << endl;
+                                  cout << "back  " << Myqueue2.back() << endl;
+                                  cout << "Front " << Myqueue2.front() << endl;
+                              
+                                  cout << "Myqueue2 = ";
+                              
+                                  while (!Myqueue2.empty()) {
+                                      cout << Myqueue2.front() << " ";
+                                      Myqueue2.pop();
+                                  }
+                                  
+                              
+                                  return 0;
+                              }
+
+
+## 65 - Linked List Implementation
+
+
+                    #include<iostream> 
+                    #include <queue>
+                    using namespace std;
+                    
+                    class node {
+                    public:
+                        int Value;
+                        node* Next;
+                    
+                    };
+                    int main() {
+                    
+                        node* head;
+                    
+                        node* Node1 = NULL;
+                        node* Node2 = NULL;
+                        node* Node3 = NULL;
+                        
+                        Node1 = new node();
+                        Node2 = new node();
+                        Node3 = new node();
+                        
+                        Node1->Value = 1;
+                        Node2->Value = 2;
+                        Node3->Value = 3;
+                    
+                        Node1->Next = Node2;
+                        Node2->Next = Node3;
+                        Node3->Next = NULL;
+                    
+                        head = Node1;
+                    
+                        while (head != NULL) {
+                            cout << head->Value << endl;
+                            head = head->Next;
+                        }
+                     
+                        
+                    
+                        return 0;
+                    }
+
+## 66 - 
                     
