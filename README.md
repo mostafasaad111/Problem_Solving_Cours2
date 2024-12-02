@@ -15083,5 +15083,405 @@ int main() {
                         return 0;
                     }
 
-## 66 - 
+## 66 - Singly  linked list 
+
+
+                    #include<iostream> 
+                    #include <queue>
+                    using namespace std;
+                    
+                    class node {
+                    public:
+                        int Value;
+                        node* Next;
+                    
+                    };
+                    int main() {
+                    
+                        node* head;
+                    
+                        node* Node1 = NULL;
+                        node* Node2 = NULL;
+                        node* Node3 = NULL;
+                        
+                        Node1 = new node();
+                        Node2 = new node();
+                        Node3 = new node();
+                        
+                        Node1->Value = 1;
+                        Node2->Value = 2;
+                        Node3->Value = 3;
+                    
+                        Node1->Next = Node2;
+                        Node2->Next = Node3;
+                        Node3->Next = NULL;
+                    
+                        head = Node1;
+                    
+                        while (head != NULL) {
+                            cout << head->Value << endl;
+                            head = head->Next;
+                        }
+                     
+                        
+                    
+                        return 0;
+                    }
+
+## 67 - liked list insert at the beginning 
+
+                    
+                    #include<iostream> 
+                    #include <queue>
+                    using namespace std;
+                    
+                    class node {
+                    public:
+                        int Value;
+                        node* Next;
+                    
+                    };
+                    void InsertAtList(node*& head, int Value) {
+                        
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = head;
+                    
+                        head = new_node;
+                    }
+                    void PrintNode(node* head) {
+                        while (head != NULL)
+                        {
+                            cout << head->Value << " ";
+                            head = head->Next;
+                        }
+                    }
+                    int main() {
+                    
+                        node * head = NULL;
+                    
+                        InsertAtList(head, 1);
+                        InsertAtList(head, 2);
+                        InsertAtList(head, 3);
+                        InsertAtList(head, 4);
+                        InsertAtList(head, 5);
+                        
+                        PrintNode(head);
+                        return 0;
+                    }
+
+## 68 - Find in linked list 
+
+
+                    #include<iostream> 
+                    #include <queue>
+                    using namespace std;
+                    
+                    class node {
+                    public:
+                        int Value;
+                        node* Next;
+                    
+                    };
+                    void InsertAtList(node*& head, int Value) {
+                        
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = head;
+                    
+                        head = new_node;
+                    }
+                    void PrintNode(node* head) {
+                        while (head != NULL)
+                        {
+                            cout << head->Value << " ";
+                            head = head->Next;
+                        }
+                    }
+                    node* Find(node* head, int Value) {
+                        while (head != NULL) {
+                            if (head->Value == Value) {
+                                return head ;
+                            }
+                            head = head->Next;
+                        }
+                        return NULL;
+                    }
+                    int main() {
+                    
+                        node * head = NULL;
+                    
+                        InsertAtList(head, 1);
+                        InsertAtList(head, 2);
+                        InsertAtList(head, 3);
+                        InsertAtList(head, 4);
+                        InsertAtList(head, 5);
+                        
+                        PrintNode(head);
+                    
+                        node* N1 = Find(head , 2) ;
+                    
+                        if (N1 != NULL)
+                            cout << "\n Value Found -:)" << endl;
+                        else
+                            cout << " \n Value not Found -:(" << endl;
+                    
+                        
+                        return 0;
+                    }
+                    
+## 69 - insert after 
+
+                         #include<iostream> 
+                    #include <queue>
+                    using namespace std;
+                    
+                    class node {
+                    public:
+                        int Value;
+                        node* Next;
+                    
+                    };
+                    void InsertAtList(node*& head, int Value) {
+                        
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = head;
+                    
+                        head = new_node;
+                    }
+                    void PrintNode(node* head) {
+                        while (head != NULL)
+                        {
+                            cout << head->Value << " ";
+                            head = head->Next;
+                        }
+                    }
+                    node* Find(node* head, int Value) {
+                        while (head != NULL) {
+                            if (head->Value == Value) {
+                                return head ;
+                            }
+                            head = head->Next;
+                        }
+                        return NULL;
+                    }
+                    void InsertAfter(node * prev_node ,int Value ) {
+                    
+                        if (prev_node == NULL) {
+                            cout << "the given previous node cnnot be null";
+                            return;
+                        }
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = prev_node->Next;
+                        prev_node->Next = new_node;
+                        
+                    }
+                    int main() {
+                    
+                        node * head = NULL;
+                    
+                        InsertAtList(head, 1);
+                        InsertAtList(head, 2);
+                        InsertAtList(head, 3);
+                        InsertAtList(head, 4);
+                        InsertAtList(head, 5);
+                        
+                    
+                        node* N1 = Find(head , 2) ;
+                    
+                        InsertAfter(N1, 500);
+                    
+                        PrintNode(head);
+                    
+                        if (N1 != NULL)
+                            cout << "\n Value Found -:)" << endl;
+                        else
+                            cout << " \n Value not Found -:(" << endl;
+                    
+                        
+                    
+                        return 0;
+                    }
+
+## 70 - Insert After 
+
+
+                    #include<iostream> 
+                    #include <queue>
+                    using namespace std;
+                    
+                    class node {
+                    public:
+                        int Value;
+                        node* Next;
+                    
+                    };
+                    void InsertAtList(node*& head, int Value) {
+                        
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = head;
+                    
+                        head = new_node;
+                    }
+                    void PrintNode(node* head) {
+                        while (head != NULL)
+                        {
+                            cout << head->Value << " ";
+                            head = head->Next;
+                        }
+                    }
+                    node* Find(node* head, int Value) {
+                        while (head != NULL) {
+                            if (head->Value == Value) {
+                                return head ;
+                            }
+                            head = head->Next;
+                        }
+                        return NULL;
+                    }
+                    void InsertAfter(node * prev_node ,int Value ) {
+                    
+                        if (prev_node == NULL) {
+                            cout << "the given previous node cnnot be null";
+                            return;
+                        }
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = prev_node->Next;
+                        prev_node->Next = new_node;
+                        
+                    }
+                    int main() {
+                    
+                        node * head = NULL;
+                    
+                        InsertAtList(head, 1);
+                        InsertAtList(head, 2);
+                        InsertAtList(head, 3);
+                        InsertAtList(head, 4);
+                        InsertAtList(head, 5);
+                        
+                    
+                        node* N1 = Find(head , 2) ;
+                    
+                        InsertAfter(N1, 500);
+                    
+                        PrintNode(head);
+                    
+                        if (N1 != NULL)
+                            cout << "\n Value Found -:)" << endl;
+                        else
+                            cout << " \n Value not Found -:(" << endl;
+                    
+                        
+                    
+                        return 0;
+                    }
+
+## 71 - insert at end 
+
+                              #include<iostream> 
+                              #include <queue>
+                              using namespace std;
+                              
+                              class node {
+                              public:
+                                  int Value;
+                                  node* Next;
+                              
+                              };
+                              void InsertAtList(node*& head, int Value) {
+                                  
+                                  node* new_node = new node();
+                              
+                                  new_node->Value = Value;
+                                  new_node->Next = head;
+                              
+                                  head = new_node;
+                              }
+                              void PrintNode(node* head) {
+                                  while (head != NULL)
+                                  {
+                                      cout << head->Value << " ";
+                                      head = head->Next;
+                                  }
+                              }
+                              node* Find(node* head, int Value) {
+                                  while (head != NULL) {
+                                      if (head->Value == Value) {
+                                          return head ;
+                                      }
+                                      head = head->Next;
+                                  }
+                                  return NULL;
+                              }
+                              void InsertAfter(node * prev_node ,int Value ) {
+                              
+                                  if (prev_node == NULL) {
+                                      cout << "the given previous node cnnot be null";
+                                      return;
+                                  }
+                                  node* new_node = new node();
+                              
+                                  new_node->Value = Value;
+                                  new_node->Next = prev_node->Next;
+                                  prev_node->Next = new_node;
+                                  
+                              }
+                              void InserAtEnd(node* &head, int Value) {
+                              
+                                  node* new_node = new node();
+                                  
+                                  new_node->Value = Value;
+                                  new_node->Next = NULL;
+                                  
+                                  if (head == NULL) {
+                                      head = new_node;
+                                      return;
+                                  }
+                                  node* LastNode = head;
+                                  while (LastNode->Next != NULL) {
+                                      LastNode = LastNode->Next;
+                                  }
+                                  LastNode->Next = new_node;
+                                  return;
+                              }
+                              
+                              
+                              int main() {
+                              
+                                  node * head = NULL;
+                              
+                                  InserAtEnd(head, 1);
+                                  InserAtEnd(head, 2);
+                                  InserAtEnd(head, 3);
+                                  InserAtEnd(head, 4);
+                                  InserAtEnd(head, 5);
+                                  
+                              
+                                  PrintNode(head);
+                              
+                                  return 0;
+                              }
+                              
+
+## 72 - 
+
+
+
+
+
+
+
+
+
                     
