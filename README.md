@@ -15406,7 +15406,7 @@ int main() {
                                   new_node->Value = Value;
                                   new_node->Next = head;
                               
-                                  head = new_node;
+                                  head = new_node;i
                               }
                               void PrintNode(node* head) {
                                   while (head != NULL)
@@ -15474,12 +15474,177 @@ int main() {
                               }
                               
 
-## 72 - 
+## 72 - Delete Node 
+
+                    
+                    #include<iostream> 
+                    #include <queue>
+                    using namespace std;
+                    
+                    class node {
+                    public:
+                        int Value;
+                        node* Next;
+                    
+                    };
+                    void InsertAtList(node*& head, int Value) {
+                        
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = head;
+                    
+                        head = new_node;
+                    }
+                    void PrintNode(node* head) {
+                        while (head != NULL)
+                        {
+                            cout << head->Value << " ";
+                            head = head->Next;
+                        }
+                    }
+                    node* Find(node* head, int Value) {
+                        while (head != NULL) {
+                            if (head->Value == Value) {
+                                return head ;
+                            }
+                            head = head->Next;
+                        }
+                        return NULL;
+                    }
+                    void InsertAfter(node * prev_node ,int Value ) {
+                    
+                        if (prev_node == NULL) {
+                            cout << "the given previous node cnnot be null";
+                            return;
+                        }
+                        node* new_node = new node();
+                    
+                        new_node->Value = Value;
+                        new_node->Next = prev_node->Next;
+                        prev_node->Next = new_node;
+                        
+                    }
+                    void InserAtEnd(node* &head, int Value) {
+                    
+                        node* new_node = new node();
+                        
+                        new_node->Value = Value;
+                        new_node->Next = NULL;
+                        
+                        if (head == NULL) {
+                            head = new_node;
+                            return;
+                        }
+                        node* LastNode = head;
+                        while (LastNode->Next != NULL) {
+                            LastNode = LastNode->Next;
+                        }
+                        LastNode->Next = new_node;
+                        return;
+                    }
+                    void DeleteNode(node * &head , int value) {
+                        node* Current = head , * Prev = head;
+                    
+                        if (Current == NULL) {
+                            return;
+                        }
+                        if (Current->Value == value) {
+                            head = Current->Next;
+                            delete Current;
+                        }
+                    
+                        while (Current != NULL && Current->Value != value) {
+                            Prev = Current;
+                            Current = Current->Next;
+                        }
+                    
+                        Prev->Next = Current->Next;
+                        delete Current; 
+                    }
+                    
+                    int main() {
+                    
+                        node * head = NULL;
+                    
+                        InserAtEnd(head, 1);
+                        InserAtEnd(head, 2);
+                        InserAtEnd(head, 3);
+                        InserAtEnd(head, 4);
+                        InserAtEnd(head, 5);
+                        
+                        DeleteNode(head, 4);
+                    
+                        PrintNode(head);
+                    
+                        return 0;
+                    }
+
+## 73 -  Map
 
 
+                    #include <iostream>
+                    #include <map>
+                    using namespace std;
+                    
+                    int main()
+                    {
+                        map<string, int > StudentGrad;
+                    
+                        StudentGrad["ali"] = 44;
+                        StudentGrad["Ahmed"] = 87;
+                        StudentGrad["fadi"] = 90;
+                    
+                        for (const auto& pair : StudentGrad) {
+                            cout << "student name : " << pair.first << "Grade: " << pair.second << endl;
+                        }
+                    
+                        // finding the grade for a specific student 
+                        string studentName = "omar";
+                        if (StudentGrad.find(studentName) != StudentGrad.end()) {
+                            cout << "studentName" << studentName << "Grade:" << StudentGrad[studentName] << endl;
+                        }
+                        else {
+                            cout << "Grade not found for " << studentName << endl;
+                        }
+                        system("pause>0");
+                    
+                    }
+
+## 75 - Union 
 
 
+                    
+                    #include <iostream>
+                    using namespace std;
+                    
+                    union MyUnion
+                    {
+                        int intValue;
+                        float flaotValue;
+                        char charValue;
+                    
+                    };
+                    int main()
+                    {
+                        MyUnion  Union1;
+                    
+                        Union1.intValue = 23;
+                        cout << "int value :" << Union1.intValue << endl;
+                    
+                        Union1.flaotValue = 23.34;
+                        cout << "float value :" << Union1.flaotValue << endl;
+                    
+                        Union1.charValue = 'c';
+                        cout << "char value :" << Union1.charValue << endl;
+                    
+                    
+                        system("pause>0");
+                    
+                    }
 
+
+## 76 - 
 
 
 
